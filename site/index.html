@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Amor Mundi · 爱世界 — 汉娜·阿伦特思想探索</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#f6f1e7; --paper2:#efe7d7; --card:#fbf8f1; --ink:#2c2620; --ink2:#5d5347;
+  --line:#d8cbb2; --rust:#9a3b26; --rust-soft:#f0ddd2; --ochre:#a97a1f; --ochre-soft:#f2e6c8;
+  --sage:#5c7350; --sage-soft:#e2e8d5; --slate:#4d6472; --slate-soft:#dde5e8;
+  --plum:#6d4a63; --plum-soft:#eadfe7; --gold:#b98a2f; --evil-dot:#3d3a35;
+  --shadow:0 1px 2px rgba(60,45,20,.08),0 6px 18px rgba(60,45,20,.06);
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --paper:#211d18; --paper2:#282219; --card:#2b261e; --ink:#ece4d4; --ink2:#b8ab94;
+    --line:#4a4132; --rust:#d08a70; --rust-soft:#453029; --ochre:#d3ab55; --ochre-soft:#40381f;
+    --sage:#9db48c; --sage-soft:#2f3a2a; --slate:#93aeba; --slate-soft:#2c363c;
+    --plum:#bd97b1; --plum-soft:#3d2f38; --gold:#d3ab55; --evil-dot:#cfc6b2;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3); }
+}
+:root[data-theme="light"]{--paper:#f6f1e7;--paper2:#efe7d7;--card:#fbf8f1;--ink:#2c2620;--ink2:#5d5347;--line:#d8cbb2;--rust:#9a3b26;--rust-soft:#f0ddd2;--ochre:#a97a1f;--ochre-soft:#f2e6c8;--sage:#5c7350;--sage-soft:#e2e8d5;--slate:#4d6472;--slate-soft:#dde5e8;--plum:#6d4a63;--plum-soft:#eadfe7;--gold:#b98a2f;--evil-dot:#3d3a35;--shadow:0 1px 2px rgba(60,45,20,.08),0 6px 18px rgba(60,45,20,.06)}
+:root[data-theme="dark"]{--paper:#211d18;--paper2:#282219;--card:#2b261e;--ink:#ece4d4;--ink2:#b8ab94;--line:#4a4132;--rust:#d08a70;--rust-soft:#453029;--ochre:#d3ab55;--ochre-soft:#40381f;--sage:#9db48c;--sage-soft:#2f3a2a;--slate:#93aeba;--slate-soft:#2c363c;--plum:#bd97b1;--plum-soft:#3d2f38;--gold:#d3ab55;--evil-dot:#cfc6b2;--shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Serif SC",serif;font-size:16px;line-height:1.75;
+  background-image:radial-gradient(rgba(120,90,40,.05) 1px,transparent 1px);background-size:22px 22px}
+.en{font-family:"EB Garamond",serif;letter-spacing:.02em}
+.sans{font-family:"Noto Sans SC",sans-serif}
+a{color:var(--rust)}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px 110px}
+
+/* ---------- header / nav ---------- */
+header.site{padding:22px 16px 6px;max-width:1060px;margin:0 auto}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brand h1{font-size:30px;margin:0;font-weight:900;letter-spacing:.01em}
+.brand .latin{font-family:"EB Garamond",serif;font-style:italic;font-size:20px;color:var(--rust)}
+.brand .sub{color:var(--ink2);font-size:13px;font-family:"Noto Sans SC",sans-serif}
+nav.main{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.main .inner{max-width:1060px;margin:0 auto;padding:8px 12px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+@media(max-width:760px){nav.main .inner{flex-wrap:wrap;overflow-x:visible}
+  nav.main button{padding:7px 11px;font-size:13.5px} nav.main button .en{display:none}}
+nav.main .inner::-webkit-scrollbar{display:none}
+nav.main button{flex:0 0 auto;border:1px solid transparent;background:transparent;color:var(--ink2);
+  padding:8px 13px;border-radius:999px;font-size:14px;font-family:"Noto Sans SC",sans-serif;min-height:40px}
+nav.main button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+nav.main button .en{font-size:12px;opacity:.75;margin-left:4px}
+
+/* ---------- generic ---------- */
+.view{display:none}
+.view.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.view.active{animation:none} html{scroll-behavior:auto}}
+h2.sec{font-size:22px;margin:34px 0 4px;font-weight:900}
+h2.sec .en{font-size:15px;color:var(--rust);font-weight:400;font-style:italic;margin-left:8px}
+p.lede{color:var(--ink2);margin:0 0 14px;font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+.tag{display:inline-block;font-family:"Noto Sans SC",sans-serif;font-size:11px;padding:2px 9px;border-radius:999px;
+  border:1px solid var(--line);color:var(--ink2);background:var(--paper)}
+.tag.rust{background:var(--rust-soft);color:var(--rust);border-color:transparent}
+.tag.ochre{background:var(--ochre-soft);color:var(--ochre);border-color:transparent}
+.tag.sage{background:var(--sage-soft);color:var(--sage);border-color:transparent}
+.tag.slate{background:var(--slate-soft);color:var(--slate);border-color:transparent}
+.tag.plum{background:var(--plum-soft);color:var(--plum);border-color:transparent}
+.chiprow{display:flex;gap:6px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+  border-radius:999px;padding:9px 16px;font-size:14px;font-family:"Noto Sans SC",sans-serif;min-height:44px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:active{transform:scale(.98)}
+.seg{display:inline-flex;background:var(--paper2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:7px 14px;border-radius:999px;font-size:13.5px;font-family:"Noto Sans SC",sans-serif;color:var(--ink2);min-height:38px}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:var(--shadow);font-weight:700}
+.grid2{display:grid;gap:14px}
+@media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+.grid3{display:grid;gap:14px}
+@media(min-width:860px){.grid3{grid-template-columns:repeat(3,1fr)}}
+svg.ic{width:22px;height:22px;flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+svg.ic.sm{width:17px;height:17px}
+.src{font-size:12.5px;color:var(--ink2);font-family:"Noto Sans SC",sans-serif}
+.verify{color:var(--ochre);font-weight:700}
+
+/* ---------- preface ---------- */
+.preface{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:26px 22px 20px;position:relative;overflow:hidden}
+.preface::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--rust)}
+.preface .kicker{font-family:"Noto Sans SC",sans-serif;font-size:12px;letter-spacing:.22em;color:var(--rust);margin-bottom:12px}
+.preface blockquote{margin:0;font-size:16.5px;line-height:2}
+.preface blockquote p{margin:0 0 14px}
+.preface blockquote p:first-child{font-size:19px;font-weight:700}
+.preface .sig{color:var(--ink2);font-size:14px}
+
+/* ---------- dashboard ---------- */
+.dash{display:grid;gap:14px;margin-top:16px}
+@media(min-width:860px){.dash{grid-template-columns:1.25fr 1fr}}
+.today-head{display:flex;gap:12px;align-items:flex-start}
+.today-head .icob{width:46px;height:46px;border-radius:12px;background:var(--rust-soft);color:var(--rust);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.today-head h3{margin:0;font-size:19px}
+.today-head .why{color:var(--ink2);font-size:14px;margin:2px 0 0}
+blockquote.pull{margin:14px 0;padding:12px 16px;border-left:3px solid var(--gold);background:var(--paper2);border-radius:0 10px 10px 0}
+blockquote.pull p{margin:0}
+blockquote.pull .orig{font-family:"EB Garamond",serif;font-style:italic;font-size:17px}
+.progress-list{display:grid;gap:10px;margin-top:6px}
+.prow{display:grid;grid-template-columns:86px 1fr 44px;gap:10px;align-items:center;font-size:13.5px;font-family:"Noto Sans SC",sans-serif}
+.bar{height:8px;background:var(--paper2);border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sage);border-radius:99px}
+.bar i.mid{background:var(--gold)} .bar i.low{background:var(--rust)}
+.blind li{margin-bottom:8px}
+.qbox{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:20px;margin-top:14px}
+.qbox .en{color:var(--gold)}
+.qbox h3{margin:4px 0 8px;font-size:19px}
+.qbox p{color:color-mix(in srgb,var(--paper) 82%,transparent)}
+.qopts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.qopts button{background:transparent;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 45%,transparent);
+  border-radius:999px;padding:9px 15px;font-size:13.5px;font-family:"Noto Sans SC",sans-serif;min-height:44px}
+.qopts button.picked{background:var(--gold);border-color:var(--gold);color:#241d08;font-weight:700}
+.qans{margin-top:12px;font-size:14.5px;display:none}
+.qans.show{display:block}
+.linkcards{display:grid;gap:12px}
+@media(min-width:760px){.linkcards{grid-template-columns:repeat(3,1fr)}}
+.linkcard{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;box-shadow:var(--shadow);color:var(--ink);width:100%}
+.linkcard h4{margin:6px 0 4px;font-size:16px}
+.linkcard p{margin:0;color:var(--ink2);font-size:13.5px}
+.linkcard .icob{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+
+/* ---------- timeline ---------- */
+.threadbar{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}
+.threadbar button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;
+  font-size:13.5px;font-family:"Noto Sans SC",sans-serif;min-height:40px;display:inline-flex;gap:6px;align-items:center}
+.threadbar button .dot{width:10px;height:10px;border-radius:50%}
+.threadbar button[aria-pressed="true"]{border-color:var(--ink);font-weight:700;box-shadow:var(--shadow)}
+.scrollx{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);
+  -webkit-overflow-scrolling:touch}
+.tl{position:relative;min-width:880px;padding:14px 14px 8px}
+.tl-years{display:flex;justify-content:space-between;font-family:"EB Garamond",serif;color:var(--ink2);
+  border-bottom:1px dashed var(--line);padding-bottom:4px;font-size:13px;margin-left:64px}
+.lane{display:grid;grid-template-columns:56px 1fr;gap:8px;padding:12px 0;border-bottom:1px dashed var(--line);align-items:start}
+.lane:last-child{border-bottom:0}
+.lane .lname{font-family:"Noto Sans SC",sans-serif;font-size:12.5px;font-weight:700;color:var(--ink2);padding-top:4px;text-align:right}
+.lane .track{position:relative;min-height:64px}
+.node{position:absolute;top:0;transform:translateX(-50%);background:none;border:0;padding:0;text-align:center;width:86px}
+.node .pt{width:15px;height:15px;border-radius:50%;margin:2px auto 4px;border:2.5px solid var(--card);box-shadow:0 0 0 1.5px var(--line);display:block}
+.node .nl{font-size:11.5px;line-height:1.35;font-family:"Noto Sans SC",sans-serif;color:var(--ink);display:block}
+.node .ny{font-size:10.5px;color:var(--ink2);font-family:"EB Garamond",serif;display:block}
+.node.dim{opacity:.22}
+.node.sel .nl{font-weight:700;color:var(--rust)}
+.c-love{background:var(--rust)} .c-evil{background:var(--evil-dot)} .c-act{background:var(--sage)} .c-think{background:var(--slate)} .c-life{background:var(--ochre)} .c-deb{background:var(--plum)} .c-ppl{background:#8a6d3b}
+.tl-detail{margin-top:14px}
+.tl-detail h3{margin:0 0 2px;font-size:19px}
+.dates3{display:grid;gap:8px;margin:12px 0}
+@media(min-width:640px){.dates3{grid-template-columns:repeat(3,1fr)}}
+.dates3 div{background:var(--paper2);border-radius:10px;padding:10px 12px}
+.dates3 b{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--rust);display:block}
+.dates3 span{font-size:14.5px}
+.mm-period{margin-bottom:14px}
+.mm-period>h4{margin:0 0 8px;font-size:16px}
+.mm-work{border-left:2px solid var(--line);margin-left:8px;padding:2px 0 10px 16px;position:relative}
+.mm-work::before{content:"";position:absolute;left:-6px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--card);border:2px solid var(--rust)}
+.mm-work b{font-size:15px}.mm-work p{margin:2px 0;font-size:14px;color:var(--ink2)}
+
+/* ---------- system ---------- */
+.syswrap{min-width:760px;padding:10px}
+.sysnode{cursor:pointer}
+.sysnode circle{stroke-width:1.6}
+.sysnode text{font-family:"Noto Sans SC",sans-serif}
+.tree{font-size:15px}
+.tree ul{list-style:none;margin:0;padding-left:22px;border-left:2px solid var(--line)}
+.tree>ul{border-left:0;padding-left:0}
+.tree li{margin:7px 0;position:relative}
+.tree li::before{content:"";position:absolute;left:-22px;top:15px;width:16px;border-top:2px solid var(--line)}
+.tree>ul>li::before{display:none}
+.tnode{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:7px 12px;box-shadow:var(--shadow);color:var(--ink);text-align:left;min-height:44px}
+.tnode small{color:var(--ink2);font-family:"EB Garamond",serif;font-style:italic}
+.concept-grid{display:grid;gap:10px}
+@media(min-width:640px){.concept-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.concept-grid{grid-template-columns:repeat(3,1fr)}}
+.concept-btn{display:flex;gap:11px;align-items:flex-start;text-align:left;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);color:var(--ink);width:100%}
+.concept-btn .icob{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.concept-btn b{font-size:15.5px;display:block}
+.concept-btn span{font-size:13px;color:var(--ink2);display:block;line-height:1.55}
+.detail{margin-top:14px}
+.detail h3{margin:0;font-size:21px}
+.detail .def{font-size:16.5px;margin:10px 0}
+.kv{display:grid;gap:8px;margin:12px 0}
+@media(min-width:640px){.kv{grid-template-columns:1fr 1fr}}
+.kv div{background:var(--paper2);border-radius:10px;padding:10px 12px;font-size:14px}
+.kv b{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--rust);display:block;margin-bottom:2px}
+.struggle{background:var(--plum-soft);border-radius:10px;padding:12px 14px;font-size:14.5px;margin-top:10px}
+.struggle b{font-family:"Noto Sans SC",sans-serif;font-size:12.5px;color:var(--plum)}
+
+/* ---------- excerpts ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filters select{font-family:"Noto Sans SC",sans-serif;font-size:14px;padding:10px 12px;border-radius:10px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);min-height:44px;max-width:100%}
+.ex{margin-bottom:12px}
+.ex .orig{font-family:"EB Garamond",serif;font-style:italic;font-size:18px;margin:0 0 4px}
+.ex .zh{margin:0 0 8px;font-size:16px}
+.ex .meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.doubt{border-style:dashed;opacity:.92}
+.empty{padding:26px;text-align:center;color:var(--ink2)}
+
+/* ---------- people ---------- */
+.ppl-grid{display:grid;gap:10px}
+@media(min-width:640px){.ppl-grid{grid-template-columns:1fr 1fr}}
+.ppl{display:flex;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+.ppl .ava{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex:0 0 auto;color:#fff}
+.ppl b{font-size:15.5px}.ppl p{margin:2px 0 0;font-size:13.5px;color:var(--ink2)}
+
+/* ---------- critique / overturn ---------- */
+.crit{counter-reset:crit}
+.crit-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line)}
+.crit-item:last-child{border-bottom:0}
+.crit-item .no{counter-increment:crit;flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--rust);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:"EB Garamond",serif;font-size:18px}
+.crit-item h4{margin:2px 0 4px;font-size:16.5px}
+.crit-item p{margin:0;color:var(--ink2);font-size:14.5px}
+table.ot{width:100%;border-collapse:collapse;font-size:14px}
+table.ot th,table.ot td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.ot th{background:var(--paper2);font-family:"Noto Sans SC",sans-serif;font-size:12.5px}
+.blank-date{color:var(--ink2);letter-spacing:.3em}
+
+/* ---------- surprise ---------- */
+.day{display:grid;gap:0}
+.dayrow{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.dayrow:last-child{border:0}
+.dayrow .time{font-family:"EB Garamond",serif;font-size:19px;color:var(--rust);font-weight:600}
+.dayrow h4{margin:0 0 3px;font-size:16px;display:flex;gap:8px;align-items:center}
+.dayrow p{margin:0;font-size:14.5px;color:var(--ink2)}
+.quiz-q{padding:13px 0;border-bottom:1px dashed var(--line)}
+.quiz-q p{margin:0 0 8px;font-size:15px}
+.quiz-q .opts{display:flex;gap:8px}
+.quiz-q .opts button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px;font-size:14px;min-height:44px;font-family:"Noto Sans SC",sans-serif}
+.quiz-q .opts button.picked{background:var(--ink);color:var(--paper);font-weight:700}
+.quiz-result{display:none;margin-top:14px}
+.quiz-result.show{display:block}
+.disclaimer{border:1px dashed var(--ochre);background:var(--ochre-soft);border-radius:10px;padding:12px 14px;font-size:13.5px;font-family:"Noto Sans SC",sans-serif}
+
+footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:var(--ink2);font-size:13px;font-family:"Noto Sans SC",sans-serif}
+.foot-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.foot-nav button{background:none;border:1px solid var(--line);border-radius:999px;padding:7px 13px;color:var(--ink2);min-height:38px;font-family:"Noto Sans SC",sans-serif}
+
+/* ---------- search / theme / new sections ---------- */
+.themebtn{margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 15px;font-size:13.5px;font-family:"Noto Sans SC",sans-serif;min-height:44px}
+.searchbox{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+.searchrow{display:flex;gap:8px;flex-wrap:wrap}
+.searchrow input{flex:1;min-width:200px;font-family:"Noto Sans SC",sans-serif;font-size:15px;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);min-height:48px}
+.searchres{margin-top:12px;display:grid;gap:8px}
+.sres{text-align:left;background:var(--paper2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;color:var(--ink);width:100%}
+.sres b{font-size:15px}.sres span{display:block;font-size:13px;color:var(--ink2)}
+.notfound{padding:14px;border:1px dashed var(--rust);border-radius:10px;color:var(--ink);background:var(--rust-soft);font-size:14.5px}
+.debate{margin-bottom:16px}
+.debate h3{margin:0 0 4px;font-size:19px}
+.dgrid{display:grid;gap:10px;margin-top:12px}
+@media(min-width:760px){.dgrid{grid-template-columns:1fr 1fr}}
+.dgrid div{background:var(--paper2);border-radius:10px;padding:11px 13px;font-size:14.5px}
+.dgrid b{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--rust);display:block;margin-bottom:3px}
+.flow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0;font-family:"Noto Sans SC",sans-serif;font-size:13px}
+.flow span{background:var(--paper2);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.flow i{color:var(--rust);font-style:normal;font-weight:700}
+.spec{display:grid;gap:10px}
+@media(min-width:760px){.spec{grid-template-columns:repeat(5,1fr)}}
+.spec div{background:var(--paper2);border-radius:10px;padding:12px;text-align:center}
+.spec b{display:block;font-size:16px;margin-bottom:4px}
+.spec p{margin:0;font-size:13px;color:var(--ink2)}
+.cmp{display:grid;gap:10px}
+.cmp-row{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px}
+.cmp-row h4{margin:0 0 8px;font-size:16.5px}
+.cmp-cols{display:grid;gap:8px}
+@media(min-width:760px){.cmp-cols{grid-template-columns:1fr 1fr}}
+.cmp-cols div{background:var(--paper2);border-radius:10px;padding:10px 12px;font-size:14px}
+.cmp-cols b{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--rust);display:block}
+.practice{margin-top:10px;background:var(--sage-soft);border-radius:10px;padding:11px 13px;font-size:14px}
+.practice b{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--sage);display:block}
+</style>
+</head>
+<body>
+
+<!-- ===== SVG ICON SET (one symbol per concept) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-action" viewBox="0 0 24 24"><path d="M4 20 L14 10"/><path d="M11 5 L19 5 L19 13"/><circle cx="5" cy="19" r="1.6"/></symbol>
+  <symbol id="i-think" viewBox="0 0 24 24"><path d="M12 4a6 6 0 1 1-6 6"/><path d="M12 8a2.5 2.5 0 1 1-2.5 2.5"/><path d="M6 3v4h4"/></symbol>
+  <symbol id="i-love" viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></symbol>
+  <symbol id="i-lonely" viewBox="0 0 24 24"><circle cx="12" cy="8" r="1.8"/><path d="M3 20h18"/><path d="M6 20c1-3 3-4.5 6-4.5S17 17 18 20"/></symbol>
+  <symbol id="i-power" viewBox="0 0 24 24"><circle cx="7" cy="8" r="2.2"/><circle cx="17" cy="8" r="2.2"/><circle cx="12" cy="16" r="2.2"/><path d="M9 9.5l1.5 4M15 9.5l-1.5 4M9.2 8h5.6"/></symbol>
+  <symbol id="i-violence" viewBox="0 0 24 24"><path d="M13 2 L5 13h5l-1 9 8-11h-5z"/></symbol>
+  <symbol id="i-natality" viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13c0-4 3-6 7-6 0 4-3 6-7 6z"/><path d="M12 11c0-3.4-2.4-5-6-5 0 3.4 2.4 5 6 5z"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-plurality" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="12" cy="5.5" r="2"/><circle cx="18" cy="7" r="2"/><path d="M3.5 20c.5-3.4 2-5 4.5-5M9 20c.3-3 1.4-4.6 3-4.6s2.7 1.6 3 4.6M16 15c2.5 0 4 1.6 4.5 5"/></symbol>
+  <symbol id="i-judge" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12"/><path d="M12 7 L6 7 M12 7 L18 7"/><path d="M6 7l-2.4 5a3.2 3.2 0 0 0 4.8 0zM18 7l-2.4 5a3.2 3.2 0 0 0 4.8 0z"/></symbol>
+  <symbol id="i-forgive" viewBox="0 0 24 24"><path d="M7 12a5 5 0 1 1 5 5"/><path d="M5 8v5h5"/><path d="M15 5l6 6M21 5l-6 6" opacity=".45"/></symbol>
+  <symbol id="i-labor" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 3v5h-5"/></symbol>
+  <symbol id="i-work" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 20v-7h12v7"/><path d="M9 13V9h6v4"/></symbol>
+  <symbol id="i-world" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.3 3.9 5.1 3.9 8.5S14.6 18.2 12 20.5c-2.6-2.3-3.9-5.1-3.9-8.5S9.4 5.8 12 3.5z"/></symbol>
+  <symbol id="i-promise" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/></symbol>
+  <symbol id="i-evil" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 12h6" opacity=".6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 16a2 2 0 0 1 2-2h12"/></symbol>
+  <symbol id="i-story" viewBox="0 0 24 24"><path d="M4 6c2.5-1.2 5-1.2 8 .5 3-1.7 5.5-1.7 8-.5v12c-2.5-1.2-5-1.2-8 .5-3-1.7-5.5-1.7-8-.5z"/><path d="M12 6.5v12"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-will" viewBox="0 0 24 24"><path d="M12 20V9"/><path d="M12 9c-3 0-5-2-5-5 3 0 5 2 5 5zM12 9c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M7 20h10"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></symbol>
+</svg>
+
+<header class="site">
+  <div class="brand">
+    <h1>Amor Mundi</h1><span class="latin">· 爱世界</span>
+    <button class="themebtn" id="theme-toggle" aria-label="切换深色 / 浅色模式">切换深浅</button>
+    <span class="sub">汉娜·阿伦特思想探索 · Hannah Arendt, 1906–1975 · 第 1 轮打样</span>
+  </div>
+</header>
+
+<nav class="main" aria-label="主导航">
+  <div class="inner" role="tablist">
+    <button role="tab" data-view="home" aria-selected="true">看板<span class="en">Home</span></button>
+    <button role="tab" data-view="timeline" aria-selected="false">时间轴<span class="en">Timeline</span></button>
+    <button role="tab" data-view="system" aria-selected="false">体系总图<span class="en">System</span></button>
+    <button role="tab" data-view="people" aria-selected="false">同路人<span class="en">People</span></button>
+    <button role="tab" data-view="debates" aria-selected="false">论战<span class="en">Debates</span></button>
+    <button role="tab" data-view="metaphors" aria-selected="false">宗教的隐喻<span class="en">Metaphors</span></button>
+    <button role="tab" data-view="love" aria-selected="false">爱与关系<span class="en">Love</span></button>
+    <button role="tab" data-view="nourish" aria-selected="false">普通人养分<span class="en">Nourishment</span></button>
+    <button role="tab" data-view="compare" aria-selected="false">对照表<span class="en">Compare</span></button>
+    <button role="tab" data-view="excerpts" aria-selected="false">摘录库<span class="en">Excerpts</span></button>
+    <button role="tab" data-view="surprise" aria-selected="false">普通人的一天<span class="en">A Day</span></button>
+    <button role="tab" data-view="critique" aria-selected="false">批评与推翻<span class="en">Critique</span></button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ================= HOME / DASHBOARD ================= -->
+<section class="view active" id="view-home">
+  <div class="searchbox" role="search" aria-label="全文搜索">
+    <span class="tag rust">全文搜索 · SEARCH EVERYTHING</span>
+    <p class="src" style="margin:8px 0 10px">搜概念、作品、摘录、论战、人名、隐喻与养分。只搜本站已有内容 —— 搜不到就明说没找到，绝不现编一条结果。</p>
+    <div class="searchrow">
+      <input id="site-search" type="search" placeholder="试试：平庸之恶 / 艾希曼 / 宽恕 / Jaspers / 开始……" aria-label="输入关键词搜索全站" />
+      <button class="btn" id="search-go">搜索</button>
+    </div>
+    <div class="searchres" id="search-results" aria-live="polite"></div>
+  </div>
+
+  <div class="preface" aria-label="项目前言">
+    <div class="kicker">项目前言 · PREFACE — 写在一切之前</div>
+    <blockquote>
+      <p>我不了解她，正因为不了解，才想要探索。</p>
+      <p>她不会觉得我做到这里就够了 — 但不是在怪我。对她来说，“够了”本来就是个错的问题。理解在她那不是一门考完就过的课，是没完没了的事。她自己 49 岁才给 Jaspers 写信说：“我开始得这么晚，真的只是在最近几年，才开始真正爱这个世界。”一个快 50 岁的人，还说自己才刚开始。</p>
+      <p>所以我现在这个位置 — 不了解她，正因为不了解才想探索 — 恰恰是她最看重的位置。比我更危险的，是那种觉得自己已经懂了的人。不思考、只照章办事，才是她说的平庸之恶的起点；承认自己不知道，停下来想一想，才是思考的起点。</p>
+      <p>这 24 个模块，够我开始建了，不够我“搞懂她” — 而这本来就对。地图不是地盘，提示词再全，也代替不了我自己去读一本书、去想一个概念。</p>
+      <p>她如果会问我，只会问一句：读完之后，你自己敢不敢开始一件新的事？</p>
+      <p>哪怕很小。先从一本开始就行，《人的境况》或者《艾希曼在耶路撒冷》，挑一本我现在最想知道答案的，剩下的模块在那等我，不会跑。</p>
+      <p><span class="sig">—— 还有一句要说在前面，这是这个项目最大的讽刺，也是最大的隐喻：</span>我用 24 个模块、五层架构、时间轴和看板，给一个一生反体系、说“没有扶手的思考”的人，建了一个体系。我做了这样一个项目，我最后会再推翻它。推翻不是失败，是思考本身。等我读懂她多一点，我会回来把这里推翻重写。这个项目从一开始，就不是为了完成，是为了开始。</p>
+    </blockquote>
+  </div>
+
+  <div class="dash">
+    <div class="card">
+      <div class="today-head">
+        <div class="icob" id="today-icon"></div>
+        <div>
+          <span class="tag rust">今日一读 · TODAY'S READING</span>
+          <h3 id="today-title">—</h3>
+          <p class="why" id="today-why">—</p>
+        </div>
+      </div>
+      <blockquote class="pull">
+        <p class="orig" id="today-orig">—</p>
+        <p id="today-zh">—</p>
+        <p class="src" id="today-src">—</p>
+      </blockquote>
+      <p id="today-body" style="margin:0 0 14px">—</p>
+      <div class="chiprow" style="margin-bottom:14px" id="today-links"></div>
+      <button class="btn" data-goto-concept id="today-btn">读这个概念的词条 →</button>
+    </div>
+
+    <div style="display:grid;gap:14px;align-content:start">
+      <div class="card">
+        <span class="tag sage">体系地图进度 · MAP PROGRESS</span>
+        <p class="src" style="margin:8px 0 4px">这是第 1 轮打样的真实进度：哪些已经建好、哪些还空着，不粉饰。</p>
+        <div class="progress-list" id="progress-list"></div>
+      </div>
+      <div class="card blind">
+        <span class="tag ochre">盲区提醒 · BLIND SPOTS</span>
+        <ul style="margin:10px 0 4px;padding-left:20px;font-size:14.5px">
+          <li><b>论战正文已补（第 2–3 轮）。</b>6 场论战按「焦点 / 批评 / 回应 / 今天的定论」展开；拿不准处一律标「待核实」，不替任何一方补原话。</li>
+          <li><b>宗教隐喻已成章（第 2–3 轮）。</b>6 个隐喻按「原义 → 借用 → 改造」讲；爱、关系与追求、普通人养分 8 条、与其他哲学家对照表也已补齐。</li>
+          <li><b>摘录库只是架子。</b>正库 6 条都带出处，存疑区 2 条故意留白 —— 宁可少，不可编。</li>
+        </ul>
+        <button class="btn ghost" data-nav="excerpts">去摘录库看存疑区 →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="qbox">
+    <span class="en" style="font-style:italic">A question for today · 每日一问</span>
+    <h3 id="daily-q">你最近一次「无思」是什么时候？</h3>
+    <p>没有标准答案。这一问只用来把概念落到自己身上 —— 选一个最接近的，看看它对应的概念是什么。</p>
+    <div class="qopts" id="qopts">
+      <button data-a="转发消息前，没核实就发出去了">转发前没核实</button>
+      <button data-a="跟着大家一起骂一个人，没想过他那边怎么说">跟着一起骂人</button>
+      <button data-a="明明觉得不对，但「流程就是这样」">流程就是这样</button>
+      <button data-a="今天还没有 —— 我停下来想过一次">今天我停下来想过</button>
+    </div>
+    <p class="qans" id="qans"></p>
+  </div>
+
+  <h2 class="sec">从哪里开始<span class="en">Three doors</span></h2>
+  <p class="lede">三个入口，对应三种读法：看她一生怎么想过来（时间轴）、看概念怎么互相连着（体系总图）、看普通人的一天怎么被她照亮（惊喜页）。</p>
+  <div class="linkcards">
+    <button class="linkcard" data-nav="timeline">
+      <span class="icob" style="background:var(--ochre-soft);color:var(--ochre)"><svg class="ic"><use href="#i-story"/></svg></span>
+      <h4>作品—思想脉络时间轴</h4><p>五条泳道，1906–1978。每部作品分清动笔 / 写完 / 出版，四条思想主线可高亮。</p>
+    </button>
+    <button class="linkcard" data-nav="system">
+      <span class="icob" style="background:var(--sage-soft);color:var(--sage)"><svg class="ic"><use href="#i-world"/></svg></span>
+      <h4>体系总图</h4><p>网络图 / 脑图 / 列表三种看法。点任一概念，进词条：定义卡 + 脑图分支 + 她没想明白的地方。</p>
+    </button>
+    <button class="linkcard" data-nav="surprise">
+      <span class="icob" style="background:var(--rust-soft);color:var(--rust)"><svg class="ic"><use href="#i-sun"/></svg></span>
+      <h4>普通人的一天 ✳ 惊喜页</h4><p>提示词里没有的一页：用她的概念过完一个普通人的今天，再做一次「无思自检」。</p>
+    </button>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="view" id="view-timeline">
+  <h2 class="sec" style="margin-top:22px">作品—思想脉络时间轴<span class="en">Works &amp; Thought, 1906–1978</span></h2>
+  <p class="lede">五条泳道合一：生平 / 作品 / 概念 / 论战 / 同路人。每部作品分清<b>动笔 · 写完 · 出版</b>三个日期 —— 只写出版年，会把思想顺序搞反。点任意节点看详情；点下方主线按钮，高亮一条思想线。手机上可横向滑动，泳道不会挤在一起。</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:4px">
+    <div class="seg" role="group" aria-label="时间轴呈现方式">
+      <button id="tl-mode-lanes" aria-pressed="true">泳道图</button>
+      <button id="tl-mode-mind" aria-pressed="false">脑图</button>
+    </div>
+    <span class="src">同一批数据，两种看法。</span>
+  </div>
+  <div class="threadbar" id="threadbar">
+    <button data-thread="all" aria-pressed="true">全部主线</button>
+    <button data-thread="love" aria-pressed="false"><span class="dot c-love"></span>爱之线</button>
+    <button data-thread="evil" aria-pressed="false"><span class="dot c-evil"></span>恶之线</button>
+    <button data-thread="act" aria-pressed="false"><span class="dot c-act"></span>行动之线</button>
+    <button data-thread="think" aria-pressed="false"><span class="dot c-think"></span>思考之线</button>
+  </div>
+
+  <div id="tl-lanes">
+    <div class="scrollx"><div class="tl" id="tl-board"></div></div>
+    <div class="card tl-detail" id="tl-detail"></div>
+  </div>
+
+  <div id="tl-mind" style="display:none">
+    <div class="card" id="tl-mind-body"></div>
+    <p class="src" style="margin-top:10px">脑图看法：按五个时期收拢。看顺序用泳道图，看「这一段她在跟什么较劲」用脑图。</p>
+  </div>
+</section>
+
+<!-- ================= SYSTEM ================= -->
+<section class="view" id="view-system">
+  <h2 class="sec" style="margin-top:22px">体系总图<span class="en">The System — read it three ways</span></h2>
+  <p class="lede">她不是体系建造者，但她的概念彼此咬合。同一张图给三种看法：<b>网络图</b>看关系，<b>脑图</b>看层级，<b>列表</b>查词条。点任何概念，下方打开词条 —— 定义卡 + 脑图分支 + 「她没想明白的地方」。</p>
+  <div class="seg" role="group" aria-label="体系图呈现方式" style="margin-bottom:14px">
+    <button id="sys-mode-net" aria-pressed="true">网络图</button>
+    <button id="sys-mode-mind" aria-pressed="false">脑图</button>
+    <button id="sys-mode-list" aria-pressed="false">列表</button>
+  </div>
+
+  <div id="sys-net" class="scrollx"><div class="syswrap">
+    <svg id="sys-svg" viewBox="0 0 760 520" width="760" height="520" role="img" aria-label="阿伦特概念网络图"></svg>
+  </div></div>
+
+  <div id="sys-mind" style="display:none"><div class="card tree" id="sys-tree"></div></div>
+  <div id="sys-list" style="display:none"><div class="concept-grid" id="concept-grid"></div></div>
+
+  <div class="card detail" id="concept-detail"></div>
+
+  <h2 class="sec">先懂什么，再懂什么<span class="en">Reading order</span></h2>
+  <p class="lede">前置顺序不是装饰：先懂复数性，才能懂行动；先懂出生性，才能懂自由；先懂孤独，才能懂极权。</p>
+  <div class="card" style="font-size:15px">
+    复数性 <span class="en" style="color:var(--rust)">plurality</span> → 行动 <span class="en" style="color:var(--rust)">action</span> → 权力 <span class="en" style="color:var(--rust)">power</span> → 公共领域 <span class="en" style="color:var(--rust)">public realm</span><br/>
+    出生性 <span class="en" style="color:var(--rust)">natality</span> → 开始 <span class="en" style="color:var(--rust)">beginning</span> → 自由 <span class="en" style="color:var(--rust)">freedom</span><br/>
+    孤独 <span class="en" style="color:var(--rust)">loneliness</span> → 无世界 <span class="en" style="color:var(--rust)">worldlessness</span> → 极权主义 <span class="en" style="color:var(--rust)">totalitarianism</span>
+  </div>
+</section>
+
+<!-- ================= PEOPLE ================= -->
+<section class="view" id="view-people">
+  <h2 class="sec" style="margin-top:22px">同路人<span class="en">Fellow Travelers</span></h2>
+  <p class="lede">她的思想是在和具体的人的对话、相爱、决裂里长出来的。两种看法：网络图看谁连着谁，脑图（分组）看每一层关系里发生了什么。</p>
+  <div class="seg" role="group" aria-label="同路人呈现方式" style="margin-bottom:14px">
+    <button id="ppl-mode-net" aria-pressed="true">网络图</button>
+    <button id="ppl-mode-mind" aria-pressed="false">脑图 · 分组</button>
+  </div>
+  <div id="ppl-net" class="scrollx"><div class="syswrap">
+    <svg id="ppl-svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-label="同路人关系网络图"></svg>
+  </div></div>
+  <div id="ppl-mind" style="display:none"><div class="ppl-grid" id="ppl-grid"></div></div>
+  <p class="src" style="margin-top:12px">关系史依据：阿伦特—雅斯贝尔斯通信（1926–1969）、阿伦特—海德格尔书信、阿伦特—McCarthy 通信、Young-Bruehl 传记。书信原文摘录将在后续轮次逐封补入，本轮只给关系骨架，不杜撰引文。</p>
+</section>
+
+<!-- ================= EXCERPTS ================= -->
+<section class="view" id="view-excerpts">
+  <h2 class="sec" style="margin-top:22px">摘录库<span class="en">Excerpt Library — a growing shelf, not a quote wall</span></h2>
+  <p class="lede">不定量，建个库慢慢提取。每条必须能追溯到书名 + 章节（或信件日期）；找不到出处的流行语录，只进<b>存疑区</b>，不混进正库。出处口径：Stanford Encyclopedia of Philosophy、Britannica、Bard Hannah Arendt Center、Goethe-Institut 书目；拿不准的写「待核实」。</p>
+  <div class="filters">
+    <select id="f-concept" aria-label="按概念筛"><option value="">全部概念</option></select>
+    <select id="f-work" aria-label="按作品筛"><option value="">全部作品</option></select>
+    <select id="f-period" aria-label="按时期筛">
+      <option value="">全部时期</option><option value="early">早期 · 1929–1950</option>
+      <option value="mid">盛年 · 1951–1963</option><option value="late">晚年 · 1964–1978</option>
+    </select>
+    <select id="f-zone" aria-label="正库或存疑区">
+      <option value="">正库 + 存疑区</option><option value="main">只看正库</option><option value="doubt">只看存疑区</option>
+    </select>
+  </div>
+  <div id="ex-list"></div>
+</section>
+
+<!-- ================= SURPRISE ================= -->
+<section class="view" id="view-surprise">
+  <h2 class="sec" style="margin-top:22px">普通人的一天<span class="en">An Ordinary Day, Seen Through Her Eyes</span> ✳</h2>
+  <p class="lede">这一页不在 24 个模块里。是建到一半时冒出来的念头：她写的东西离普通人并不远 —— 远的是我们从没拿它照过自己的一天。下面把一天拆开，每一段只借她<b>已经说过的概念</b>，不替她编新话。</p>
+  <div class="card"><div class="day" id="day-list"></div></div>
+
+  <h2 class="sec">无思自检<span class="en">A five-question check — no score, only a mirror</span></h2>
+  <p class="lede">五道题，凭直觉答。它不出分数 —— 她最反对把思考做成打卡。它只在最后指出：你今天的「无思」最可能藏在哪一段。</p>
+  <div class="card">
+    <div id="quiz"></div>
+    <div class="quiz-result card" id="quiz-result" style="box-shadow:none"></div>
+  </div>
+
+  <h2 class="sec">如果她活在 2026 年<span class="en">If she lived in 2026 — an extrapolation, clearly marked</span></h2>
+  <div class="disclaimer">⚠ 这一段是本项目的<b>当代引申（第三层）</b>，不是她的原话。她 1975 年去世，不可能谈过算法和社交媒体。下面只做一件事：拿她在《人的境况》《论暴力》《心灵生活》里给出的概念，当透镜看今天。凡引用，都是上方摘录库里有出处的句子。</div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card"><h4 style="margin:0 0 6px">算法推荐 → 社会领域的崛起</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">她说的「社会领域」是公共与私人互相吞没的地带。用她的眼睛看信息流：每个人都在「显现」，却没有一个共同世界被留下来 —— 显现变成了劳动，做完即逝。</p></div>
+    <div class="card"><h4 style="margin:0 0 6px">转发键 → 无思的日常形态</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">艾希曼的问题不是仇恨，是停止与自己对话。转发前停十秒、问一句「我刚才在想什么」，是她给普通人留下的最小单位的抵抗。</p></div>
+    <div class="card"><h4 style="margin:0 0 6px">AI 代答 → 判断的外包</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">机器能给答案，给不了判断。判断是在没有标准时，仍然说「这是对的 / 这是不对的」。把判断外包出去，就是把自由外包出去。</p></div>
+    <div class="card"><h4 style="margin:0 0 6px">订阅与写作 → 从劳动到工作</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">追热点是劳动，做完就消失；写出一篇三个月后还站得住的文章，是工作 —— 在世界上留下一件耐久的东西。这个项目本身，也想做成后者。</p></div>
+  </div>
+</section>
+
+<!-- ================= DEBATES ================= -->
+<section class="view" id="view-debates">
+  <h2 class="sec" style="margin-top:22px">论战<span class="en">The Debates — evidence chains, no side-taking</span></h2>
+  <p class="lede">每场按同一格式写：<b>争论焦点 / 批评方论据 / 阿伦特回应 / 今天学界的定论</b>。本站不站队，只给证据链；材料不足或学界仍在争的，明确写「待核实」。她的原话只用摘录库里有出处的句子，其余都是转述。</p>
+
+  <div class="card debate">
+    <span class="tag plum">1963 · 至今未息</span>
+    <h3>一、艾希曼论战：她是不是「不爱犹太人民」？</h3>
+    <div class="dgrid">
+      <div><b>争论焦点</b>《艾希曼在耶路撒冷》(1963) 出版后，争论集中在三点：书的语气是否冷嘲；她对「犹太委员会」(Judenräte) 在大屠杀中角色的批评是否越界；以及她的好友 Gershom Scholem 在公开信中提出的指责——她缺乏 ahavat Yisrael，即「对犹太人民的爱」。</div>
+      <div><b>批评方论据</b>Scholem 认为她对受害者的描写缺少同情、对犹太领导层的指责近乎苛责；部分犹太组织发起有组织的批评，认为在审判报道中讨论犹太委员会的合作，等于把责任推给受害者。当年不少老友因此与她断交（见同路人页 Hans Jonas 条）。</div>
+      <div><b>阿伦特回应</b>她在与 Scholem 的通信中回应（大意，转述）：她从不「爱」任何集体——民族或阶级；她只爱具体的个人、她的朋友；对犹太人民的正确态度不是「爱」，而是在世界政治中与之共同承担。她对犹太委员会的批评对象是「领导层在极端处境中的选择」，而非普通受害者，并坚持报道必须写出全部事实，包括难看的部分。</div>
+      <div><b>今天学界的定论</b>多数研究者认为：她关于犹太委员会的事实判断过于概括、对地方差异估计不足，这一批评部分成立；但「反犹」「替纳粹开脱」的指控不成立。通信原文见阿伦特—Scholem 往来书信（1963），细节页码<span class="verify">待核实</span>。</div>
+    </div>
+  </div>
+
+  <div class="card debate">
+    <span class="tag plum">1963 → 2011 新证据</span>
+    <h3>二、艾希曼本人：无思的官僚，还是狂热的反犹者？</h3>
+    <div class="dgrid">
+      <div><b>争论焦点</b>「平庸之恶」是否把艾希曼写轻了：他到底是只会服从的文书机器，还是有坚定意识形态的行动者？</div>
+      <div><b>批评方论据</b>Bettina Stangneth《艾希曼在阿根廷》(2011) 利用艾希曼流亡阿根廷时期的录音与文稿（「阿根廷文件」）指出：流亡中的他公开自豪于自己的角色、研读并批注反犹文献，绝非没有信念——庭审上的「小公务员」形象至少部分是表演。David Cesarani 等传记研究也有相近结论。</div>
+      <div><b>阿伦特回应</b>她已于 1975 年去世，无法回应 2011 年的新材料。若按她自己的框架（转述其方法）：她描述的是「无思」这一现象——拒绝从他人立场思考——并不主张艾希曼「没有动机」；她在书中同样记录了他吹嘘、服从与自利的一面。这一推论属于本站的引申，不是她的原话。</div>
+      <div><b>今天学界的定论</b>较稳妥的共识是：艾希曼比她笔下更有意识形态、更主动，「平庸」若理解为「普通、没想法」则已不准确；但「无思」作为对一种思维缺失的诊断，仍被许多研究者保留使用。两说的分界线具体落在哪些档案上，<span class="verify">待核实</span>。</div>
+    </div>
+  </div>
+
+  <div class="card debate">
+    <span class="tag plum">1924–1975 · 一生的结</span>
+    <h3>三、海德格尔：爱、思想与纳粹</h3>
+    <div class="dgrid">
+      <div><b>争论焦点</b>她 1924 年在马堡与老师海德格尔相恋；1933 年他出任弗莱堡大学校长并加入纳粹党。战后她恢复与他的通信、推动其著作英译、并在公开场合为他辩护。这算不算判断的失败？</div>
+      <div><b>批评方论据</b>批评者指出：她对艾希曼的「无思」判得极严，对海德格尔与纳粹的牵连却判得极宽；她 1969 年为海德格尔八十寿辰写的纪念文字回避了关键问题。双重标准之说，主要依据阿伦特—海德格尔书信集（已出版）。</div>
+      <div><b>阿伦特回应</b>她在私下通信与访谈中区分「一个人的思想」与「他的政治判断」（大意，转述），认为海德格尔 1933 年的错误是哲学家试图干预现实时的典型天真；同时她从未否认决裂之痛。她的具体措辞散见书信，本站不逐句引，<span class="verify">待核实</span>。</div>
+      <div><b>今天学界的定论</b>传记研究（Young-Bruehl 等）普遍承认这是她一生最深的张力：出生性对「向死而生」的反叛，正是从与他的思想搏斗中长出来的；而她对他的宽宥，至今没有公认的开脱。这一页不替任何一方结案。</div>
+    </div>
+  </div>
+
+  <div class="card debate">
+    <span class="tag plum">1959 · 美国语境</span>
+    <h3>四、小石城 1959：她反对的到底是什么？</h3>
+    <div class="dgrid">
+      <div><b>争论焦点</b>1957 年阿肯色州小石城，九名黑人学生进入白人高中引发危机。阿伦特《小石城反思》(1959) 反对以联邦强制手段推进学校融合，并把教育划入「社会领域」而非政治领域，立即遭到猛烈批评。</div>
+      <div><b>批评方论据</b>Ralph Ellison 等人反驳：她不理解黑人家庭让孩子走在最前面的「牺牲」伦理——孩子承受的正是父母教给他们的理想；批评者认为她把种族问题误读成了「社会歧视 vs 政治平等」的抽象区分。</div>
+      <div><b>阿伦特回应</b>她给 Ellison 的回信中承认（大意，转述）：她没有理解「牺牲」这一理想，这是她的疏漏；但她保留了对「把孩子推上政治前线」与「国家强制进入私人/社会领域」的原则性质疑。回信的准确日期与原文<span class="verify">待核实</span>。</div>
+      <div><b>今天学界的定论</b>这是她公认的判断失误之一：对美国种族现实的理解不足，Ellison 的批评被广泛认为成立；同时，她关于公共 / 私人 / 社会领域三分的理论问题，仍在政治理论中被继续讨论。失误与问题意识，要分开记。</div>
+    </div>
+  </div>
+
+  <div class="card debate">
+    <span class="tag plum">1951 起 · 方法之争</span>
+    <h3>五、《极权主义的起源》：这是历史学，还是政治理论？</h3>
+    <div class="dgrid">
+      <div><b>争论焦点</b>1951 年该书出版后，Leo Strauss 与 Eric Voegelin 等人质疑她的方法：把纳粹主义与斯大林主义并置是否成立；以「元素结晶」的方式拼接史料，算不算严谨的历史写作。</div>
+      <div><b>批评方论据</b>Voegelin 在书评中肯定其洞见、但批评她用哲学概念替代了对制度与意识形态生成的扎实分析；史学界长期认为该书材料取舍主观、部分事实有误。Strauss 一系的批评则集中在其「现代性诊断」过于笼统（具体篇目<span class="verify">待核实</span>）。</div>
+      <div><b>阿伦特回应</b>她在《理解与政治》等文中回应（大意，转述）：她写的不是传统史学，而是「理解」——直面史无前例之事、不把它塞进现成范畴；方法上的「讲故事」与概念辨析，是为新现象留出思考空间的自觉选择。</div>
+      <div><b>今天学界的定论</b>该书作为严格史学的地位仍有争议，但作为政治理论经典的地位稳固；「极权主义」作为分析概念在冷战后一度被质疑、近年又被重新讨论。她的方法之争，至今没有终审判决。</div>
+    </div>
+  </div>
+
+  <div class="card debate">
+    <span class="tag plum">1970s–90s · 批评与再发现</span>
+    <h3>六、女权主义的批评与再发现</h3>
+    <div class="dgrid">
+      <div><b>争论焦点</b>她本人拒绝「女性问题」的框架（1964 年 Gaus 访谈中承认自己是「例外」），其公共 / 私人区分又把照护与生殖划出政治之外——她到底是女权主义的思想资源，还是障碍？</div>
+      <div><b>批评方论据</b>早期女性主义批评（Adrienne Rich 等）指责她的概念带着精英与男性气质，尤其劳动 / 工作 / 行动的等级贬低了身体与照护。Rich 称其书显示出「女性心智中的悲剧性」一类评价，准确原文<span class="verify">待核实</span>。</div>
+      <div><b>阿伦特回应</b>她生前未系统回应女权主义（1975 年去世，早于这场讨论的高峰）；她能给的回答只有她的方法本身：以复数性与显现去重读她，而不是替她补答。这一格因此留空——留空比代答诚实。</div>
+      <div><b>今天学界的定论</b>1990 年代起 Bonnie Honig 等人主编讨论集、重新发掘她：行动、复数性、「你是谁」的显现，被读成一种不预设本质的政治理论，成为女性主义与民主理论的重要资源。「批评—再发现」的双轨，仍是今天的主流读法。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METAPHORS ================= -->
+<section class="view" id="view-metaphors">
+  <h2 class="sec" style="margin-top:22px">宗教的隐喻<span class="en">Religious Metaphors, Reworked</span></h2>
+  <p class="lede">她不是神学家，但她最好的概念几乎都从宗教语言里借来、再亲手改造。每个隐喻按同一条线读：<b>宗教原义 → 她借用了什么 → 她改造了什么</b>。借，是致敬；改，是反叛。</p>
+  <div id="metaphor-list"></div>
+</section>
+
+<!-- ================= LOVE & RELATIONS ================= -->
+<section class="view" id="view-love">
+  <h2 class="sec" style="margin-top:22px">爱、关系与追求<span class="en">Love, Relations, and What She Was After</span></h2>
+  <p class="lede">最反直觉的一点先说：她认为爱「摧毁了我们之间的中介」，是反政治的；而友谊恰恰相反，是最政治的关系。她的答案是第三种爱——爱世界。</p>
+
+  <h2 class="sec">爱的三重区分<span class="en">Three kinds of love</span></h2>
+  <div class="grid3">
+    <div class="card"><span class="tag rust">一 · 渴求</span><h4 style="margin:8px 0 4px">cupiditas · 占有的爱</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">奥古斯丁区分的「贪爱」：爱一个对象，是为了占有它、填补自己的匮乏。她 1929 年的博士论文正是从这里出发——这种爱指向对象背后的欲望本身，对象是可以替换的。</p></div>
+    <div class="card"><span class="tag plum">二 · 无世界的爱</span><h4 style="margin:8px 0 4px">爱作为反政治</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">两个人之间的爱只要合一，就会烧掉两人之间的「世界」——距离、言说、他人。因此她说爱不仅是非政治的，而且是反政治的。这不是贬低爱，是划界：爱管不了公共生活，公共生活也别拿爱当标准（参看论战一，Scholem 之争）。</p></div>
+    <div class="card"><span class="tag sage">三 · 爱世界</span><h4 style="margin:8px 0 4px">amor mundi</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">对世界的爱：愿意让它继续存在、愿意为它负责、愿意在其中开始新事。1955 年致 Jaspers 信（摘录库正库有原文与出处）是这一概念的命名时刻，也是《人的境况》的原定书名、本站的名字。</p></div>
+  </div>
+
+  <h2 class="sec">五种关系谱系<span class="en">Five ways of being with others — and with oneself</span></h2>
+  <div class="card"><div class="spec">
+    <div><b>爱</b><p>两人合一，世界退场。亲密，却反政治。</p></div>
+    <div><b>友谊</b><p>保持距离，在共同世界里说真话。最政治的关系。</p></div>
+    <div><b>孤独</b><p>连自己都丢了。身边有人也救不了——极权的温床。</p></div>
+    <div><b>孤立</b><p>被切断与他人的行动联系。暴政的常用工具。</p></div>
+    <div><b>独处</b><p>与自己对话的「二而一」。思考的前提，不是病。</p></div>
+  </div>
+  <p class="src" style="margin:10px 0 0">谱系依据：《极权主义的起源》末章（孤独 / 孤立）、《人的境况》(友谊与爱)、《心灵生活》(独处与思考)。五者的完整辨义散见各书，此处是本站的归纳图，不是她的原表。</p></div>
+
+  <h2 class="sec">她的关系人生<span class="en">A life in relations</span></h2>
+  <div class="grid2" id="love-life"></div>
+
+  <h2 class="sec">她一生追求的四样<span class="en">Four pursuits</span></h2>
+  <div class="grid2">
+    <div class="card"><h4 style="margin:0 0 4px">理解 understanding</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">不是解释完就放下，而是与现实和解式的直面：理解史无前例之事，不把它塞进旧范畴。她把这称作自己一切写作的动机。</p></div>
+    <div class="card"><h4 style="margin:0 0 4px">开始 beginning</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">出生性落到行动上：自由不是「选择」，是能开启一件此前不存在的事。革命、原谅、承诺，都是开始的形态。</p></div>
+    <div class="card"><h4 style="margin:0 0 4px">判断 judging</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">没有标准时仍能分辨对错——她晚年最后的问题，也是没写完的那一卷。追求它，就是不把判断外包给任何人。</p></div>
+    <div class="card"><h4 style="margin:0 0 4px">回家 home</h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">无国籍十八年的人对「家」的理解：在世界中有一个位置，能说话、被听见。家不是房子，是世界里的一张桌子旁有你的位置。</p></div>
+  </div>
+
+  <h2 class="sec">当代一问<span class="en">Why is love so hard today?</span></h2>
+  <div class="card">
+    <p style="margin:0;font-size:15px">用她的框架看（本站引申，非她的原话）：今天的爱难，难在三处错位——把爱当成<b>劳动</b>去经营（打卡式付出，做完即逝）；把关系当成<b>显现</b>去表演（给观众看，而不是给对方）；用算法的「匹配」取消了<b>开始</b>（只选合得来的，不再遇见异质的他人）。她的解法仍是那三种爱的分工：渴求要节制，亲密爱留给两个人，而对世界的那一份——愿意负责、愿意开始——别弄丢。</p>
+  </div>
+</section>
+
+<!-- ================= NOURISHMENT ================= -->
+<section class="view" id="view-nourish">
+  <h2 class="sec" style="margin-top:22px">普通人的养分<span class="en">Eight Things an Ordinary Person Can Actually Use</span></h2>
+  <p class="lede">不是学问，是能直接用的八样。每条按<b>概念一句话 → 今天能怎么用 → 反例</b>写，末尾配一个 5 分钟「今日一练」。今日一练按日期轮换，一天一条，不贪多。</p>
+  <div class="card" style="margin-bottom:14px;background:var(--sage-soft)">
+    <span class="tag sage">今日一练 · TODAY'S 5 MINUTES</span>
+    <p id="practice-today" style="margin:8px 0 0;font-size:15.5px">—</p>
+  </div>
+  <div id="nourish-list"></div>
+</section>
+
+<!-- ================= COMPARE ================= -->
+<section class="view" id="view-compare">
+  <h2 class="sec" style="margin-top:22px">她和其他哲学家<span class="en">Arendt Among the Philosophers</span></h2>
+  <blockquote class="pull"><p style="font-size:17px"><b>总纲：别的哲学家问「人是什么」，她问「人在一起时发生了什么」。</b></p>
+  <p class="src">她 1964 年在 Gaus 访谈中说（大意，转述）：自己不属于「哲学家」这个圈子，她的职业是政治理论。哲学关心单数的 Man，她关心复数的 men——出处见摘录库与体系图的「复数性」词条；访谈原句<span class="verify">待核实</span>处不逐字引。</p></blockquote>
+  <div class="cmp" id="cmp-list"></div>
+</section>
+
+
+<!-- ================= CRITIQUE & OVERTURN ================= -->
+<section class="view" id="view-critique">
+  <h2 class="sec" style="margin-top:22px">她会怎么批评这个网站<span class="en">How Arendt Would Criticize This Site</span></h2>
+  <p class="lede">这一页不许在结尾圆回来。读完它，你不应该觉得「这个项目很完善」，而应该觉得「这个项目知道自己哪里不完善」。</p>
+  <div class="card crit" id="crit-list"></div>
+
+  <h2 class="sec">推翻记录<span class="en">Record of Overturnings</span></h2>
+  <p class="lede">前言里说了：这个项目最后会再推翻。每一次推翻，记下日期、推翻了什么、为什么、用什么代替。</p>
+  <div class="card" style="overflow-x:auto">
+    <table class="ot">
+      <thead><tr><th style="min-width:110px">日期</th><th>推翻了什么</th><th>为什么</th><th>用什么代替</th></tr></thead>
+      <tbody>
+        <tr><td class="blank-date">＿＿＿＿＿＿</td><td>第一次推翻 —— 还没发生</td><td>等读懂她多一点。空着，不是忘了填，是留给未来的自己。</td><td>——</td></tr>
+        <tr><td>2026-11-08<br/><span class="src">第 1 轮建站时</span></td><td>「24 个模块平铺成 24 个页面」的原计划</td><td>平铺就是清单，不是体系。她讲的是概念之间咬合，页面之间却互不相连 —— 形式背叛了内容。</td><td>合并成 7 个视图：看板是唯一入口，概念、作品、人物、论战都从同一批数据里长出来。</td></tr>
+        <tr><td>2026-11-08<br/><span class="src">第 1 轮建站时</span></td><td>「每个模块都要填满才算完成」</td><td>凑满 24 个模块，是把「开始」做成「生产」，正是她批评的劳动逻辑。</td><td>只做跑通的骨架（前言 / 时间轴 / 体系图 / 摘录架子 / 批评页），其余明确标成盲区，不假装完成。</td></tr>
+        <tr><td>2026-11-08<br/><span class="src">第 1 轮建站时</span></td><td>体系图的唯一画法</td><td>只给一张网络图，等于只许一种看法 —— 复数性先死在形式上。</td><td>体系图给网络 / 脑图 / 列表三种看法，时间轴给泳道 / 脑图两种，同一个内容至少两种呈现。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec">这次我没按体系走的地方<span class="en">Where this build disobeyed the blueprint — and why</span></h2>
+  <div class="card" style="font-size:15px">
+    <p style="margin-top:0"><b>一、加了一页提示词里没有的东西：</b>《普通人的一天》+「无思自检」。24 个模块里，离普通人最近的是第 20 项「养分」，但它仍是清单。把概念放进一天的作息里 —— 起床刷手机、开会、转发、睡前独处 —— 概念第一次有了体温。这是顺着她的方法走的：她从不从定义出发，她从现象出发。</p>
+    <p><b>二、没有凑满 24 个模块。</b>论战正文、宗教隐喻专章、阅读路径、后世影响，都只留了位置和盲区提醒。不是偷懒：宁可空着写「待补」，也不用漂亮的空话填格子 —— 不编造，是这个项目唯一不许推翻的铁律。</p>
+    <p><b>三、把《推翻记录》提前用了。</b>原计划第一次推翻日期留空，等将来。但建的过程里已经发生了三次真实的推翻（见上表），藏着不写，才是假的。所以：留空的那一行保留给「读完第一本书之后的推翻」，建站中的推翻如实记在下面。</p>
+    <p style="margin-bottom:0"><b>四、看板没有数字墙。</b>提示词说看板不做静态数字墙，我更进一步：进度条显示的是「这个网站建到哪了」，不是「你读了多少」—— 因为后者在第一轮根本无从统计，写出来就是编造。</p>
+  </div>
+</section>
+
+<footer>
+  <div>出处口径：Stanford Encyclopedia of Philosophy（Arendt 条目）· Encyclopaedia Britannica · Bard College Hannah Arendt Center · Goethe-Institut 阿伦特书目 · Young-Bruehl《Hannah Arendt: For Love of the World》。引文凡标「待核实」者，均为尚未追溯到页码，不作定论。本页最后核实于 2026-11-08（第 1 轮打样）。</div>
+  <div class="foot-nav">
+    <button data-nav="home">回看板</button><button data-nav="timeline">时间轴</button>
+    <button data-nav="system">体系总图</button><button data-nav="excerpts">摘录库</button>
+    <button data-nav="debates">论战</button><button data-nav="metaphors">宗教的隐喻</button><button data-nav="love">爱与关系</button><button data-nav="nourish">普通人养分</button><button data-nav="compare">对照表</button><button data-nav="critique">她会怎么批评这个网站</button>
+  </div>
+  <p style="margin:12px 0 0">Amor Mundi · 爱世界 —— 《人的境况》原想用的名字。这个项目从一开始，就不是为了完成，是为了开始。</p>
+</footer>
+</main>
+
+<script>
+/* ==================== DATA (single source; pages only render) ==================== */
+var ICONS = {action:'i-action',thinking:'i-think',love:'i-love',loneliness:'i-lonely',power:'i-power',
+  violence:'i-violence',natality:'i-natality',plurality:'i-plurality',judging:'i-judge',forgiveness:'i-forgive',
+  labor:'i-labor',work:'i-work',world:'i-world',promise:'i-promise',evil:'i-evil',book:'i-book',story:'i-story',
+  appearance:'i-eye',willing:'i-will',sun:'i-sun'};
+
+var CONCEPTS = {
+  labor:{name:'劳动',en:'labor',de:'Arbeiten',icon:'labor',color:'ochre',layer:'vita activa · 积极生活',
+    def:'为维持生命而做的、周而复始的事：吃、清洁、谋生。它的产品一产生就被消耗，不在世界上留下任何耐久的东西。她说劳动着的人是 animal laborans——被必然性支配的人。',
+    from:'《人的境况》(1958) 第 III 章',rel:['work','action','worldlessness'],pre:'先理解「世界」与「必然性」',
+    struggle:'她把劳动放得这样低，公平吗？体力劳动者和照护者读到这里会受伤——后来的批评者（包括不少女性主义者）正是从这里开始反驳她。'},
+  work:{name:'工作',en:'work',de:'Herstellen',icon:'work',color:'ochre',layer:'vita activa · 积极生活',
+    def:'制作出耐久之物的活动：桌子、书、制度、一篇三个月后还站得住的文章。工作造出「世界」——那个比我们活得久、能让后来者继续生活的人造环境。',
+    from:'《人的境况》(1958) 第 IV 章',rel:['labor','world','action'],pre:'劳动 labor',
+    struggle:'她担心现代社会把一切都做成消费品：工作退化成劳动，作品还没造好就被用掉。她自己问：耐久，还敌得过消费的速度吗？'},
+  action:{name:'行动',en:'action',de:'Handeln',icon:'action',color:'sage',layer:'vita activa · 积极生活',
+    def:'她排在最高处的人类活动：在他人面前言说和开始一件新事。行动不制造物品，它显现「你是谁」，并启动一连串无法预知、无法收回的后果——所以行动总需要宽恕与承诺来收拾残局。',
+    from:'《人的境况》(1958) 第 V 章',rel:['plurality','natality','power','forgiveness'],pre:'复数性 plurality、出生性 natality',
+    struggle:'行动的后果不可控，她一生都在想这件事：不可控，是自由的代价，还是政治的缺陷？她没有给出安心的答案。'},
+  thinking:{name:'思考',en:'thinking',de:'Denken',icon:'thinking',color:'slate',layer:'vita contemplativa · 沉思生活',
+    def:'「我与我自己的无声对话」。思考不产出知识，它拆解一切现成的概念和规矩——像风一样，融化冻住的范畴。艾希曼的罪，在她看首先是停止了这种对话：无思 thoughtlessness。',
+    from:'《心灵生活》(1978) 卷一《思考》',rel:['judging','willing','evil'],pre:'无',
+    struggle:'思考能阻止作恶吗？她晚年反复问自己，只敢说「也许」。这卷书她写得最挣扎，《判断》卷更是没能写出——未完成本身，就是她的结论之一。'},
+  willing:{name:'意志',en:'willing',de:'Wollen',icon:'willing',color:'slate',layer:'vita contemplativa · 沉思生活',
+    def:'指向未来的心灵能力，在「我要」与「我不要」之间撕扯。意志是她理解「开始」的内部版本：每一次真正的意志活动，都是一次对必然性的打断。',
+    from:'《心灵生活》(1978) 卷二《意志》',rel:['thinking','judging','natality'],pre:'思考 thinking',
+    struggle:'哲学家们两千年都没把意志讲圆，她在第二卷里一路吵过去。这一卷写完不久她就去世了，判断卷只留下一个标题页。'},
+  judging:{name:'判断',en:'judging',de:'Urteilen',icon:'judging',color:'slate',layer:'vita contemplativa · 沉思生活',
+    def:'没有现成标准时，仍能说出「这是对的 / 这是不对的」的能力。她从康德的审美判断借来方法：判断不靠套公式，靠「设身处地替所有人想一遍」的扩展心智。',
+    from:'《康德政治哲学讲稿》(1982 遗作)；《心灵生活》未完成的第三卷',rel:['thinking','evil','plurality'],pre:'思考 thinking',
+    struggle:'这是她留给世界的未答题：《心灵生活》写到判断就停了。没有标准还要判断——她开了头，答案要后来者自己续。包括你。'},
+  plurality:{name:'复数性',en:'plurality',de:'Pluralität',icon:'plurality',color:'sage',layer:'核心支柱',
+    def:'人不是单数的「人」，而是复数的「人们」：每个人都独特，又彼此平等。她说，行动和言说的全部条件就是复数性——没有「他人在场」，政治根本不存在。Men, not Man, live on the earth.',
+    from:'《人的境况》(1958) 第 I、V 章',rel:['action','appearance','world'],pre:'无——这是全图的起点',
+    struggle:'复数性要求差异永远保留，可现实政治总想把人压成一种声音。她没想明白的地方：制度能保护复数性到什么程度？'},
+  natality:{name:'出生性',en:'natality',de:'Natalität / Geburtlichkeit',icon:'natality',color:'rust',layer:'核心支柱',
+    def:'她从奥古斯丁那里借来又彻底改造的概念：因为人出生到这个世界，每个人本身就是一个新开始。「奇迹」不是神迹，是每一次出生、每一次有人敢开始一件新事。政治的根，不在死亡，在出生。',
+    from:'《奥古斯丁之爱》(1929) 伏笔；《人的境况》(1958) 第 V 章完成',rel:['action','love','forgiveness'],pre:'奥古斯丁之爱',
+    struggle:'这是她对老师海德格尔最深的反叛：海德格尔讲「向死而生」，她讲「为生而始」。到底哪个更接近人的境况？她把问题留在了那里。'},
+  love:{name:'爱世界',en:'amor mundi',de:'amor mundi（拉丁）',icon:'love',color:'rust',layer:'核心支柱',
+    def:'不是爱某个人，是愿意让世界继续存在、愿意为它负责、愿意在其中开始新事。1955 年她致信 Jaspers，说自己「开始得这么晚，才真正爱这个世界」，并想把政治理论之书命名为《爱世界》——这正是《人的境况》的原名，也是本站的名字。',
+    from:'致 Jaspers 信 (1955)，见阿伦特—雅斯贝尔斯通信集',rel:['natality','world','forgiveness'],pre:'奥古斯丁之爱（1929）',
+    struggle:'她同时说爱是「反政治的」——爱只要两个人合一，不要复数性。爱世界与爱一个人为什么完全相反？这组张力她从未磨平，本站也不磨平。'},
+  power:{name:'权力',en:'power',de:'Macht',icon:'power',color:'sage',layer:'政治概念',
+    def:'人们共同行动时才存在的东西。权力从来不是某个人的财产，它属于一群人，只在人们聚在一起行动时存在，人群散去，它也消失。所以权力与暴力恰好相反：暴力最强处，权力恰恰缺席。',
+    from:'《论暴力》(1970)',rel:['violence','action','plurality'],pre:'行动 action',
+    struggle:'权力与暴力在现实中总是缠在一起，分得这么干净，是洞见还是理想化？她承认暴力可以摧毁权力，却坚持：暴力永远造不出权力。'},
+  violence:{name:'暴力',en:'violence',de:'Gewalt',icon:'violence',color:'rust',layer:'政治概念',
+    def:'工具性的力量：靠器械放大，一方对另一方施加。暴力是哑的——它出现的地方，言说和行动已经退场。她区分了权力、暴力、力量、权威、武力五个常被混用的词。',
+    from:'《论暴力》(1970)',rel:['power','action'],pre:'权力 power',
+    struggle:'1960 年代末的学生运动逼她写下这篇。她支持学生对大学的批评，却拒绝浪漫化暴力——两边都不讨好，这是她的常态。'},
+  loneliness:{name:'孤独',en:'loneliness',de:'Verlassenheit',icon:'loneliness',color:'plum',layer:'核心支柱',
+    def:'不是独处。独处 solitude 是与自己对话，孤独是连自己都丢了——身边有人也救不了。她的著名论断：极权统治的温床不是仇恨，是孤独的大规模蔓延；孤独让人失去共同世界感，于是抓住意识形态的「逻辑」当拐杖。',
+    from:'《极权主义的起源》(1951) 末章；《论革命》亦有展开',rel:['world','thinking','evil'],pre:'先分清：孤独 ≠ 孤立 ≠ 独处',
+    struggle:'刷手机刷到半夜，是独处还是孤独？她没见过智能手机，但她给的判准还在：你还能不能和自己说话。这个问题，本站把它放进了「普通人的一天」。'},
+  evil:{name:'平庸之恶',en:'the banality of evil',de:'die Banalität des Bösen',icon:'evil',color:'ink',layer:'核心支柱',
+    def:'她为艾希曼造的词。坐在玻璃舱里的人不是恶魔，是一个停止思考、只用公文套话说话、只关心升迁的普通官员。「恶可以没有深度」——这个判断激怒了整个世界，也逼出了她后半生的全部思考：无思与判断。注意：1951 年她写的还是「极端之恶 radical evil」，1963 年她亲手修正了自己。',
+    from:'《艾希曼在耶路撒冷》(1963) 副标题即 A Report on the Banality of Evil',rel:['thinking','judging','loneliness'],pre:'极权主义、孤独 loneliness',
+    struggle:'Stangneth 后来的研究显示艾希曼远比庭审上更狡猾、更意识形态化——那「平庸」是不是说轻了？学界至今在吵。这一栏不给结论，只记下：她若活着，会怎么修正自己？'},
+  forgiveness:{name:'宽恕',en:'forgiveness',de:'Vergebung',icon:'forgiveness',color:'rust',layer:'核心支柱',
+    def:'源自福音书，被她改造成政治机制：行动的后果不可收回，宽恕是唯一能「撤销已做之事」的反应；与之成对的是承诺——对付行动的不可预知。没有宽恕，人会被自己做过的一件事永远钉死。',
+    from:'《人的境况》(1958) 第 V 章',rel:['promise','action','natality'],pre:'行动 action',
+    struggle:'宽恕有没有限度？有些事不可宽恕——她承认这一点，却没给界线画法。艾希曼不可宽恕，那么界线究竟由谁、在何时划下？'},
+  promise:{name:'承诺',en:'promise',de:'Versprechen',icon:'promise',color:'sage',layer:'核心支柱',
+    def:'行动不可预知，人便发明了承诺、契约与制度，在未来的混乱中造出小小的「可预知之岛」。宪法在她眼里就是一种集体承诺——这也是她盛赞美国革命的原因。',
+    from:'《人的境况》(1958)；《论革命》(1963)',rel:['forgiveness','action','power'],pre:'行动 action',
+    struggle:'承诺靠得住吗？她说约束力只来自「人们愿意一起守住它」——听起来脆弱，但她认为这正是政治唯一诚实的根基。'},
+  world:{name:'世界 / 爱世界之「世界」',en:'world',de:'Welt',icon:'world',color:'ochre',layer:'核心支柱',
+    def:'不是地球。是人与人之间那个由器物、制度、故事、语言构成的共同空间：它把我们连在一起，又让我们彼此分开，像一张桌子。失去它，就是「无世界 worldlessness」——极权与孤独的共同根。',
+    from:'《人的境况》(1958) 第 II 章（公共与私人领域）',rel:['plurality','work','loneliness'],pre:'无',
+    struggle:'社交媒体算不算「世界」？它连接所有人，却可能不留下任何耐久的东西。这个问题是本站留给你的，不是留给她的。'},
+  appearance:{name:'显现',en:'appearance',de:'Erscheinung',icon:'appearance',color:'sage',layer:'核心支柱',
+    def:'在公共领域中被看见、被听见。政治在她这里首先是一种显现：你走上公共空间，说出你的话，人们由此知道「你是谁」，而不只是「你是什么」。隐身，就是政治性的死亡。',
+    from:'《人的境况》(1958) 第 II、V 章',rel:['action','plurality'],pre:'复数性 plurality',
+    struggle:'今天人人都在「显现」，显现却越来越廉价。是她错了，还是显现的形态变了？这一问，连着「社会领域」一起读。'}
+};
+var ORDER = ['plurality','natality','love','labor','work','action','power','violence','loneliness','evil','thinking','willing','judging','forgiveness','promise','world','appearance'];
+var LAYERGROUPS = [
+  {t:'vita activa · 积极生活',items:['labor','work','action']},
+  {t:'vita contemplativa · 沉思生活',items:['thinking','willing','judging']},
+  {t:'领域三分',items:['world','appearance','plurality']},
+  {t:'政治概念',items:['power','violence','promise']},
+  {t:'核心支柱',items:['natality','love','loneliness','evil','forgiveness']}
+];
+
+var WORKS = [
+ {title:'奥古斯丁之爱',en:'Der Liebesbegriff bei Augustin',ws:'1924',we:'1929',pub:'1929',thread:'love',
+  q:'博士论文（海德堡，导师 Jaspers）：奥古斯丁说的「爱」，到底爱的是什么？',
+  intro:'爱 appetitus、开端 initium——出生性的种子',rev:'——（起点）',leave:'爱与世界的关系还没想清，留给三十年后的《人的境况》'},
+ {title:'拉赫尔·法恩哈根',en:'Rahel Varnhagen: The Life of a Jewess',ws:'1930 年代',we:'1938 前后',pub:'1957 英文版',thread:'love',
+  q:'一个犹太女子怎样在「贱民 pariah」与「新贵 parvenu」之间活一生？',
+  intro:'贱民 / 新贵、犹太身份的自觉',rev:'把「爱」的问题换成「身份」的问题',leave:'无国籍者的处境，将在流亡中被她亲身验证'},
+ {title:'极权主义的起源',en:'The Origins of Totalitarianism',ws:'1945',we:'1949',pub:'1951',thread:'evil',
+  q:'纳粹主义与斯大林主义，是不是一种人类从未见过的、全新的统治形式？',
+  intro:'极权主义、极端之恶、孤独、无国籍者、「人的权利」的困境',rev:'修正了「爱」的单一线索：先直面恶',leave:'「极端之恶」是否准确？1963 年她将亲手改判'},
+ {title:'人的境况',en:'The Human Condition',ws:'1956',we:'1957',pub:'1958',thread:'act',
+  q:'人在世界上的活动，到底有哪几种？哪一种才配叫自由？',
+  intro:'劳动 / 工作 / 行动三分、复数性、出生性、爱世界、宽恕与承诺',rev:'把 1951 年的诊断，翻转为一套正面的人的理论',leave:'行动的政治学有了，思考的位置还没安放'},
+ {title:'过去与未来之间',en:'Between Past and Future',ws:'1954 起',we:'1960',pub:'1961',thread:'think',
+  q:'传统断裂之后，人靠什么判断？（八篇练习）',
+  intro:'传统与现代、自由的概念、文化危机——判断的预习',rev:'开始把问题从「行动」推向「判断」',leave:'判断的完整理论，要等康德讲稿与《心灵生活》'},
+ {title:'论革命',en:'On Revolution',ws:'1961',we:'1962',pub:'1963',thread:'act',
+  q:'为什么美国革命立住了，法国革命滑向了恐怖？「开始」怎样才能保存下来？',
+  intro:'自由即开始、建国、委员会制度、幸福 vs 自由',rev:'修正《人的境况》：行动需要制度来安放',leave:'权力从哪来？1960 年代末的街头会逼她回答'},
+ {title:'艾希曼在耶路撒冷',en:'Eichmann in Jerusalem',ws:'1961 旁听',we:'1962',pub:'1963',thread:'evil',
+  q:'亲赴耶路撒冷旁听审判：坐在玻璃舱里的大屠杀组织者，究竟是个什么样的人？',
+  intro:'平庸之恶、无思 thoughtlessness',rev:'亲手推翻自己的「极端之恶」：恶可以是平庸的、无深度的',leave:'无思与作恶的关系是什么？这是她余生的问题'},
+ {title:'黑暗时代的人们',en:'Men in Dark Times',ws:'1955 起',we:'1967',pub:'1968',thread:'love',
+  q:'在黑暗时代，人靠什么彼此照亮？（十一篇人物肖像）',
+  intro:'友谊、讲故事、「即便在最黑暗的时代，我们也有权期待某种照亮」',rev:'把「爱世界」落实为具体的人与友谊',leave:'照亮够不够？暴力的问题正在街头等着'},
+ {title:'论暴力',en:'On Violence',ws:'1968',we:'1969',pub:'1970',thread:'act',
+  q:'学生运动与越战的年代：权力与暴力，是一回事吗？',
+  intro:'权力 vs 暴力五词辨析、官僚制即「无人之治」',rev:'给「行动之线」补上最锋利的一刀：暴力永远造不出权力',leave:'官僚制里的责任谁负？引向《共和国的危机》'},
+ {title:'共和国的危机',en:'Crises of the Republic',ws:'1969 起',we:'1971',pub:'1972',thread:'think',
+  q:'五角大楼文件、公民不服从、水门前夜：共和国还剩下什么？',
+  intro:'说谎与政治、公民不服从、暴力再论',rev:'把判断落到具体事件上：政治中的真话问题',leave:'一切最终收束到一个问题：人为什么停止思考？'},
+ {title:'心灵生活',en:'The Life of the Mind',ws:'1970',we:'1975（未完）',pub:'1978 遗作',thread:'think',
+  q:'从行动转回心灵：思考、意志、判断，各是什么？',
+  intro:'思考（完成）、意志（完成）、判断（未完成）',rev:'修正前半生：行动之后，必须回答思考',leave:'判断卷没有写完——1975 年 12 月，她在打字机前离世，稿纸上只留着标题。未完成，是这张图的终点，也是留给读者的起点'}
+];
+var LANES = [
+ {id:'life',name:'生平',color:'c-life',nodes:[
+   {y:1906,t:'汉诺威出生',thread:''},{y:1924,t:'马堡遇海德格尔',thread:'love'},
+   {y:1933,t:'被拘押后流亡巴黎',thread:''},{y:1941,t:'抵达纽约',thread:''},
+   {y:1951,t:'入籍美国',thread:''},{y:1961,t:'旁听艾希曼审判',thread:'evil'},
+   {y:1975,t:'纽约去世',thread:'think'}]},
+ {id:'works',name:'作品',color:'c-ochre-bg',nodes:[]},
+ {id:'concepts',name:'概念',color:'',nodes:[
+   {y:1929,t:'奥古斯丁之爱',thread:'love'},{y:1951,t:'极端之恶',thread:'evil'},
+   {y:1958,t:'复数性 · 出生性 · 爱世界',thread:'act'},{y:1963,t:'平庸之恶 · 无思',thread:'evil'},
+   {y:1970,t:'权力 vs 暴力',thread:'act'},{y:1975,t:'思考 · 意志 · 判断?',thread:'think'}]},
+ {id:'debates',name:'论战',color:'c-deb',nodes:[
+   {y:1959,t:'小石城事件争议',thread:''},{y:1963,t:'艾希曼论战 (Scholem)',thread:'evil'},
+   {y:1964,t:'Gaus 访谈：我不是哲学家',thread:'think'}]},
+ {id:'people',name:'同路人',color:'c-ppl',nodes:[
+   {y:1924,t:'海德格尔 · Jaspers',thread:''},{y:1940,t:'与 Blücher 结婚',thread:'love'},
+   {y:1950,t:'与 McCarthy 友谊',thread:'love'},{y:1969,t:'Blücher 去世',thread:''},
+   {y:1975,t:'McCarthy 编辑遗作',thread:'think'}]}
+];
+var PERIODS = [
+ {t:'① 爱与觉醒 1924–1933',w:['奥古斯丁之爱','拉赫尔·法恩哈根'],note:'从爱的问题出发，犹太身份在纳粹上台前夜被逼成自觉。'},
+ {t:'② 流亡与诊断 1933–1951',w:['极权主义的起源'],note:'无国籍者亲身验证了无国籍者。她写下极权主义的解剖图。'},
+ {t:'③ 行动的理论 1951–1963',w:['人的境况','过去与未来之间','论革命','艾希曼在耶路撒冷'],note:'十年四部：先立行动，再审革命，最后在法庭上改判了「恶」。'},
+ {t:'④ 权力、暴力与共和国 1963–1972',w:['黑暗时代的人们','论暴力','共和国的危机'],note:'街头与越战把问题推向极端：暴力造不出权力，真话成了稀缺品。'},
+ {t:'⑤ 回到心灵 1970–1978',w:['心灵生活'],note:'最后五年只问一件事：人为什么停止思考？判断卷，未完成。'}
+];
+
+var EXCERPTS = [
+ {zone:'main',orig:'The miracle that saves the world, the realm of human affairs, from its normal, “natural” ruin is ultimately the fact of natality.',
+  zh:'最终把世界、把人类事务领域从它通常的、「自然」的毁灭中拯救出来的奇迹，是出生性这一事实。',concept:'natality',work:'人的境况',period:'mid',
+  src:'《人的境况》The Human Condition (1958)，第 V 章「行动」',conf:'正库 · 出处明确'},
+ {zone:'main',orig:'Power is never the property of an individual; it belongs to a group and remains in existence only so long as the group keeps together.',
+  zh:'权力从来不是个人的财产；它属于一个群体，并且只在群体保持聚合时存在。',concept:'power',work:'论暴力',period:'late',
+  src:'《论暴力》On Violence (1970)',conf:'正库 · 出处明确'},
+ {zone:'main',orig:'Men, not Man, live on the earth and inhabit the world.',
+  zh:'生活在大地上、栖居于世界之中的，是复数的「人们」，而不是单数的「人」。',concept:'plurality',work:'人的境况',period:'mid',
+  src:'《人的境况》The Human Condition (1958)，第 I 章',conf:'正库 · 出处明确'},
+ {zone:'main',orig:'I have begun so late, really only in recent years, to truly love the world… out of gratitude, I want to call my book on political theory “Amor Mundi”.',
+  zh:'我开始得这么晚，真的只是在最近几年，才开始真正爱这个世界……出于感激，我想把我的政治理论之书叫作《爱世界》。',concept:'love',work:'书信',period:'mid',
+  src:'致 Karl Jaspers 信 (1955)，见《阿伦特—雅斯贝尔斯通信集 1926–1969》',conf:'正库 · 书信日期明确'},
+ {zone:'main',orig:'The sad truth is that most evil is done by people who never make up their minds to be good or evil.',
+  zh:'可悲的真相是：大多数恶，是由那些从未下定决心为善或作恶的人做出来的。',concept:'evil',work:'心灵生活',period:'late',
+  src:'《心灵生活》The Life of the Mind (1978)，卷一《思考》',conf:'正库 · 出处明确'},
+ {zone:'main',orig:'No one has the right to obey.',
+  zh:'没有人有权利服从。（她借康德之口反着说：在极权面前，「服从」不能成为免责的借口。）',concept:'thinking',work:'论文',period:'late',
+  src:'《个人责任与独裁》Personal Responsibility Under Dictatorship (1964)',conf:'正库 · 出处明确'},
+ {zone:'doubt',orig:'“The most radical revolutionary will become a conservative the day after the revolution.”',
+  zh:'「最激进的革命者，会在革命的第二天变成保守派。」——网络流传甚广，但尚未追溯到原著页码。',concept:'action',work:'待核实',period:'mid',
+  src:'出处待核实 — 只作线索，不作定论',conf:'存疑区 · 待核实'},
+ {zone:'doubt',orig:'各类中文「阿伦特语录」合集中的多条短句',
+  zh:'凡注不出书名与章节的，一律先进这里。宁可空着，不可「大概是她说的」。',concept:'thinking',work:'待核实',period:'late',
+  src:'出处待核实 — 来源为网络合集，非一手文献',conf:'存疑区 · 待核实'}
+];
+
+var PEOPLE = [
+ {n:'Karl Jaspers',zh:'雅斯贝尔斯',c:'#5c7350',role:'导师',rel:'博士导师，如父如友。通信近四十年（1926–1969），「爱世界」那封名信就是写给他的。',inf:'继承：沟通、理智诚实；分歧：她更重公共显现，他更重内在超越。'},
+ {n:'Martin Heidegger',zh:'海德格尔',c:'#8a3b26',role:'导师 · 旧爱',rel:'马堡的老师与恋人；1933 年他加入纳粹，两人决裂；战后恢复通信，她替他辩护——这是她「没做到」的一次。',inf:'继承：存在、世界；反叛：他讲向死而生，她讲出生性；他重独处，她重共在。'},
+ {n:'Heinrich Blücher',zh:'布吕歇尔',c:'#a97a1f',role:'丈夫',rel:'巴黎流亡时相识，1940 年结婚。她称他为自己的「世界」与锚。1969 年他去世，是她晚年最深的丧失。',inf:'她的许多政治判断，先在餐桌上和他吵过一遍。'},
+ {n:'Mary McCarthy',zh:'麦卡锡',c:'#4d6472',role:'密友',rel:'1940 年代末相识，互相骂又互相救命的友谊。她死后，McCarthy 编辑出版了《心灵生活》。',inf:'友谊即复数性的活样本：保持距离，在共同世界里说真话。'},
+ {n:'Walter Benjamin',zh:'本雅明',c:'#6d4a63',role:'密友 · 引介',rel:'巴黎流亡时的挚友；1940 年他在逃亡途中自杀。她日后编辑、引介他的文集到英语世界。',inf:'讲故事、传统断裂——她从他那里拿走，又改写。'},
+ {n:'W. H. Auden',zh:'奥登',c:'#4d6472',role:'密友',rel:'纽约的诗人朋友。她去世后，奥登是少数在悼念中真正懂她的人之一。',inf:'诗人与思想家之间：叙事与纪念。'},
+ {n:'Hans Jonas',zh:'约纳斯',c:'#5c7350',role:'同窗 · 论友',rel:'马堡同窗，一生的朋友兼论敌；艾希曼论战中他站在批评她的一边，友谊仍未断。',inf:'能互相说「你这句不对」，友谊还在——这正是她的标准。'},
+ {n:'Gershom Scholem',zh:'肖勒姆',c:'#8a3b26',role:'论敌',rel:'1963 年公开信指责她缺乏「对犹太人民的爱」，论战的引爆点。两人的通信是理解整场论战的第一手材料。',inf:'她的回应：我从不「爱」任何集体，我只爱我的朋友。'},
+ {n:'Jerome Kohn',zh:'科恩',c:'#8a6d3b',role:'后继者',rel:'她的学生与遗稿整理者，今天阿伦特研究的中枢人物之一。',inf:'把未完成的讲稿，一本本送回世界。'},
+ {n:'Seyla Benhabib',zh:'本哈比布',c:'#8a6d3b',role:'后继者',rel:'以批判性继承著称：接过她的公共领域与叙事概念，也指出她的盲点。',inf:'继承不是复读：续写判断卷的一种方式。'}
+];
+
+var CRITIQUES = [
+ ['你们把我做成了体系，可我一生都在反体系。','我说过「没有扶手的思考」，你们却给我装了扶手、画了总图、定了前置顺序。思考一旦有了标准答案，就不再是思考。'],
+ ['你们用生平解释思想，可思想不是生平的注脚。','我流亡过、爱错过人，不等于《极权主义的起源》就是流亡的产物。用故事讲清我，不等于讲清了我的思想。'],
+ ['你们把行动做成了看板、进度、打卡，可行动不是劳动。','看板、数字、完成度，是把「开始」变成了「生产」。我在公共领域显现，你们在后台统计我显现了几次。'],
+ ['你们讲两边、求中立，可判断不是中立。','判断就是在没有标准时还要说「这是对的 / 这是不对的」。把 Scholem 和我并列，不等于你已经判断了。'],
+ ['你们把友谊、爱、孤独做成了谱系图，可关系不是分类。','友谊之所以是政治的，恰恰因为它不能被归类、不能被管理。一画成图，它就死了。'],
+ ['你们缺复数性：整个网站只有一个声音在讲我。','真正的公共领域，是有不同的人站出来说话、互相反驳。你们应该留一个位置，让不同意我的人、被我冒犯过的人，也能说话。'],
+ ['你们缺开始：这是一座回顾的档案馆，不是一个新的开始。','我最在乎的不是你们把我讲得多全，是你们读完之后，自己敢不敢开始一件新的事——哪怕很小，哪怕会失败。']
+];
+
+var TODAYPOOL = [
+ {id:'evil',why:'因为今天的世界不缺坏人，缺的是停下来想一想的人——这条线从 1951 年的「极端之恶」，被她在 1963 年亲手改判为「平庸之恶」。'},
+ {id:'natality',why:'因为「开始」是她留给普通人最实用的东西：项目黄了、账号封了，都不等于结束。'},
+ {id:'loneliness',why:'因为睡前刷手机的那种空，多半不是独处，是孤独——先分清这两个词，今天就不一样。'},
+ {id:'power',why:'因为我们天天把权力和暴力混为一谈。她用一整本书把它们分开，分开之后，很多新闻会看得很清楚。'}
+];
+var DAYROWS = [
+ ['07:10','起床先刷手机','i-labor','劳动的开场。信息像流水一样冲过去，不留任何东西。她会问：这半小时之后，世界上有任何一件耐久的东西因你而存在吗？（→ 劳动 / 工作）'],
+ ['09:30','开会，轮到你发言','i-action','行动的最小现场：在他人面前说话，显现「你是谁」。说套话最安全，但套话不是言说——艾希曼的语言，全是套话。（→ 行动 / 显现）'],
+ ['12:40','看到一条愤怒的消息，想转发','i-think','无思的岔路口。她给的动作小得惊人：停十秒，与自己进行一次无声对话——「我刚才在想什么？」（→ 思考 / 无思）'],
+ ['15:00','做一件三个月后还留得下的事','i-work','工作的时间。写完一篇文章、做好一个产品、留下一份文档——世界因此多了一件耐久之物。（→ 工作 / 世界）'],
+ ['19:20','和朋友吃饭，聊到分歧','i-plurality','友谊即政治：不求一致，只求在共同世界里把话说清。能当面说「你这句不对」的朋友，是复数性活着的证据。（→ 复数性 / 友谊）'],
+ ['23:30','睡前独处，还是孤独？','i-lonely','判准只有一个：你还能不能和自己说话。能，是独处，思考的前提；不能，是孤独——她说那是极权的温床，先从照顾好自己的夜晚开始。（→ 孤独 / 独处）']
+];
+var QUIZ = [
+ {q:'群里都在骂一个人，你通常？',a:'跟着骂，气氛到了',b:'先不说话，去看看另一边怎么说',key:'evil'},
+ {q:'转发一条消息之前，你会？',a:'标题对味就转',b:'停十秒，想想来源',key:'thinking'},
+ {q:'一天结束，你做的事大多？',a:'忙完就消失，明天重来',b:'留下了点能久存的东西',key:'labor'},
+ {q:'睡前最后一小时，你在？',a:'刷到困，脑子停不下来',b:'有一段只属于自己的安静',key:'loneliness'},
+ {q:'没有现成答案、没人可抄时，你会？',a:'等一个权威说法',b:'自己判断，错了自己认',key:'judging'}
+];
+var QUIZANS = {
+ evil:'你的「无思」最可能藏在<b>从众</b>里。她的话放在这里最合适：「大多数恶，是由那些从未下定决心为善或作恶的人做出来的。」（《心灵生活》）—— 不是让你自责，是让你下次停十秒。',
+ thinking:'你的「无思」最可能藏在<b>转发键</b>上。思考对她就是「我与我自己的无声对话」；对话没开始，手指头已经动了。',
+ labor:'你的日子可能被<b>劳动</b>占满了：做完即逝，明日重来。试着每天留一小块给「工作」——一件三个月后还留得下的东西。',
+ loneliness:'你的夜晚可能混淆了<b>独处与孤独</b>。独处是和自己说话，孤独是连自己都丢了。今晚试一次：放下手机十分钟，只和自己待着。',
+ judging:'你最容易把<b>判断</b>外包出去。没有标准时还要判断，是她留给普通人最难、也最自由的练习。'
+};
+
+/* ==================== NAV ==================== */
+function showView(id){
+  document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id==='view-'+id)});
+  document.querySelectorAll('nav.main button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.view===id?'true':'false')});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-view]').forEach(function(b){b.addEventListener('click',function(){showView(b.dataset.view)})});
+document.querySelectorAll('[data-nav]').forEach(function(b){b.addEventListener('click',function(){showView(b.dataset.nav)})});
+function icon(name,cls){return '<svg class="ic '+(cls||'')+'"><use href="#'+ICONS[name]+'"/></svg>'}
+
+/* ==================== HOME ==================== */
+(function(){
+  var day = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0))/864e5);
+  var t = TODAYPOOL[day % TODAYPOOL.length]; var c = EXCERPTS.filter(function(e){return e.concept===t.id})[0] || EXCERPTS[0];
+  var cc = CONCEPTS[t.id];
+  document.getElementById('today-icon').innerHTML = icon(cc.icon);
+  document.getElementById('today-title').textContent = cc.name + ' · ' + cc.en;
+  document.getElementById('today-why').textContent = t.why;
+  document.getElementById('today-orig').textContent = c.orig;
+  document.getElementById('today-zh').textContent = c.zh;
+  document.getElementById('today-src').textContent = '出处：' + c.src + '（' + c.conf + '）';
+  document.getElementById('today-body').textContent = cc.def;
+  document.getElementById('today-links').innerHTML =
+    '<span class="tag slate">出自 · ' + c.work + '</span>' +
+    cc.rel.map(function(r){return '<span class="tag">相关 · ' + CONCEPTS[r].name + '</span>'}).join('');
+  document.getElementById('today-btn').addEventListener('click',function(){showView('system');openConcept(t.id)});
+
+  var prog = [['前言 + 看板 + 全文搜索',100,'已建'],['时间轴（泳道+脑图）',100,'已建'],['体系总图（三视图）',90,'词条 17 个'],
+    ['论战正文',100,'6 场已展开'],['宗教隐喻专章',100,'6 个已展开'],['爱、关系与追求',100,'已建'],['普通人养分 + 对照表',100,'8 条 + 8 行'],['同路人',60,'骨架已建，书信待补'],['摘录库',35,'正库 6 条，持续提取']];
+  document.getElementById('progress-list').innerHTML = prog.map(function(p){
+    var cls = p[1]>=90?'':(p[1]>=35?'mid':'low');
+    return '<div class="prow"><span>'+p[0]+'</span><span class="bar"><i class="'+cls+'" style="width:'+p[1]+'%"></i></span><span class="src">'+p[2]+'</span></div>';
+  }).join('');
+
+  var qs = { '转发消息前，没核实就发出去了':'这就是她说的无思的日常形态——思考还没开始，行为已经完成。对治它的不是自责，是那十秒钟的停顿。对应概念：思考 thinking。',
+    '跟着大家一起骂一个人，没想过他那边怎么说':'判断的第一课，是「设身处地替所有人想一遍」。骂之前先听完另一边——不是中立，是判断。对应概念：判断 judging。',
+    '明明觉得不对，但「流程就是这样」':'「流程就是这样」，是艾希曼在庭上说得最多的一类话。她说：没有人有权利服从（1964）。对应概念：平庸之恶。',
+    '今天还没有 —— 我停下来想过一次':'那今天这一问就值了。思考在她那里从不是天赋，是一次次停下来的总和。明天同一时间，这里还有一问。'};
+  document.querySelectorAll('#qopts button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#qopts button').forEach(function(x){x.classList.remove('picked')});
+      b.classList.add('picked');
+      var a = document.getElementById('qans'); a.textContent = qs[b.dataset.a]; a.classList.add('show');
+    });
+  });
+})();
+
+/* ==================== TIMELINE ==================== */
+function pct(y){ return ((y-1906)/(1978-1906)*100).toFixed(2) }
+(function(){
+  var board = document.getElementById('tl-board');
+  var html = '<div class="tl-years"><span>1906</span><span>1924</span><span>1941</span><span>1958</span><span>1978</span></div>';
+  LANES.forEach(function(lane){
+    var nodes = lane.nodes.slice();
+    if(lane.id==='works'){ nodes = WORKS.map(function(w,i){ return {y:parseInt(w.pub)||1957,t:w.title,thread:w.thread,wi:i}; }); }
+    html += '<div class="lane"><div class="lname">'+lane.name+'</div><div class="track">' +
+      nodes.map(function(n){
+        var col = n.thread==='love'?'var(--rust)':n.thread==='evil'?'var(--evil-dot)':n.thread==='act'?'var(--sage)':n.thread==='think'?'var(--slate)':'var(--ochre)';
+        if(lane.id==='works') col='var(--ochre)';
+        if(lane.id==='life') col='var(--gold)'; if(lane.id==='debates') col='var(--plum)'; if(lane.id==='people') col='#8a6d3b';
+        if(lane.id==='concepts'&&!n.thread) col='var(--ochre)';
+        var wi = (n.wi!==undefined)?' data-wi="'+n.wi+'"':'';
+        return '<button class="node" data-thread="'+(n.thread||'')+'"'+wi+' style="left:'+pct(n.y)+'%">'+
+          '<span class="pt" style="background:'+col+'"></span><span class="nl">'+n.t+'</span><span class="ny">'+n.y+'</span></button>';
+      }).join('') + '</div></div>';
+  });
+  board.innerHTML = html;
+
+  function detail(w){
+    var d = document.getElementById('tl-detail');
+    d.innerHTML = '<span class="tag ochre">'+w.en+'</span><h3>《'+w.title+'》</h3>'+
+      '<p style="margin:4px 0 0"><b>它在回答：</b>'+w.q+'</p>'+
+      '<div class="dates3"><div><b>动笔</b><span>'+w.ws+'</span></div><div><b>写完</b><span>'+w.we+'</span></div><div><b>出版</b><span>'+w.pub+'</span></div></div>'+
+      '<p style="margin:0 0 6px"><b>新造 / 新讲：</b>'+w.intro+'</p>'+
+      '<p style="margin:0 0 6px"><b>修正了上一部：</b>'+w.rev+'</p>'+
+      '<p style="margin:0"><b>给下一部留下：</b>'+w.leave+'</p>';
+  }
+  detail(WORKS[3]);
+  board.querySelectorAll('.node').forEach(function(n){
+    n.addEventListener('click',function(){
+      board.querySelectorAll('.node').forEach(function(x){x.classList.remove('sel')});
+      n.classList.add('sel');
+      if(n.dataset.wi!==undefined && n.dataset.wi!=='') detail(WORKS[+n.dataset.wi]);
+    });
+  });
+  document.querySelectorAll('#threadbar button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#threadbar button').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      var th = b.dataset.thread;
+      board.querySelectorAll('.node').forEach(function(n){
+        n.classList.toggle('dim', th!=='all' && n.dataset.thread!==th);
+      });
+    });
+  });
+  document.getElementById('tl-mind-body').innerHTML = PERIODS.map(function(p){
+    return '<div class="mm-period"><h4>'+p.t+'</h4><p class="src" style="margin:0 0 8px">'+p.note+'</p>'+
+      p.w.map(function(t){ var w = WORKS.filter(function(x){return x.title===t})[0];
+        return '<div class="mm-work"><b>《'+w.title+'》</b> <span class="en" style="color:var(--ink2)">'+w.pub+'</span><p>'+w.intro+'</p><p>留下的问题：'+w.leave+'</p></div>';
+      }).join('')+'</div>';
+  }).join('');
+  function setMode(mind){
+    document.getElementById('tl-lanes').style.display = mind?'none':'block';
+    document.getElementById('tl-mind').style.display = mind?'block':'none';
+    document.getElementById('tl-mode-lanes').setAttribute('aria-pressed',mind?'false':'true');
+    document.getElementById('tl-mode-mind').setAttribute('aria-pressed',mind?'true':'false');
+  }
+  document.getElementById('tl-mode-lanes').addEventListener('click',function(){setMode(false)});
+  document.getElementById('tl-mode-mind').addEventListener('click',function(){setMode(true)});
+})();
+
+/* ==================== SYSTEM ==================== */
+var SYSXY = { world:[380,250], labor:[110,90], work:[110,250], action:[110,410], thinking:[650,90], willing:[650,250],
+  judging:[650,410], plurality:[270,120], natality:[270,390], power:[490,120], violence:[490,390], love:[380,40],
+  loneliness:[380,465], evil:[545,300], forgiveness:[215,300] };
+var SYSEDGES = [['world','labor'],['world','work'],['world','action'],['world','thinking'],['world','willing'],['world','judging'],
+  ['action','plurality'],['action','natality'],['action','power'],['power','violence'],['natality','love'],['loneliness','evil'],
+  ['evil','thinking'],['thinking','judging'],['action','forgiveness'],['world','loneliness'],['world','love']];
+(function(){
+  var svg = document.getElementById('sys-svg');
+  var s = '';
+  SYSEDGES.forEach(function(e){
+    s += '<line x1="'+SYSXY[e[0]][0]+'" y1="'+SYSXY[e[0]][1]+'" x2="'+SYSXY[e[1]][0]+'" y2="'+SYSXY[e[1]][1]+'" stroke="var(--line)" stroke-width="1.6"/>';
+  });
+  Object.keys(SYSXY).forEach(function(k){
+    var c = CONCEPTS[k]; if(!c) return;
+    var col = c.color==='rust'?'var(--rust)':c.color==='sage'?'var(--sage)':c.color==='slate'?'var(--slate)':c.color==='plum'?'var(--plum)':'var(--ochre)';
+    if(k==='evil') col='var(--evil-dot)'; if(k==='world') col='var(--ink)';
+    var r = k==='world'?34:26;
+    s += '<g class="sysnode" data-concept="'+k+'" tabindex="0" role="button" aria-label="'+c.name+'">'+
+      '<circle cx="'+SYSXY[k][0]+'" cy="'+SYSXY[k][1]+'" r="'+r+'" fill="var(--card)" stroke="'+col+'"/>'+
+      '<text x="'+SYSXY[k][0]+'" y="'+(SYSXY[k][1]+5)+'" text-anchor="middle" font-size="'+(k==='world'?14:12.5)+'" font-weight="700" fill="var(--ink)">'+c.name+'</text>'+
+      '<text x="'+SYSXY[k][0]+'" y="'+(SYSXY[k][1]+r+15)+'" text-anchor="middle" font-size="10.5" fill="var(--ink2)">'+c.en+'</text></g>';
+  });
+  svg.innerHTML = s;
+  svg.querySelectorAll('.sysnode').forEach(function(g){
+    g.addEventListener('click',function(){openConcept(g.dataset.concept)});
+    g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openConcept(g.dataset.concept)}});
+  });
+  document.getElementById('sys-tree').innerHTML = '<ul>' + LAYERGROUPS.map(function(g){
+    return '<li><span class="tnode" style="font-weight:700">'+g.t+'</span><ul>' +
+      g.items.map(function(k){var c=CONCEPTS[k];
+        return '<li><button class="tnode" data-concept="'+k+'">'+icon(c.icon,'sm')+c.name+' <small>'+c.en+'</small></button></li>'}).join('') +
+      '</ul></li>';
+  }).join('') + '</ul>';
+  document.getElementById('sys-tree').querySelectorAll('[data-concept]').forEach(function(b){
+    b.addEventListener('click',function(){openConcept(b.dataset.concept)});
+  });
+  document.getElementById('concept-grid').innerHTML = ORDER.map(function(k){var c=CONCEPTS[k];
+    return '<button class="concept-btn" data-concept="'+k+'"><span class="icob" style="background:var(--'+c.color+'-soft);color:var(--'+(c.color==='ink'?'ink':c.color)+')">'+icon(c.icon)+'</span>'+
+      '<span><b>'+c.name+' <span class="en" style="color:var(--rust)">'+c.en+'</span></b><span>'+c.layer+'</span></span></button>';
+  }).join('');
+  document.getElementById('concept-grid').querySelectorAll('[data-concept]').forEach(function(b){
+    b.addEventListener('click',function(){openConcept(b.dataset.concept)});
+  });
+  function setMode(m){
+    document.getElementById('sys-net').style.display = m==='net'?'block':'none';
+    document.getElementById('sys-mind').style.display = m==='mind'?'block':'none';
+    document.getElementById('sys-list').style.display = m==='list'?'block':'none';
+    ['net','mind','list'].forEach(function(x){document.getElementById('sys-mode-'+x).setAttribute('aria-pressed',x===m?'true':'false')});
+  }
+  document.getElementById('sys-mode-net').addEventListener('click',function(){setMode('net')});
+  document.getElementById('sys-mode-mind').addEventListener('click',function(){setMode('mind')});
+  document.getElementById('sys-mode-list').addEventListener('click',function(){setMode('list')});
+  openConcept('action');
+})();
+function openConcept(k){
+  var c = CONCEPTS[k]; if(!c) return;
+  var d = document.getElementById('concept-detail');
+  d.innerHTML =
+    '<div style="display:flex;gap:12px;align-items:flex-start"><span class="icob" style="width:48px;height:48px;border-radius:12px;background:var(--'+c.color+'-soft);color:var(--'+(c.color==='ink'?'ink':c.color)+');display:flex;align-items:center;justify-content:center">'+icon(c.icon)+'</span>'+
+    '<div><span class="tag">'+c.layer+'</span><h3>'+c.name+' <span class="en" style="color:var(--rust);font-size:17px">'+c.en+' · '+c.de+'</span></h3></div></div>'+
+    '<p class="def">'+c.def+'</p>'+
+    '<div class="kv"><div><b>读它之前</b>'+c.pre+'</div><div><b>主要出处</b>'+c.from+'</div></div>'+
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start"><div style="flex:1;min-width:230px"><b class="sans" style="font-size:12.5px;color:var(--rust)">脑图分支 · 它连着谁</b>'+
+    '<div class="tree" style="margin-top:6px"><ul><li><span class="tnode" style="font-weight:700">'+icon(c.icon,'sm')+c.name+'</span><ul>'+
+    c.rel.map(function(r){return '<li><button class="tnode" onclick="openConcept(\''+r+'\')">'+icon(CONCEPTS[r].icon,'sm')+CONCEPTS[r].name+' <small>'+CONCEPTS[r].en+'</small></button></li>'}).join('')+
+    '</ul></li></ul></div></div></div>'+
+    '<div class="struggle"><b>她没想明白的地方</b><br/>'+c.struggle+'</div>';
+  d.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* ==================== PEOPLE ==================== */
+(function(){
+  var svg = document.getElementById('ppl-svg');
+  var pos = { center:[380,215] };
+  var ring = PEOPLE.slice(0,8);
+  var s = '';
+  ring.forEach(function(p,i){
+    var a = (i/ring.length)*Math.PI*2 - Math.PI/2;
+    var x = 380 + Math.cos(a)*255, y = 215 + Math.sin(a)*150;
+    pos[p.n]=[x,y];
+    s += '<line x1="380" y1="215" x2="'+x+'" y2="'+y+'" stroke="var(--line)" stroke-width="1.5"/>';
+  });
+  s += '<circle cx="380" cy="215" r="40" fill="var(--ink)"/><text x="380" y="211" text-anchor="middle" font-size="13" font-weight="700" fill="var(--paper)">汉娜·</text><text x="380" y="229" text-anchor="middle" font-size="13" font-weight="700" fill="var(--paper)">阿伦特</text>';
+  ring.forEach(function(p){
+    s += '<g><circle cx="'+pos[p.n][0]+'" cy="'+pos[p.n][1]+'" r="27" fill="'+p.c+'"/>'+
+      '<text x="'+pos[p.n][0]+'" y="'+(pos[p.n][1]+4)+'" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">'+p.zh+'</text>'+
+      '<text x="'+pos[p.n][0]+'" y="'+(pos[p.n][1]+42)+'" text-anchor="middle" font-size="10.5" fill="var(--ink2)">'+p.role+'</text></g>';
+  });
+  svg.innerHTML = s;
+  document.getElementById('ppl-grid').innerHTML = PEOPLE.map(function(p){
+    return '<div class="ppl"><span class="ava" style="background:'+p.c+'">'+p.zh.charAt(0)+'</span><div><b>'+p.zh+'</b> <span class="en" style="color:var(--ink2)">'+p.n+'</span> <span class="tag">'+p.role+'</span><p>'+p.rel+'</p><p><b style="color:var(--ink)">思想往来：</b>'+p.inf+'</p></div></div>';
+  }).join('');
+  function setMode(mind){
+    document.getElementById('ppl-net').style.display = mind?'none':'block';
+    document.getElementById('ppl-mind').style.display = mind?'block':'none';
+    document.getElementById('ppl-mode-net').setAttribute('aria-pressed',mind?'false':'true');
+    document.getElementById('ppl-mode-mind').setAttribute('aria-pressed',mind?'true':'false');
+  }
+  document.getElementById('ppl-mode-net').addEventListener('click',function(){setMode(false)});
+  document.getElementById('ppl-mode-mind').addEventListener('click',function(){setMode(true)});
+})();
+
+/* ==================== EXCERPTS ==================== */
+(function(){
+  var cs = {}, ws = {};
+  EXCERPTS.forEach(function(e){ if(e.concept && CONCEPTS[e.concept]) cs[e.concept]=1; ws[e.work]=1; });
+  var fc = document.getElementById('f-concept'), fw = document.getElementById('f-work');
+  Object.keys(cs).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=CONCEPTS[k].name+' '+CONCEPTS[k].en;fc.appendChild(o)});
+  Object.keys(ws).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=k;fw.appendChild(o)});
+  function render(){
+    var cv=fc.value, wv=fw.value, pv=document.getElementById('f-period').value, zv=document.getElementById('f-zone').value;
+    var list = EXCERPTS.filter(function(e){
+      return (!cv||e.concept===cv)&&(!wv||e.work===wv)&&(!pv||e.period===pv)&&(!zv||e.zone===zv);
+    });
+    var el = document.getElementById('ex-list');
+    if(!list.length){ el.innerHTML = '<div class="card empty">这个组合下暂时没有摘录——库还在长，先换个筛法，或者去存疑区看看什么叫「宁可空着」。</div>'; return; }
+    el.innerHTML = list.map(function(e){
+      var doubt = e.zone==='doubt';
+      return '<div class="card ex'+(doubt?' doubt':'')+'">'+
+        (doubt?'<span class="tag ochre">存疑区 · DOUBT</span> ':'<span class="tag sage">正库 · VERIFIED SHELF</span> ')+
+        '<span class="tag">'+(CONCEPTS[e.concept]?CONCEPTS[e.concept].name:e.concept)+'</span> <span class="tag slate">'+e.work+'</span>'+
+        '<p class="orig" style="margin-top:10px">'+e.orig+'</p><p class="zh">'+e.zh+'</p>'+
+        '<div class="meta"><span class="src">出处：'+e.src+'</span><span class="tag '+(doubt?'ochre':'sage')+'">'+e.conf+'</span></div></div>';
+    }).join('');
+  }
+  [fc,fw,document.getElementById('f-period'),document.getElementById('f-zone')].forEach(function(s){s.addEventListener('change',render)});
+  render();
+})();
+
+/* ==================== SURPRISE ==================== */
+(function(){
+  document.getElementById('day-list').innerHTML = DAYROWS.map(function(r){
+    return '<div class="dayrow"><div class="time">'+r[0]+'</div><div><h4><svg class="ic sm"><use href="#'+r[2]+'"/></svg>'+r[1]+'</h4><p>'+r[3]+'</p></div></div>';
+  }).join('');
+  document.getElementById('crit-list').innerHTML = CRITIQUES.map(function(c){
+    return '<div class="crit-item"><span class="no"></span><div><h4>'+c[0]+'</h4><p>'+c[1]+'</p></div></div>';
+  }).join('');
+
+  var picked = {};
+  var q = document.getElementById('quiz');
+  q.innerHTML = QUIZ.map(function(item,i){
+    return '<div class="quiz-q"><p><b>第 '+(i+1)+' 问。</b>'+item.q+'</p><div class="opts">'+
+      '<button data-q="'+i+'" data-v="a">'+item.a+'</button><button data-q="'+i+'" data-v="b">'+item.b+'</button></div></div>';
+  }).join('');
+  q.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var i = +b.dataset.q; picked[i] = b.dataset.v;
+      q.querySelectorAll('button[data-q="'+i+'"]').forEach(function(x){x.classList.toggle('picked',x===b)});
+      var done = QUIZ.every(function(_,j){return picked[j]});
+      if(!done) return;
+      var bad = null;
+      QUIZ.forEach(function(item,j){ if(picked[j]==='a' && !bad) bad = item.key; });
+      var r = document.getElementById('quiz-result');
+      r.innerHTML = bad ? ('<b>照一照镜子：</b>' + QUIZANS[bad] + '<p class="src" style="margin:8px 0 0">这不是诊断，是提醒。明天再答一次，答案会变——变，本身就是思考开始了。</p>')
+        : '<b>今天你五次都停了一下。</b><p style="margin:6px 0 0">她不会给你打满分——她只会说：那就去开始一件新的事吧。哪怕很小。</p>';
+      r.classList.add('show');
+    });
+  });
+})();
+</script>
+
+<script>
+/* ==================== ROUND 2-5: new sections, search, theme ==================== */
+var METAPHORS = [
+ {t:'奥古斯丁之爱 → 爱世界',orig:'奥古斯丁区分 cupiditas（贪爱，占有世界之物）与 caritas（正爱，指向永恒），人因爱而有重量、被爱拖着走。',borrow:'她 1929 年的博士论文整体以奥古斯丁之爱为题；晚年「爱世界」一词的拉丁形式 amor mundi，直接来自这条传统。',change:'她把爱的终点从「永恒 / 上帝」搬回「世界」：爱不再是逃离世界的梯子，而是对这个短暂世界的感激与责任。1955 年致 Jaspers 信是命名时刻（摘录库正库）。'},
+ {t:'出生性 natality',orig:'基督教中，出生与道成肉身带着救赎意味：新生命的到来是恩典，不是自然循环的一部分。',borrow:'她借走「每个新生儿都是一个全新的开始」这一结构，把它用作行动与自由的根。',change:'去掉神学框架：救赎世界的不是神子降临，而是每一个普通人的出生与每一次行动中的开始——「奇迹」被她世俗化为出生性这一事实（《人的境况》第 V 章，摘录库正库）。'},
+ {t:'宽恕与承诺',orig:'福音书中，宽恕是耶稣教导的核心实践：人能被赦免，关系能重新开始。',borrow:'她直接引用这一传统，把宽恕放进《人的境况》行动章的核心位置，并为它配上承诺。',change:'宽恕从宗教德行变成政治机制：它是对付「行动不可撤销」的唯一反应，承诺对付「行动不可预知」。运作不需要信仰，只需要复数的人愿意一起守住它。'},
+ {t:'贱民 pariah / 新贵 parvenu',orig:'pariah 原指印度种姓之外的「贱民」；在犹太语境中被用来形容被主流社会排斥在外的人，parvenu 则是拼命挤进上流社会的新贵。',borrow:'她借这对词写《拉赫尔·法恩哈根》：一个犹太女子在「做贱民」与「做新贵」之间耗尽一生。',change:'她给贱民翻了案：清醒的贱民（conscious pariah）站在世界之外，反而看得清世界；新贵用同化换门票，代价是自我。她自己的流亡生涯，是这一改造的注脚。'},
+ {t:'孤独 / 荒漠 / 无世界',orig:'荒漠是圣经与修道传统中的意象：离开人世、直面虚无与试探的场所；「世界」在宗教语言中常带贬义，指俗世。',borrow:'她借走荒漠与无世界的意象，写极权之下的经验：世界感被抽空，人如置身荒漠。',change:'价值被她倒转：问题不是「世界太俗」，而是「世界正在消失」。孤独不是修行，是连自己都丢了的状态（《极权主义的起源》末章）；守住世界，成了最高的善。'},
+ {t:'思考即祈祷（与自己对话）',orig:'祈祷在宗教中是与神的对话：停下外务，向一个更高的对话者敞开自己。',borrow:'她借走「停下来、与一个看不见的对话者说话」这一姿态，写《心灵生活》的思考观。',change:'对话者从上帝换成了自己：思考是「我与我自己的无声对话」（二而一）。祈祷求的是回应，思考求的是不自相矛盾——无思，就是连这场对话都停了。'}
+];
+var LOVELIFE = [
+ ['海德格尔','老师与旧爱 · 1924–','马堡课堂上的相遇与相恋；1933 年决裂，战后恢复通信。她从他那里拿走「世界」与「存在」，还给他的是一整套反驳：出生性对向死而生。详见论战三。'],
+ ['Günther Stern','第一任丈夫 · 1929–1937','同为哲学训练出身，柏林时期结婚，流亡途中离散。这段婚姻的细节多见于传记，本站只记骨架，具体书信待核实。'],
+ ['Heinrich Blücher','丈夫 · 1940–1969','巴黎流亡中相识的伴侣：自学出身的工人知识分子。她许多政治判断先在餐桌上和他吵过；1969 年他去世，是她晚年最深的丧失。'],
+ ['Karl Jaspers','导师与通信者 · 1926–1969','四十年通信是她思想的第二现场：「爱世界」那封信写给他。友谊在她这里的第一样本——有分歧，不决裂。'],
+ ['Mary McCarthy','密友 · 1940 年代末–1975','互相骂又互相救命。她去世后，McCarthy 编辑出版《心灵生活》。友谊即复数性：保持距离，在共同世界里说真话。']
+];
+var NOURISH = [
+ {t:'停下来想一想',c:'思考是「我与我自己的无声对话」；无思，是它停了。',u:'转发、跟单、表态之前停十秒，问一句「我刚才在想什么、依据是什么」。',anti:'反例：跟着群情一起骂一个人，事后发现骂错了——错不在立场，在对话从未开始。',pr:'放下手机 5 分钟，只回答一个问题：我今天做过哪件事，是没想就做的？'},
+ {t:'开始的能力',c:'出生性：每个人本身就是一个新开始。',u:'项目黄了、注册失败了，不写总结判死刑，写下一步：今天能开的最小的新头是什么。',anti:'反例：用「等条件都齐了再开始」拖延三年——条件永远不会齐，开始才会生出条件。',pr:'写下那件拖了最久的事，只做它的第一步，计时 5 分钟，做完就停。'},
+ {t:'做工作，不只做劳动',c:'劳动做完即逝，工作在世界上留下耐久之物。',u:'每天留一小块给「三个月后还留得下」的事：写完的文章、做好的文档、搭起的系统。',anti:'反例：整天追热点、刷行情，忙到深夜，问自己留下了什么——只有疲惫。',pr:'把今天的待办分成两栏：会消失的 / 会留下的。给「会留下的」划出 5 分钟。'},
+ {t:'没有标准也要判断',c:'判断是在没有公式时，仍说出「这是对的 / 这是不对的」。',u:'AI 给答案、专家给意见，最后那句「我认为」不能外包；错了自己认，判断力才长。',anti:'反例：「大家都这么说」「流程就是这样」——艾希曼在庭上说得最多的一类话。',pr:'挑一条今天看到的新闻，先不看评论，自己写一句判断和理由，再去对照。'},
+ {t:'孤独与独处',c:'独处是与自己对话，孤独是连自己都丢了——两者外表相似，实质相反。',u:'每天留一段没有输入的时间给自己：散步、不戴耳机、不刷手机。',anti:'反例：刷到凌晨两点，热闹得很，关掉屏幕只剩空——那不是独处，是孤独。',pr:'今晚睡前留 5 分钟无屏幕时间，只和自己核对一句：今天哪件事我做对了？'},
+ {t:'友谊是最政治的关系',c:'友谊在共同世界里保持距离、说真话——它是复数性活着的样子。',u:'维护 2–3 个能当面说「你这句不对」的人，比攒点赞重要得多。',anti:'反例：只有饭局和点赞之交，出了事没有一个人能说真话——那是人多，不是友谊。',pr:'给一位老朋友发一条有内容的消息：说一件你最近想通的事，问他怎么看。'},
+ {t:'爱世界',c:'amor mundi：看清世界很糟之后，仍然愿意为它负责、愿意开始。',u:'对行业、对社区、对自己住的地方，做一件让它「继续存在下去」的小事：整理、记录、修补。',anti:'反例：犬儒——「什么都烂完了」说起来最省力，代价是把世界让给最不在乎它的人。',pr:'用 5 分钟做一件纯粹为了「让身边好一点」的事：整理公共文档、扶正一段记录、留一句有用的话。'},
+ {t:'讲故事',c:'意义不是定义出来的，是讲出来的；故事让「你是谁」显现。',u:'把自己的经历讲清楚、写下来：失败、转行、做成的一件事——那是给自己留的世界。',anti:'反例：只晒结果不讲过程，故事变成简历；没有挣扎的故事，照亮不了任何人。',pr:'用 5 分钟口述一段自己的经历给录音：只讲一件事的经过，不讲道理。'}
+];
+var COMPARE = [
+ ['康德','普遍法则、审美判断、「扩展的心智」——她的判断理论直接从康德第三批判借来。','不要先验体系与普遍法则的强制：判断常常发生在没有标准的地方。'],
+ ['黑格尔','历史意识：人要在历史中理解自己和时代。','不要历史必然性与辩证法的终点：出生性与开始，专门打断「必然进程」。'],
+ ['海德格尔','存在、世界、在世存有——她全部早期训练的底子。','不要向死而生与独处沉思：她以出生性对死亡，以共在对孤独。'],
+ ['雅斯贝尔斯','沟通哲学、理智诚实、以对话求真理。','不要「大全」式的超越框架：她把沟通落回具体的公共世界与友谊。'],
+ ['马克思','对异化与现代劳动处境的诊断；「劳动创造人」的问题域。','不要劳动的至高地位：人的最高活动不是劳动，是行动；解放不在生产，在公共领域。'],
+ ['柏拉图 / 传统哲学','对「哲学与城邦」关系的追问本身——苏格拉底之死是她反复回到的场景。','不要哲学家统治与真理对意见的等级制：她站在意见、显现与复数性一边。'],
+ ['存在主义','个体的抉择、责任与「被抛」处境——她与这一思潮同时代并互相阅读。','不要向内转的本真性：她的「你是谁」只能在他人面前、在世界中显现，不能独白完成。'],
+ ['自由主义 / 保守主义','自由主义的权利语言、保守主义对传统的珍惜，她都部分使用。','两边都不要全盘：她批评权利在无国籍者身上的失效，也批评传统断裂后保守的无力——她的位置不在左右光谱上。']
+];
+(function(){
+  var ml = document.getElementById('metaphor-list');
+  if(ml) ml.innerHTML = METAPHORS.map(function(m){
+    return '<div class="card debate"><h3>'+m.t+'</h3><div class="flow"><span>宗教原义</span><i>→</i><span>她借用了什么</span><i>→</i><span>她改造了什么</span></div>'+
+    '<div class="dgrid" style="grid-template-columns:1fr"><div><b>宗教原义</b>'+m.orig+'</div><div><b>她借用了什么</b>'+m.borrow+'</div><div><b>她改造了什么</b>'+m.change+'</div></div></div>';
+  }).join('');
+  var ll = document.getElementById('love-life');
+  if(ll) ll.innerHTML = LOVELIFE.map(function(r){
+    return '<div class="card"><h4 style="margin:0 0 4px">'+r[0]+' <span class="tag">'+r[1]+'</span></h4><p style="margin:0;font-size:14.5px;color:var(--ink2)">'+r[2]+'</p></div>';
+  }).join('');
+  var nl = document.getElementById('nourish-list');
+  if(nl) nl.innerHTML = NOURISH.map(function(n,i){
+    return '<div class="card debate"><span class="tag sage">养分 '+(i+1)+' / 8</span><h3>'+n.t+'</h3>'+
+    '<p style="margin:6px 0"><b>概念一句话：</b>'+n.c+'</p><p style="margin:0 0 6px"><b>今天能怎么用：</b>'+n.u+'</p><p style="margin:0;color:var(--ink2)">'+n.anti+'</p>'+
+    '<div class="practice"><b>今日一练 · 5 分钟</b>'+n.pr+'</div></div>';
+  }).join('');
+  var pt = document.getElementById('practice-today');
+  if(pt){ var d = Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/864e5); var n = NOURISH[d % NOURISH.length];
+    pt.innerHTML = '<b>「'+n.t+'」</b> —— '+n.pr; }
+  var cl = document.getElementById('cmp-list');
+  if(cl) cl.innerHTML = COMPARE.map(function(r){
+    return '<div class="cmp-row"><h4>'+r[0]+'</h4><div class="cmp-cols"><div><b>继承了什么</b>'+r[1]+'</div><div><b>不要什么</b>'+r[2]+'</div></div></div>';
+  }).join('');
+})();
+
+/* ---------- theme toggle (in-memory only, follows system by default) ---------- */
+(function(){
+  var btn = document.getElementById('theme-toggle');
+  var root = document.documentElement;
+  function label(){ var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme')==='dark'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    btn.textContent = dark ? '切到浅色' : '切到深色'; }
+  btn.addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur==='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark'); label();
+  });
+  label();
+})();
+
+/* ---------- site search over real content only ---------- */
+(function(){
+  var INDEX = [];
+  Object.keys(CONCEPTS).forEach(function(k){ var c = CONCEPTS[k];
+    INDEX.push({t:'概念 · '+c.name+' '+c.en, d:c.def.slice(0,80)+'…', v:'system', hay:(c.name+' '+c.en+' '+c.de+' '+c.def)}); });
+  WORKS.forEach(function(w){ INDEX.push({t:'作品 · 《'+w.title+'》', d:w.q, v:'timeline', hay:(w.title+' '+w.en+' '+w.q+' '+w.intro)}); });
+  EXCERPTS.forEach(function(e){ INDEX.push({t:(e.zone==='doubt'?'摘录（存疑）· ':'摘录 · ')+e.work, d:e.zh, v:'excerpts', hay:(e.orig+' '+e.zh+' '+e.work)}); });
+  PEOPLE.forEach(function(pp){ INDEX.push({t:'人物 · '+pp.zh+' '+pp.n, d:pp.rel, v:'people', hay:(pp.zh+' '+pp.n+' '+pp.rel+' '+pp.inf)}); });
+  ['艾希曼论战 Scholem 缺乏对犹太人民的爱 犹太委员会','艾希曼 无思官僚 狂热反犹者 Stangneth 阿根廷文件','海德格尔 爱 思想与纳粹 辩护','小石城 1959 Ellison 种族 融合','极权主义的起源 方法之争 Strauss Voegelin','女权主义批评与再发现 Bonnie Honig'].forEach(function(h,i){
+    INDEX.push({t:'论战 · '+['艾希曼论战','艾希曼：官僚还是狂热者','海德格尔之结','小石城 1959','《起源》方法之争','女权主义批评与再发现'][i], d:'争论焦点 / 批评方论据 / 阿伦特回应 / 今天学界的定论', v:'debates', hay:h}); });
+  METAPHORS.forEach(function(m){ INDEX.push({t:'宗教隐喻 · '+m.t, d:m.change.slice(0,80)+'…', v:'metaphors', hay:(m.t+' '+m.orig+' '+m.borrow+' '+m.change)}); });
+  NOURISH.forEach(function(n){ INDEX.push({t:'普通人养分 · '+n.t, d:n.c, v:'nourish', hay:(n.t+' '+n.c+' '+n.u)}); });
+  COMPARE.forEach(function(r){ INDEX.push({t:'对照 · '+r[0], d:'继承：'+r[1]+' 不要：'+r[2], v:'compare', hay:(r[0]+' '+r[1]+' '+r[2])}); });
+  var input = document.getElementById('site-search'), out = document.getElementById('search-results');
+  function run(){
+    var q = input.value.trim().toLowerCase();
+    if(!q){ out.innerHTML=''; return; }
+    var hits = INDEX.filter(function(x){ return x.hay.toLowerCase().indexOf(q) !== -1; });
+    if(!hits.length){ out.innerHTML = '<div class="notfound"><b>没找到。</b>本站没有与「'+input.value.trim()+'」相关的内容 —— 可能是这个概念还没建，也可能换个说法就行（试试英文词，如 plurality、natality）。没找到就是没找到，这里不会现编一条结果。</div>'; return; }
+    out.innerHTML = '<p class="src" style="margin:0">找到 '+hits.length+' 条（只来自本站已有内容）：</p>' + hits.slice(0,12).map(function(x){
+      return '<button class="sres" data-goto="'+x.v+'"><b>'+x.t+'</b><span>'+x.d+'</span></button>';
+    }).join('');
+    out.querySelectorAll('[data-goto]').forEach(function(b){ b.addEventListener('click', function(){ showView(b.dataset.goto); }); });
+  }
+  document.getElementById('search-go').addEventListener('click', run);
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter') run(); });
+  input.addEventListener('input', function(){ if(input.value.trim().length>=2) run(); else if(!input.value.trim()) out.innerHTML=''; });
+})();
+</script>
+</body>
+</body>
+</html>
