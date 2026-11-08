@@ -283,6 +283,21 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
 .cmp-cols b{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--rust);display:block}
 .practice{margin-top:10px;background:var(--sage-soft);border-radius:10px;padding:11px 13px;font-size:14px}
 .practice b{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--sage);display:block}
+
+/* ---------- suggestion entry + language toggle ---------- */
+.navtools{display:inline-flex;gap:8px;align-items:center;margin-left:auto;flex:0 0 auto}
+.suggest-btn{display:inline-flex;align-items:center;gap:6px;background:var(--rust);color:#fff;text-decoration:none;
+  border-radius:999px;padding:9px 16px;font-size:14px;font-weight:700;font-family:"Noto Sans SC",sans-serif;min-height:44px;
+  box-shadow:var(--shadow);border:1px solid var(--rust)}
+.suggest-btn:hover{filter:brightness(1.08)} .suggest-btn:active{transform:scale(.98)}
+.suggest-btn .en{font-size:12px;opacity:.85;font-weight:400}
+.langseg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.transnote{margin:22px 0 0;padding:9px 13px;border:1px dashed var(--ochre);border-radius:10px;background:var(--ochre-soft);font-size:13px;font-family:"Noto Sans SC",sans-serif;color:var(--ink)}
+.suggest-card{border:1.5px solid var(--rust);background:var(--rust-soft)}
+.suggest-card h3{margin:0 0 6px;font-size:18px}
+.suggest-card p{margin:0 0 12px;font-size:14.5px;color:var(--ink2)}
+.foot-suggest{margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+.foot-suggest p{margin:6px 0 12px;font-size:13.5px}
 </style>
 </head>
 <body>
@@ -333,6 +348,13 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
     <button role="tab" data-view="excerpts" aria-selected="false">摘录库<span class="en">Excerpts</span></button>
     <button role="tab" data-view="surprise" aria-selected="false">普通人的一天<span class="en">A Day</span></button>
     <button role="tab" data-view="critique" aria-selected="false">批评与推翻<span class="en">Critique</span></button>
+    <span class="navtools">
+      <span class="seg langseg" role="group" aria-label="语言切换 / Language">
+        <button id="lang-zh" aria-pressed="true">中文</button>
+        <button id="lang-en" aria-pressed="false">EN</button>
+      </span>
+      <a class="suggest-btn" href="https://github.com/ILFISHDEER/hannah-arendt/issues/new?title=%E5%BB%BA%E8%AE%AE%EF%BC%9A&body=%E9%92%88%E5%AF%B9%E5%93%AA%E4%B8%80%E9%A1%B5%EF%BC%9A%EF%BC%88%E7%9C%8B%E6%9D%BF%20/%20%E6%97%B6%E9%97%B4%E8%BD%B4%20/%20%E4%BD%93%E7%B3%BB%E6%80%BB%E5%9B%BE%20/%20%E8%AE%BA%E6%88%98%20/%20%E5%AE%97%E6%95%99%E9%9A%90%E5%96%BB%20/%20%E7%88%B1%E4%B8%8E%E5%85%B3%E7%B3%BB%20/%20%E5%85%BB%E5%88%86%20/%20%E5%AF%B9%E7%85%A7%E8%A1%A8%20/%20%E6%91%98%E5%BD%95%E5%BA%93%20/%20%E6%89%B9%E8%AF%84%E9%A1%B5%20/%20%E5%85%B6%E4%BB%96%EF%BC%89%0A%0A%E5%93%AA%E9%87%8C%E4%B8%8D%E5%AF%B9%EF%BC%9A%0A%0A%E5%BB%BA%E8%AE%AE%E6%94%B9%E6%88%90%E4%BB%80%E4%B9%88%EF%BC%9A%0A%0A---%0A%E8%AF%B7%E5%B0%BD%E9%87%8F%E5%86%99%E5%85%B7%E4%BD%93%EF%BC%9A%E5%93%AA%E4%B8%80%E9%A1%B5%E3%80%81%E5%93%AA%E4%B8%80%E6%AE%B5%E3%80%81%E5%8E%9F%E6%96%87%E5%93%AA%E9%87%8C%E4%B8%8D%E5%AF%B9%E3%80%81%E5%BB%BA%E8%AE%AE%E7%9A%84%E6%94%B9%E6%B3%95%E3%80%82%E5%A5%BD%E7%9A%84%E5%BB%BA%E8%AE%AE%E4%BC%9A%E8%A2%AB%E8%AE%B0%E8%BF%9B%E3%80%8A%E6%8E%A8%E7%BF%BB%E8%AE%B0%E5%BD%95%E3%80%8B%EF%BC%8C%E5%8F%98%E6%88%90%E4%B8%8B%E4%B8%80%E8%BD%AE%E4%BC%98%E5%8C%96%E3%80%82" target="_blank" rel="noopener">✎ 提建议<span class="en">Suggest</span></a>
+    </span>
   </div>
 </nav>
 
@@ -690,6 +712,12 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
   <p class="lede">这一页不许在结尾圆回来。读完它，你不应该觉得「这个项目很完善」，而应该觉得「这个项目知道自己哪里不完善」。</p>
   <div class="card crit" id="crit-list"></div>
 
+  <div class="card suggest-card">
+    <h3 class="suggest-h">读到不对的地方？留一条建议</h3>
+    <p class="suggest-note">这个网站是纯静态站、没有后端，所以这里不放假装能提交的表单：点下面的按钮，会打开本项目 GitHub 仓库的 Issues 新建页，标题和正文模板已经预填好（针对哪一页、哪里不对、建议改成什么）。建议会收进仓库 Issues 里集中保存；好的建议会被记进下面的《推翻记录》，变成下一轮优化。</p>
+    <a class="suggest-btn" href="https://github.com/ILFISHDEER/hannah-arendt/issues/new?title=%E5%BB%BA%E8%AE%AE%EF%BC%9A&body=%E9%92%88%E5%AF%B9%E5%93%AA%E4%B8%80%E9%A1%B5%EF%BC%9A%EF%BC%88%E7%9C%8B%E6%9D%BF%20/%20%E6%97%B6%E9%97%B4%E8%BD%B4%20/%20%E4%BD%93%E7%B3%BB%E6%80%BB%E5%9B%BE%20/%20%E8%AE%BA%E6%88%98%20/%20%E5%AE%97%E6%95%99%E9%9A%90%E5%96%BB%20/%20%E7%88%B1%E4%B8%8E%E5%85%B3%E7%B3%BB%20/%20%E5%85%BB%E5%88%86%20/%20%E5%AF%B9%E7%85%A7%E8%A1%A8%20/%20%E6%91%98%E5%BD%95%E5%BA%93%20/%20%E6%89%B9%E8%AF%84%E9%A1%B5%20/%20%E5%85%B6%E4%BB%96%EF%BC%89%0A%0A%E5%93%AA%E9%87%8C%E4%B8%8D%E5%AF%B9%EF%BC%9A%0A%0A%E5%BB%BA%E8%AE%AE%E6%94%B9%E6%88%90%E4%BB%80%E4%B9%88%EF%BC%9A%0A%0A---%0A%E8%AF%B7%E5%B0%BD%E9%87%8F%E5%86%99%E5%85%B7%E4%BD%93%EF%BC%9A%E5%93%AA%E4%B8%80%E9%A1%B5%E3%80%81%E5%93%AA%E4%B8%80%E6%AE%B5%E3%80%81%E5%8E%9F%E6%96%87%E5%93%AA%E9%87%8C%E4%B8%8D%E5%AF%B9%E3%80%81%E5%BB%BA%E8%AE%AE%E7%9A%84%E6%94%B9%E6%B3%95%E3%80%82%E5%A5%BD%E7%9A%84%E5%BB%BA%E8%AE%AE%E4%BC%9A%E8%A2%AB%E8%AE%B0%E8%BF%9B%E3%80%8A%E6%8E%A8%E7%BF%BB%E8%AE%B0%E5%BD%95%E3%80%8B%EF%BC%8C%E5%8F%98%E6%88%90%E4%B8%8B%E4%B8%80%E8%BD%AE%E4%BC%98%E5%8C%96%E3%80%82" target="_blank" rel="noopener">✎ 提建议（去 GitHub Issues）</a>
+  </div>
+
   <h2 class="sec">推翻记录<span class="en">Record of Overturnings</span></h2>
   <p class="lede">前言里说了：这个项目最后会再推翻。每一次推翻，记下日期、推翻了什么、为什么、用什么代替。</p>
   <div class="card" style="overflow-x:auto">
@@ -715,6 +743,11 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
 
 <footer>
   <div>出处口径：Stanford Encyclopedia of Philosophy（Arendt 条目）· Encyclopaedia Britannica · Bard College Hannah Arendt Center · Goethe-Institut 阿伦特书目 · Young-Bruehl《Hannah Arendt: For Love of the World》。引文凡标「待核实」者，均为尚未追溯到页码，不作定论。本页最后核实于 2026-11-08（第 1 轮打样）。</div>
+  <div class="foot-suggest">
+    <b class="suggest-h">有建议？留给这个项目</b>
+    <p class="suggest-note">建议会收进本项目 GitHub 仓库的 Issues 里；好的建议会被记进《推翻记录》，变成下一轮优化。按钮会打开预填好模板的 Issues 新建页——请写清针对哪一页、哪里不对、建议改成什么。</p>
+    <a class="suggest-btn" href="https://github.com/ILFISHDEER/hannah-arendt/issues/new?title=%E5%BB%BA%E8%AE%AE%EF%BC%9A&body=%E9%92%88%E5%AF%B9%E5%93%AA%E4%B8%80%E9%A1%B5%EF%BC%9A%EF%BC%88%E7%9C%8B%E6%9D%BF%20/%20%E6%97%B6%E9%97%B4%E8%BD%B4%20/%20%E4%BD%93%E7%B3%BB%E6%80%BB%E5%9B%BE%20/%20%E8%AE%BA%E6%88%98%20/%20%E5%AE%97%E6%95%99%E9%9A%90%E5%96%BB%20/%20%E7%88%B1%E4%B8%8E%E5%85%B3%E7%B3%BB%20/%20%E5%85%BB%E5%88%86%20/%20%E5%AF%B9%E7%85%A7%E8%A1%A8%20/%20%E6%91%98%E5%BD%95%E5%BA%93%20/%20%E6%89%B9%E8%AF%84%E9%A1%B5%20/%20%E5%85%B6%E4%BB%96%EF%BC%89%0A%0A%E5%93%AA%E9%87%8C%E4%B8%8D%E5%AF%B9%EF%BC%9A%0A%0A%E5%BB%BA%E8%AE%AE%E6%94%B9%E6%88%90%E4%BB%80%E4%B9%88%EF%BC%9A%0A%0A---%0A%E8%AF%B7%E5%B0%BD%E9%87%8F%E5%86%99%E5%85%B7%E4%BD%93%EF%BC%9A%E5%93%AA%E4%B8%80%E9%A1%B5%E3%80%81%E5%93%AA%E4%B8%80%E6%AE%B5%E3%80%81%E5%8E%9F%E6%96%87%E5%93%AA%E9%87%8C%E4%B8%8D%E5%AF%B9%E3%80%81%E5%BB%BA%E8%AE%AE%E7%9A%84%E6%94%B9%E6%B3%95%E3%80%82%E5%A5%BD%E7%9A%84%E5%BB%BA%E8%AE%AE%E4%BC%9A%E8%A2%AB%E8%AE%B0%E8%BF%9B%E3%80%8A%E6%8E%A8%E7%BF%BB%E8%AE%B0%E5%BD%95%E3%80%8B%EF%BC%8C%E5%8F%98%E6%88%90%E4%B8%8B%E4%B8%80%E8%BD%AE%E4%BC%98%E5%8C%96%E3%80%82" target="_blank" rel="noopener">✎ 提建议（去 GitHub Issues）</a>
+  </div>
   <div class="foot-nav">
     <button data-nav="home">回看板</button><button data-nav="timeline">时间轴</button>
     <button data-nav="system">体系总图</button><button data-nav="excerpts">摘录库</button>
@@ -951,6 +984,181 @@ var QUIZANS = {
  judging:'你最容易把<b>判断</b>外包出去。没有标准时还要判断，是她留给普通人最难、也最自由的练习。'
 };
 
+/* ==================== i18n: language state + data-layer swap (runs before first render) ==================== */
+var __savedLang = 'zh';
+try { __savedLang = localStorage.getItem('amor-mundi-lang') || 'zh'; } catch (e) {}
+window.__LANG = (__savedLang === 'en') ? 'en' : 'zh';
+document.documentElement.setAttribute('lang', window.__LANG === 'en' ? 'en' : 'zh-CN');
+document.documentElement.setAttribute('data-lang', window.__LANG);
+window.__setLang = function (l) {
+  try { localStorage.setItem('amor-mundi-lang', l); } catch (e) {}
+  location.reload();
+};
+
+if (window.__LANG === 'en') {
+  /* ---- concept entries: definitions / prerequisites / open questions / sources (project translation) ---- */
+  var C_EN = {
+    labor:  { def: 'Work done to sustain life, endlessly repeated: eating, cleaning, earning a living. Its products are consumed the moment they are produced and leave nothing durable behind in the world. The labouring human, she says, is animal laborans — governed by necessity.',
+      from: 'The Human Condition (1958), ch. III', pre: 'First grasp "world" and "necessity"',
+      struggle: 'Is it fair to rank labour this low? Physical workers and carers may feel wounded reading this — and many later critics, including feminists, begin their rebuttal exactly here.' },
+    work:   { def: 'The activity that fabricates durable things: a table, a book, an institution, an essay that still stands three months later. Work builds the "world" — the human-made environment that outlives us and lets those who come after go on living in it.',
+      from: 'The Human Condition (1958), ch. IV', pre: 'Labour',
+      struggle: 'She worried that modern society turns everything into consumer goods: work degrades into labour, used up before it is even finished. Her own question: can durability still outrun the speed of consumption?' },
+    action: { def: 'The highest human activity in her ranking: speaking and beginning something new in the presence of others. Action makes no objects; it discloses "who you are" and sets off chains of consequences no one can foresee or take back — which is why action always needs forgiveness and promises to deal with the aftermath.',
+      from: 'The Human Condition (1958), ch. V', pre: 'Plurality, natality',
+      struggle: 'The consequences of action are uncontrollable, and she thought about this all her life: is uncontrollability the price of freedom, or a defect of politics? She never gave a comforting answer.' },
+    thinking:{ def: 'The "soundless dialogue between me and myself." Thinking produces no knowledge; it dismantles every ready-made concept and rule — like a wind thawing frozen categories. Eichmann\u2019s crime, in her view, began with stopping that dialogue: thoughtlessness.',
+      from: 'The Life of the Mind (1978), vol. I, Thinking', pre: 'None',
+      struggle: 'Can thinking stop people from doing evil? In her late years she asked herself this again and again and dared only answer "perhaps." This is the volume she struggled with most; Judging was never written — its incompletion is itself one of her conclusions.' },
+    willing:{ def: 'The mental faculty aimed at the future, torn between "I will" and "I will not." The will is her inner version of "beginning": every genuine act of willing interrupts necessity.',
+      from: 'The Life of the Mind (1978), vol. II, Willing', pre: 'Thinking',
+      struggle: 'Philosophers argued about the will for two thousand years without settling it, and she argues with them through the whole second volume. She died shortly after finishing it; the Judging volume survives only as a title page.' },
+    judging:{ def: 'The ability to say "this is right / this is wrong" when no ready-made standard exists. Borrowing from Kant\u2019s aesthetic judgement, she held that judgement works not by applying formulas but by an "enlarged mentality" — thinking from the standpoint of everyone else.',
+      from: 'Lectures on Kant\u2019s Political Philosophy (posth., 1982); the unwritten third volume of The Life of the Mind', pre: 'Thinking',
+      struggle: 'This is the question she left unanswered: The Life of the Mind stops at judgement. Judging without standards — she opened the problem; the answer is for those who come after to continue. Including you.' },
+    plurality:{ def: 'Humans are not "Man" in the singular but "men" in the plural: each person unique, yet all equal. Plurality, she says, is the condition of all action and speech — without others present, politics does not exist at all. Men, not Man, live on the earth.',
+      from: 'The Human Condition (1958), chs. I and V', pre: 'None — this is the starting point of the whole map',
+      struggle: 'Plurality requires difference to be preserved forever, while real politics always tries to press people into a single voice. The question she left open: how far can institutions protect plurality?' },
+    natality:{ def: 'A concept she took from Augustine and thoroughly remade: because human beings are born into the world, every person is a new beginning. A "miracle" is not divine intervention; it is every birth, and every time someone dares to start something new. The root of politics lies not in death but in birth.',
+      from: 'Foreshadowed in Love and Saint Augustine (1929); completed in The Human Condition (1958), ch. V', pre: 'Augustine on love',
+      struggle: 'This is her deepest rebellion against her teacher Heidegger: he spoke of being-toward-death; she spoke of beginning-toward-birth. Which comes closer to the human condition? She left the question standing there.' },
+    love:   { def: 'Not love of a person, but the willingness to let the world go on existing, to take responsibility for it, and to begin new things within it. In a 1955 letter to Jaspers she said she had begun so late to truly love the world, and wanted to name her book on political theory "Amor Mundi" — the original title of The Human Condition, and the name of this site.',
+      from: 'Letter to Karl Jaspers (1955), in the Arendt–Jaspers correspondence', pre: 'Augustine on love (1929)',
+      struggle: 'She also said love is "anti-political" — love wants two people to merge into one and has no use for plurality. Why are loving the world and loving a person complete opposites? She never smoothed out this tension, and neither does this site.' },
+    power:  { def: 'What exists only when people act together. Power is never an individual\u2019s property; it belongs to a group and lasts only while the group stays together — when the group disperses, it vanishes. Power and violence are therefore opposites: where violence is strongest, power is exactly what is missing.',
+      from: 'On Violence (1970)', pre: 'Action',
+      struggle: 'In reality power and violence are always entangled; is separating them so cleanly an insight or an idealisation? She admitted violence can destroy power, but insisted: violence can never create it.' },
+    violence:{ def: 'Instrumental force, amplified by implements, imposed by one side on another. Violence is mute — where it appears, speech and action have already left the scene. She distinguished five habitually confused words: power, violence, strength, authority, force.',
+      from: 'On Violence (1970)', pre: 'Power',
+      struggle: 'The student movements of the late 1960s forced her to write this. She supported the students\u2019 criticism of the universities yet refused to romanticise violence — pleasing neither side, as usual.' },
+    loneliness:{ def: 'Not solitude. Solitude is dialogue with oneself; loneliness is having lost even oneself — being surrounded by people does not cure it. Her famous claim: the breeding ground of totalitarian rule is not hatred but the mass spread of loneliness; loneliness makes people lose their sense of a common world and grab onto the "logic" of an ideology as a crutch.',
+      from: 'The Origins of Totalitarianism (1951), final chapter; also On Revolution', pre: 'First distinguish: loneliness ≠ isolation ≠ solitude',
+      struggle: 'Scrolling on your phone until midnight — is that solitude or loneliness? She never saw a smartphone, but her test still works: can you still talk to yourself? This site put that question into "An Ordinary Day."' },
+    evil:   { def: 'The phrase she coined for Eichmann: "the banality of evil." The man in the glass booth was no demon but an ordinary official who had stopped thinking, spoke only in bureaucratic clichés, and cared only about promotion. "Evil can have no depth" — the judgement enraged the world and set the agenda for the rest of her thinking: thoughtlessness and judgement. Note: in 1951 she had still written of "radical evil"; in 1963 she revised herself.',
+      from: 'Eichmann in Jerusalem (1963), subtitled A Report on the Banality of Evil', pre: 'Totalitarianism, loneliness',
+      struggle: 'Stangneth\u2019s later research showed Eichmann to have been far more cunning and ideological than he appeared at trial — so was "banal" too mild? Scholars still argue. This column gives no verdict; it only asks: if she were alive, how would she revise herself?' },
+    forgiveness:{ def: 'Taken from the Gospels and remade into a political mechanism: the consequences of action cannot be undone, and forgiveness is the only reaction that can "undo what has been done." Its counterpart is the promise, which answers action\u2019s unpredictability. Without forgiveness, a person would be nailed forever to a single deed.',
+      from: 'The Human Condition (1958), ch. V', pre: 'Action',
+      struggle: 'Are there limits to forgiveness? Some things are unforgivable — she admitted this but never said where the line is drawn. Eichmann cannot be forgiven; so who draws the line, and when?' },
+    promise:{ def: 'Because action is unpredictable, human beings invented promises, contracts and institutions — small "islands of predictability" in an ocean of future uncertainty. A constitution, in her eyes, is a collective promise — one reason she praised the American Revolution so highly.',
+      from: 'The Human Condition (1958); On Revolution (1963)', pre: 'Action',
+      struggle: 'Can promises be relied on? Their binding force, she said, comes only from "people being willing to hold to them together" — it sounds fragile, but she thought it was the only honest foundation politics has.' },
+    world:  { def: 'Not the planet Earth. The world is the common space between people, made of things, institutions, stories and language: it joins us together and separates us at once, like a table. Losing it is "worldlessness" — the common root of totalitarianism and loneliness.',
+      from: 'The Human Condition (1958), ch. II (The Public and the Private Realm)', pre: 'None',
+      struggle: 'Does social media count as a "world"? It connects everyone, yet may leave nothing durable behind. That question is left to you, not to her.' },
+    appearance:{ def: 'Being seen and heard in the public realm. For her, politics is first of all appearance: you step into public space, speak your words, and people thereby learn "who you are," not merely "what you are." To be invisible is a political death.',
+      from: 'The Human Condition (1958), chs. II and V', pre: 'Plurality',
+      struggle: 'Today everyone is "appearing," yet appearance keeps getting cheaper. Was she wrong, or has the form of appearance changed? Read this together with her account of "the social."' }
+  };
+  var LAYER_EN = { 'vita activa · 积极生活': 'vita activa · The Active Life', 'vita contemplativa · 沉思生活': 'vita contemplativa · The Contemplative Life', '核心支柱': 'Core pillar', '政治概念': 'Political concept' };
+  Object.keys(C_EN).forEach(function (k) {
+    if (!CONCEPTS[k]) return;
+    CONCEPTS[k].def = C_EN[k].def; CONCEPTS[k].from = C_EN[k].from; CONCEPTS[k].pre = C_EN[k].pre; CONCEPTS[k].struggle = C_EN[k].struggle;
+    if (LAYER_EN[CONCEPTS[k].layer]) CONCEPTS[k].layer = LAYER_EN[CONCEPTS[k].layer];
+  });
+  LAYERGROUPS.forEach(function (g) { if (LAYER_EN[g.t]) g.t = LAYER_EN[g.t]; if (g.t === '领域三分') g.t = 'Three realms'; });
+
+  /* ---- works ---- */
+  var W_EN = [
+    { q: 'Her dissertation (Heidelberg, supervised by Jaspers): in Augustine, what exactly does "love" love?', intro: 'Love as appetitus; initium, the beginning — the seed of natality', rev: '— (the starting point)', leave: 'How love relates to the world was not yet thought through — it would wait thirty years for The Human Condition' },
+    { q: 'How did a Jewish woman live her life between "pariah" and "parvenu"?', intro: 'Pariah / parvenu; the awakening of Jewish self-awareness', rev: 'The question of "love" becomes the question of "identity"', leave: 'The condition of the stateless, which exile would soon make her live herself' },
+    { q: 'Are Nazism and Stalinism a wholly new form of rule, never seen before in human history?', intro: 'Totalitarianism, radical evil, loneliness, the stateless, the plight of "the rights of man"', rev: 'The single thread of "love" is corrected: first, face evil', leave: 'Was "radical evil" the right word? In 1963 she would revise her own verdict' },
+    { q: 'What kinds of activity do human beings engage in in the world — and which of them deserves the name of freedom?', intro: 'The labour / work / action triad; plurality; natality; amor mundi; forgiveness and promises', rev: 'The 1951 diagnosis is turned into a positive theory of the human', leave: 'The politics of action is in place; the place of thinking is not yet settled' },
+    { q: 'After tradition breaks, what can human beings judge by? (Eight exercises)', intro: 'Tradition and modernity; the concept of freedom; the crisis in culture — a rehearsal for judgement', rev: 'The question is pushed from "action" toward "judgement"', leave: 'A full theory of judgement must wait for the Kant lectures and The Life of the Mind' },
+    { q: 'Why did the American Revolution hold while the French Revolution slid into terror? How can a "beginning" be preserved?', intro: 'Freedom as beginning; founding; the council system; happiness vs. freedom', rev: 'Revises The Human Condition: action needs institutions to house it', leave: 'Where does power come from? The streets of the late 1960s would force her to answer' },
+    { q: 'She attended the trial in Jerusalem: what kind of man was the organiser of the Holocaust sitting in the glass booth?', intro: 'The banality of evil; thoughtlessness', rev: 'She overturns her own "radical evil": evil can be banal, without depth', leave: 'What is the relation between thoughtlessness and evildoing? The question of her remaining life' },
+    { q: 'In dark times, what do human beings light one another by? (Eleven portraits)', intro: 'Friendship; storytelling; "even in the darkest of times we have the right to expect some illumination"', rev: '"Love of the world" is made concrete in specific people and friendships', leave: 'Is illumination enough? The question of violence was waiting in the streets' },
+    { q: 'In the age of the student movement and Vietnam: are power and violence the same thing?', intro: 'The five-word distinction of power vs. violence; bureaucracy as "rule by Nobody"', rev: 'The sharpest cut added to the "action" line: violence can never create power', leave: 'Who bears responsibility inside a bureaucracy? Leading to Crises of the Republic' },
+    { q: 'The Pentagon Papers, civil disobedience, the eve of Watergate: what is left of the republic?', intro: 'Lying and politics; civil disobedience; violence revisited', rev: 'Judgement is brought down to concrete events: the problem of truth in politics', leave: 'Everything finally converges on one question: why do people stop thinking?' },
+    { q: 'From action back to the mind: what are thinking, willing and judging, each of them?', intro: 'Thinking (finished), Willing (finished), Judging (unfinished)', rev: 'A revision of her first half-life: after action, thinking must be answered for', leave: 'The Judging volume was never finished — in December 1975 she died at her typewriter, a title page in the machine. Incompletion is the endpoint of this map, and the starting point left to the reader' }
+  ];
+  WORKS.forEach(function (w, i) { if (W_EN[i]) { w.q = W_EN[i].q; w.intro = W_EN[i].intro; w.rev = W_EN[i].rev; w.leave = W_EN[i].leave; } });
+
+  var LANE_EN = { life: 'Life', works: 'Works', concepts: 'Concepts', debates: 'Debates', people: 'People' };
+  var NODE_EN = { '汉诺威出生': 'Born in Hanover', '马堡遇海德格尔': 'Meets Heidegger at Marburg', '被拘押后流亡巴黎': 'Detained, then exile in Paris', '抵达纽约': 'Arrives in New York', '入籍美国': 'Becomes a US citizen', '旁听艾希曼审判': 'Attends the Eichmann trial', '纽约去世': 'Dies in New York',
+    '奥古斯丁之爱': 'Augustine on love', '极端之恶': 'Radical evil', '复数性 · 出生性 · 爱世界': 'Plurality · Natality · Amor mundi', '平庸之恶 · 无思': 'Banality of evil · Thoughtlessness', '权力 vs 暴力': 'Power vs. violence', '思考 · 意志 · 判断?': 'Thinking · Willing · Judging?',
+    '小石城事件争议': 'The Little Rock controversy', '艾希曼论战 (Scholem)': 'The Eichmann debate (Scholem)', 'Gaus 访谈：我不是哲学家': 'Gaus interview: "I am not a philosopher"',
+    '海德格尔 · Jaspers': 'Heidegger · Jaspers', '与 Blücher 结婚': 'Marries Blücher', '与 McCarthy 友谊': 'Friendship with McCarthy', 'Blücher 去世': 'Blücher dies', 'McCarthy 编辑遗作': 'McCarthy edits the posthumous work' };
+  LANES.forEach(function (l) { if (LANE_EN[l.id]) l.name = LANE_EN[l.id]; l.nodes.forEach(function (n) { if (NODE_EN[n.t]) n.t = NODE_EN[n.t]; }); });
+
+  var P_EN = [
+    { t: '① Love and Awakening 1924–1933', note: 'Starting from the question of love, Jewish identity is forced into self-awareness on the eve of the Nazi takeover.' },
+    { t: '② Exile and Diagnosis 1933–1951', note: 'A stateless person verifies statelessness in her own life. She writes the anatomy of totalitarianism.' },
+    { t: '③ A Theory of Action 1951–1963', note: 'Four books in a decade: first action is established, then revolution examined, and finally, in a courtroom, "evil" itself is re-judged.' },
+    { t: '④ Power, Violence and the Republic 1963–1972', note: 'Streets and Vietnam push the question to its extreme: violence cannot create power, and truth-telling becomes scarce.' },
+    { t: '⑤ Back to the Mind 1970–1978', note: 'In her last five years she asks only one thing: why do people stop thinking? The Judging volume — unfinished.' }
+  ];
+  PERIODS.forEach(function (p, i) { if (P_EN[i]) { p.t = P_EN[i].t; p.note = P_EN[i].note; } });
+
+  /* ---- excerpts: originals are already English; the Chinese line becomes a note ---- */
+  var ESRC_EN = ['The Human Condition (1958), ch. V, "Action"', 'On Violence (1970)', 'The Human Condition (1958), ch. I',
+    'Letter to Karl Jaspers (1955), in the Arendt–Jaspers Correspondence, 1926–1969', 'The Life of the Mind (1978), vol. I, Thinking',
+    'Personal Responsibility Under Dictatorship (1964)'];
+  EXCERPTS.forEach(function (e, i) {
+    if (e.zone === 'main') { e.zh = '(Original English text above — Arendt wrote and published in English; no translation needed.)'; e.conf = 'Verified shelf · Source identified'; if (ESRC_EN[i]) e.src = ESRC_EN[i]; }
+    else if (e.orig.indexOf('radical revolutionary') !== -1) { e.zh = '"The most radical revolutionary will become a conservative the day after the revolution." — Widely circulated online, but not yet traced to a page in her works.'; e.src = 'Source unverified — a lead only, not a conclusion'; e.conf = 'Doubt shelf · Unverified'; e.work = 'Unverified'; }
+    else { e.zh = 'English version in progress — the line above is kept in its Chinese original on purpose: these are short lines circulating in Chinese-language "Arendt quote" collections, and rendering them into polished English would manufacture quotes she may never have written. Anything that cannot be pinned to a book and chapter stays here first. Better empty than "probably hers."'; e.src = 'Source unverified — web collections, not primary literature'; e.conf = 'Doubt shelf · Unverified'; e.work = 'Unverified'; }
+  });
+
+  /* ---- people ---- */
+  var PP_EN = [
+    { rel: 'Her dissertation supervisor, like a father and a friend. Their correspondence ran nearly forty years (1926–1969); the famous "love of the world" letter was written to him.', inf: 'Inherited: communication, intellectual honesty. Difference: she weighted public appearance more, he inner transcendence.' },
+    { rel: 'Her teacher and lover at Marburg; in 1933 he joined the Nazi party and they broke; after the war they resumed corresponding and she defended him in public — the one place she "failed to do it."', inf: 'Inherited: being, world. Rebelled: he taught being-toward-death, she natality; he prized solitude, she being-with.' },
+    { rel: 'Met in Paris exile, married 1940. She called him her "world" and her anchor. His death in 1969 was the deepest loss of her late years.', inf: 'Many of her political judgements were first argued out with him at the dinner table.' },
+    { rel: 'Friends from the late 1940s — a friendship of mutual scolding and mutual rescue. After Arendt\u2019s death, McCarthy edited The Life of the Mind for publication.', inf: 'Friendship as plurality in living form: keeping distance, telling the truth in a common world.' },
+    { rel: 'A close friend in Paris exile; in 1940 he took his own life while fleeing. She later edited and introduced his writings to the English-speaking world.', inf: 'Storytelling, the break in tradition — she took these from him, and rewrote them.' },
+    { rel: 'A poet friend in New York. After her death, Auden was one of the few mourners who truly understood her.', inf: 'Between poet and thinker: narrative and remembrance.' },
+    { rel: 'A fellow student at Marburg, a lifelong friend and sparring partner; in the Eichmann controversy he stood among her critics, and the friendship survived.', inf: 'Being able to say "that line of yours is wrong" to each other, with the friendship intact — exactly her standard.' },
+    { rel: 'His 1963 open letter accused her of lacking "love of the Jewish people" — the detonator of the controversy. Their correspondence is the primary source for the whole debate.', inf: 'Her reply: I never "love" any collective; I love only my friends.' },
+    { rel: 'Her student and the editor of her literary remains; a central figure in Arendt scholarship today.', inf: 'Sending the unfinished manuscripts back into the world, one volume at a time.' },
+    { rel: 'Known for critical inheritance: she took over Arendt\u2019s concepts of the public realm and narrative, and pointed out her blind spots.', inf: 'Inheritance is not repetition: one way of continuing the Judging volume.' }
+  ];
+  PEOPLE.forEach(function (p, i) { if (PP_EN[i]) { p.rel = PP_EN[i].rel; p.inf = PP_EN[i].inf; p.role = { '导师': 'Mentor', '导师 · 旧爱': 'Mentor · Former love', '丈夫': 'Husband', '密友': 'Close friend', '密友 · 引介': 'Close friend · Introducer', '同窗 · 论友': 'Fellow student · Sparring partner', '论敌': 'Debate opponent', '后继者': 'Successor' }[p.role] || p.role; } });
+
+  /* ---- critiques ---- */
+  var CR_EN = [
+    ['You turned me into a system, but I spent my life against systems.', 'I spoke of "thinking without a banister," and you fitted me with banisters, drew a master map, and fixed a reading order. The moment thinking has standard answers, it is no longer thinking.'],
+    ['You explain thought by biography, but thought is not a footnote to a life.', 'I was exiled and loved the wrong people; that does not make The Origins of Totalitarianism a product of exile. Telling my story clearly is not the same as thinking my thoughts clearly.'],
+    ['You turned action into a dashboard — progress bars and check-ins — but action is not labour.', 'Dashboards, numbers and completion rates turn "beginning" into "production." I appear in the public realm; you count my appearances backstage.'],
+    ['You present both sides and aim at neutrality, but judgement is not neutrality.', 'Judgement means saying "this is right / this is wrong" when there is no standard. Placing Scholem next to me does not mean you have judged.'],
+    ['You diagrammed friendship, love and loneliness, but relationships are not classifications.', 'Friendship is political precisely because it cannot be classified or managed. Draw it into a chart and it dies.'],
+    ['You lack plurality: this whole site speaks about me in a single voice.', 'A real public realm has different people standing up to speak and contradict one another. Leave a place where those who disagree with me — and those I offended — can speak too.'],
+    ['You lack beginning: this is an archive looking backwards, not a new beginning.', 'What matters most to me is not how completely you present me, but whether, after reading, you dare to begin something new yourselves — however small, however likely to fail.']
+  ];
+  CRITIQUES.forEach(function (c, i) { if (CR_EN[i]) { c[0] = CR_EN[i][0]; c[1] = CR_EN[i][1]; } });
+
+  /* ---- today pool / ordinary day / quiz ---- */
+  var TP_EN = ['Because the world today does not lack bad people; it lacks people who stop and think. This line runs from "radical evil" in 1951, revised by her own hand in 1963 into "the banality of evil."',
+    'Because "beginning" is the most usable thing she left ordinary people: a failed project or a closed account is not the end.',
+    'Because the emptiness of scrolling before sleep is usually not solitude but loneliness — tell the two apart, and today is already different.',
+    'Because we confuse power and violence every day. She spent a whole book separating them; once separated, a great deal of news becomes very clear.'];
+  TODAYPOOL.forEach(function (t, i) { if (TP_EN[i]) t.why = TP_EN[i]; });
+
+  var DAY_EN = [
+    ['Wake up, phone first', 'Labour opens the day. Information rushes past like water and leaves nothing behind. She would ask: after this half hour, is there anything durable in the world that exists because of you? (→ Labour / Work)'],
+    ['A meeting — your turn to speak', 'The smallest stage of action: speaking before others, disclosing "who you are." Platitudes are safest, but platitudes are not speech — Eichmann\u2019s language was all platitudes. (→ Action / Appearance)'],
+    ['An angry post — about to repost', 'The crossroads of thoughtlessness. Her remedy is astonishingly small: stop for ten seconds and hold a silent dialogue with yourself — "what was I just thinking?" (→ Thinking / Thoughtlessness)'],
+    ['Do one thing that will still be there in three months', 'The hour of work. Finish an essay, a product, a document — and the world gains one durable thing. (→ Work / World)'],
+    ['Dinner with a friend; a disagreement', 'Friendship is politics: not agreement, but speaking clearly in a common world. A friend who can say to your face "that line of yours is wrong" is living proof of plurality. (→ Plurality / Friendship)'],
+    ['Before sleep: solitude, or loneliness?', 'There is only one test: can you still talk to yourself? If yes, it is solitude, the precondition of thinking. If no, it is loneliness — which she called the breeding ground of totalitarianism. Start by taking care of your own night. (→ Loneliness / Solitude)']
+  ];
+  DAYROWS.forEach(function (r, i) { if (DAY_EN[i]) { r[1] = DAY_EN[i][0]; r[3] = DAY_EN[i][1]; } });
+
+  var Q_EN = [
+    { q: 'Everyone in the group chat is denouncing someone. You usually…', a: 'Join in — the mood is there', b: 'Hold back and look at what the other side says' },
+    { q: 'Before reposting something, you…', a: 'Repost if the headline feels right', b: 'Stop ten seconds and think about the source' },
+    { q: 'At the end of a day, most of what you did…', a: 'Vanishes once done; tomorrow starts over', b: 'Leaves something that lasts' },
+    { q: 'The last hour before sleep, you are…', a: 'Scrolling until tired, mind unable to stop', b: 'Keeping a stretch of quiet that is yours alone' },
+    { q: 'When there is no ready answer and nobody to copy, you…', a: 'Wait for an authority to speak', b: 'Judge for yourself, and own being wrong' }
+  ];
+  QUIZ.forEach(function (item, i) { if (Q_EN[i]) { item.q = Q_EN[i].q; item.a = Q_EN[i].a; item.b = Q_EN[i].b; } });
+  QUIZANS.evil = 'Your thoughtlessness most likely hides in <b>following the crowd</b>. Her words fit here best: "Most evil is done by people who never make up their minds to be good or evil." (The Life of the Mind) — not self-blame, but a reason to stop for ten seconds next time.';
+  QUIZANS.thinking = 'Your thoughtlessness most likely hides on the <b>repost button</b>. For her, thinking is "the soundless dialogue between me and myself"; the fingers move before the dialogue has begun.';
+  QUIZANS.labor = 'Your days may be filled with <b>labour</b>: done and gone, repeated tomorrow. Try leaving a small piece each day for "work" — one thing that will still be there in three months.';
+  QUIZANS.loneliness = 'Your nights may confuse <b>solitude with loneliness</b>. Solitude is talking to yourself; loneliness is having lost even yourself. Tonight, try ten minutes without a phone, just being with yourself.';
+  QUIZANS.judging = 'You most easily outsource <b>judgement</b>. Judging when there is no standard is the hardest — and freest — exercise she left to ordinary people.';
+}
+
 /* ==================== NAV ==================== */
 function showView(id){
   document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id==='view-'+id)});
@@ -989,6 +1197,11 @@ function icon(name,cls){return '<svg class="ic '+(cls||'')+'"><use href="#'+ICON
     '跟着大家一起骂一个人，没想过他那边怎么说':'判断的第一课，是「设身处地替所有人想一遍」。骂之前先听完另一边——不是中立，是判断。对应概念：判断 judging。',
     '明明觉得不对，但「流程就是这样」':'「流程就是这样」，是艾希曼在庭上说得最多的一类话。她说：没有人有权利服从（1964）。对应概念：平庸之恶。',
     '今天还没有 —— 我停下来想过一次':'那今天这一问就值了。思考在她那里从不是天赋，是一次次停下来的总和。明天同一时间，这里还有一问。'};
+  if (window.__LANG === 'en') { qs = {
+    '转发消息前，没核实就发出去了':'This is the everyday form of what she called thoughtlessness — the act was completed before thinking began. The remedy is not self-blame, but that ten-second pause. Concept: thinking.',
+    '跟着大家一起骂一个人，没想过他那边怎么说':'The first lesson of judgement is "thinking from the standpoint of everyone else." Hear the other side before joining in — not neutrality, but judgement. Concept: judging.',
+    '明明觉得不对，但「流程就是这样」':'"That\u2019s just the process" is the kind of sentence Eichmann repeated most at his trial. She said: no one has the right to obey (1964). Concept: the banality of evil.',
+    '今天还没有 —— 我停下来想过一次':'Then today\u2019s question has done its work. For her, thinking is never a talent; it is the sum of many small stoppings. Tomorrow at the same time, there will be another question here.' }; }
   document.querySelectorAll('#qopts button').forEach(function(b){
     b.addEventListener('click',function(){
       document.querySelectorAll('#qopts button').forEach(function(x){x.classList.remove('picked')});
@@ -1261,6 +1474,52 @@ var COMPARE = [
  ['存在主义','个体的抉择、责任与「被抛」处境——她与这一思潮同时代并互相阅读。','不要向内转的本真性：她的「你是谁」只能在他人面前、在世界中显现，不能独白完成。'],
  ['自由主义 / 保守主义','自由主义的权利语言、保守主义对传统的珍惜，她都部分使用。','两边都不要全盘：她批评权利在无国籍者身上的失效，也批评传统断裂后保守的无力——她的位置不在左右光谱上。']
 ];
+/* ==================== i18n: round 2-5 data swap (runs before those sections render) ==================== */
+if (window.__LANG === 'en') {
+  var M_EN = [
+    { t: 'Augustine on love → Amor mundi', orig: 'Augustine distinguished cupiditas (greedy love, possessing the things of the world) from caritas (right love, aimed at the eternal); human beings have weight through their love and are dragged wherever it drags them.', borrow: 'Her 1929 dissertation takes Augustine on love as its whole subject; the Latin form of her late phrase "love of the world," amor mundi, comes directly from this tradition.', change: 'She moves love\u2019s endpoint from "eternity / God" back to "the world": love is no longer a ladder out of the world but gratitude and responsibility for this transient one. The 1955 letter to Jaspers is the moment of naming (see the verified shelf of the Excerpt Library).' },
+    { t: 'Natality', orig: 'In Christianity, birth and the Incarnation carry the meaning of redemption: the arrival of a new life is grace, not part of a natural cycle.', borrow: 'She takes over the structure — "every newborn is an entirely new beginning" — and uses it as the root of action and freedom.', change: 'The theological frame is removed: the world is redeemed not by the coming of God\u2019s son but by every ordinary person\u2019s birth and every beginning within action — the "miracle" is secularised into the fact of natality (The Human Condition, ch. V; verified shelf).' },
+    { t: 'Forgiveness and promising', orig: 'In the Gospels, forgiveness is the core practice Jesus teaches: people can be released, relationships can begin again.', borrow: 'She takes this tradition directly and places forgiveness at the centre of the action chapter of The Human Condition, pairing it with promising.', change: 'Forgiveness turns from a religious virtue into a political mechanism: it is the only reaction that answers "action cannot be undone," while promising answers "action cannot be foreseen." Working them requires no faith — only plural human beings willing to hold to them together.' },
+    { t: 'Pariah / parvenu', orig: '"Pariah" originally named those outside the caste system in India; in a Jewish context it came to describe people excluded from mainstream society, while the parvenu is the upstart desperately climbing into high society.', borrow: 'She uses this pair to write Rahel Varnhagen: a Jewish woman who spent her life between "being a pariah" and "being a parvenu."', change: 'She rehabilitates the pariah: the conscious pariah, standing outside the world, sees it clearly; the parvenu buys a ticket with assimilation and pays with the self. Her own life in exile is the footnote to this remaking.' },
+    { t: 'Loneliness / desert / worldlessness', orig: 'The desert is an image from the Bible and the monastic tradition: the place of leaving the world to face emptiness and temptation; in religious language "the world" often carries a negative sense — the secular realm.', borrow: 'She takes over the images of desert and worldlessness to write the experience under totalitarianism: the sense of world drained away, the human being as if in a desert.', change: 'The values are inverted by her hand: the problem is not that "the world is too secular" but that "the world is disappearing." Loneliness is not spiritual discipline but having lost even oneself (The Origins of Totalitarianism, final chapter); holding on to the world becomes the highest good.' },
+    { t: 'Thinking as prayer (dialogue with oneself)', orig: 'In religion, prayer is dialogue with God: stopping outward business and opening oneself to a higher partner in conversation.', borrow: 'She takes over the posture — stopping, speaking with an unseen dialogue partner — to write her account of thinking in The Life of the Mind.', change: 'The dialogue partner is changed from God to oneself: thinking is "the soundless dialogue between me and myself" (the two-in-one). Prayer asks for a response; thinking asks for non-contradiction with oneself — thoughtlessness is when even this dialogue has stopped.' }
+  ];
+  METAPHORS.forEach(function (m, i) { if (M_EN[i]) { m.t = M_EN[i].t; m.orig = M_EN[i].orig; m.borrow = M_EN[i].borrow; m.change = M_EN[i].change; } });
+
+  var LL_EN = [
+    ['Heidegger', 'Teacher and former love · 1924–', 'A classroom encounter and a love affair at Marburg; rupture in 1933, correspondence resumed after the war. From him she took "world" and "being"; what she handed back was a whole rebuttal: natality against being-toward-death. See Debate III.'],
+    ['Günther Stern', 'First husband · 1929–1937', 'Both trained in philosophy; married in the Berlin years, separated in exile. Details of this marriage are mostly in the biographies; this site records only the skeleton, and the specific letters remain unverified.'],
+    ['Heinrich Blücher', 'Husband · 1940–1969', 'Her partner from Paris exile: a self-taught working-class intellectual. Many of her political judgements were first argued out with him at the dinner table; his death in 1969 was the deepest loss of her late years.'],
+    ['Karl Jaspers', 'Mentor and correspondent · 1926–1969', 'Forty years of correspondence are the second scene of her thought: the "love of the world" letter was written to him. The first sample of friendship in her sense — disagreements, no rupture.'],
+    ['Mary McCarthy', 'Close friend · late 1940s–1975', 'They scolded each other and rescued each other. After Arendt\u2019s death, McCarthy edited The Life of the Mind for publication. Friendship as plurality: keeping distance, telling the truth in a common world.']
+  ];
+  LOVELIFE.forEach(function (r, i) { if (LL_EN[i]) { r[0] = LL_EN[i][0]; r[1] = LL_EN[i][1]; r[2] = LL_EN[i][2]; } });
+
+  var N_EN = [
+    { t: 'Stop and think', c: 'Thinking is "the soundless dialogue between me and myself"; thoughtlessness is when it stops.', u: 'Before reposting, following a trade, or taking a side, stop for ten seconds and ask: "What was I just thinking, and on what basis?"', anti: 'Counter-example: joining a crowd in denouncing someone, then finding the denunciation was wrong — the fault is not the position, but that the dialogue never began.', pr: 'Put the phone down for 5 minutes and answer one question only: what did I do today without thinking first?' },
+    { t: 'The capacity to begin', c: 'Natality: every person is, themselves, a new beginning.', u: 'When a project collapses or a registration fails, do not write a death sentence in the summary; write the next step: what is the smallest new start I can open today?', anti: 'Counter-example: delaying for three years with "I\u2019ll start when conditions are ready" — conditions are never ready; beginning is what creates them.', pr: 'Write down the thing you have delayed longest, do only its first step, timed at 5 minutes, then stop.' },
+    { t: 'Make work, not only labour', c: 'Labour is done and gone; work leaves durable things in the world.', u: 'Reserve a small piece of every day for things that "will still be there in three months": a finished essay, a proper document, a system set up.', anti: 'Counter-example: chasing hot topics and market quotes all day until midnight, then asking what you left behind — only exhaustion.', pr: 'Split today\u2019s to-do list into two columns: what will vanish / what will remain. Give "what will remain" 5 minutes.' },
+    { t: 'Judge even without a standard', c: 'Judgement is saying "this is right / this is wrong" when there is no formula.', u: 'AI gives answers and experts give opinions, but the final "in my judgement" cannot be outsourced; own being wrong, and judgement grows.', anti: 'Counter-example: "everyone says so" and "that\u2019s just the process" — the kind of line Eichmann used most at his trial.', pr: 'Pick one news item from today; before reading any comments, write one sentence of your own judgement with a reason, then compare.' },
+    { t: 'Loneliness and solitude', c: 'Solitude is dialogue with oneself; loneliness is having lost even oneself — similar on the surface, opposite in substance.', u: 'Keep a stretch of input-free time for yourself every day: a walk, no earphones, no phone.', anti: 'Counter-example: scrolling until 2 a.m., plenty of noise, and when the screen goes dark only emptiness — that is not solitude, it is loneliness.', pr: 'Tonight, keep 5 screen-free minutes before sleep and check one thing with yourself: what did I do right today?' },
+    { t: 'Friendship is the most political relationship', c: 'Friendship keeps distance and tells the truth in a common world — plurality alive.', u: 'Maintaining two or three people who can say "that line of yours is wrong" to your face matters far more than collecting likes.', anti: 'Counter-example: only banquet-and-likes acquaintances, and when trouble comes nobody can tell the truth — that is many people, not friendship.', pr: 'Send an old friend a message with substance: one thing you recently figured out, and ask what they think.' },
+    { t: 'Love the world', c: 'Amor mundi: after seeing clearly how bad the world is, still being willing to take responsibility for it and to begin.', u: 'For your industry, your community, the place you live — do one small thing that lets it "go on existing": tidy, record, repair.', anti: 'Counter-example: cynicism — "everything is rotten anyway" costs the least effort, and the price is handing the world over to those who care least about it.', pr: 'Spend 5 minutes on one thing purely to "make things around you a little better": tidy a shared document, correct a record, leave one useful sentence.' },
+    { t: 'Tell stories', c: 'Meaning is not defined into existence, it is narrated; a story is what lets "who you are" appear.', u: 'Tell and write your own experience clearly: failures, career changes, one thing you made work — that is a world you leave for yourself.', anti: 'Counter-example: showing only results and never the process turns a story into a résumé; a story without struggle lights nothing for anyone.', pr: 'Use 5 minutes to narrate one of your own experiences into a recorder: only what happened, no moralising.' }
+  ];
+  NOURISH.forEach(function (n, i) { if (N_EN[i]) { n.t = N_EN[i].t; n.c = N_EN[i].c; n.u = N_EN[i].u; n.anti = N_EN[i].anti; n.pr = N_EN[i].pr; } });
+
+  var CMP_EN = [
+    ['Kant', 'Universal law, aesthetic judgement, the "enlarged mentality" — her theory of judgement borrows directly from the third Critique.', 'No prior system and no coercion by universal law: judgement often happens exactly where there is no standard.'],
+    ['Hegel', 'Historical consciousness: understanding oneself and one\u2019s age within history.', 'No historical necessity and no dialectical endpoint: natality and beginning exist precisely to interrupt the "necessary process."'],
+    ['Heidegger', 'Being, world, being-in-the-world — the ground of all her early training.', 'No being-toward-death and no solitary meditation: natality against death, being-with against solitude.'],
+    ['Jaspers', 'A philosophy of communication, intellectual honesty, truth sought through dialogue.', 'No encompassing framework of transcendence: she brings communication back down into the concrete public world and friendship.'],
+    ['Marx', 'The diagnosis of alienation and the modern condition of labour; the problem-domain of "labour creates man."', 'No supremacy of labour: the highest human activity is not labour but action; liberation lies not in production but in the public realm.'],
+    ['Plato / the philosophical tradition', 'The very question of "philosophy and the city" — the death of Socrates is a scene she returns to again and again.', 'No philosopher-rule and no hierarchy of truth over opinion: she stands with opinion, appearance and plurality.'],
+    ['Existentialism', 'Individual choice, responsibility, the "thrown" condition — she and this movement were contemporaries and read each other.', 'No inward turn of authenticity: her "who you are" can appear only before others, in the world; it cannot be completed in monologue.'],
+    ['Liberalism / conservatism', 'The liberal language of rights and the conservative cherishing of tradition — she uses both in part.', 'Neither wholesale: she criticises how rights fail the stateless, and how conservatism is powerless after tradition breaks — her position is not on the left–right spectrum.']
+  ];
+  COMPARE.forEach(function (r, i) { if (CMP_EN[i]) { r[0] = CMP_EN[i][0]; r[1] = CMP_EN[i][1]; r[2] = CMP_EN[i][2]; } });
+}
+
 (function(){
   var ml = document.getElementById('metaphor-list');
   if(ml) ml.innerHTML = METAPHORS.map(function(m){
@@ -1309,18 +1568,33 @@ var COMPARE = [
   WORKS.forEach(function(w){ INDEX.push({t:'作品 · 《'+w.title+'》', d:w.q, v:'timeline', hay:(w.title+' '+w.en+' '+w.q+' '+w.intro)}); });
   EXCERPTS.forEach(function(e){ INDEX.push({t:(e.zone==='doubt'?'摘录（存疑）· ':'摘录 · ')+e.work, d:e.zh, v:'excerpts', hay:(e.orig+' '+e.zh+' '+e.work)}); });
   PEOPLE.forEach(function(pp){ INDEX.push({t:'人物 · '+pp.zh+' '+pp.n, d:pp.rel, v:'people', hay:(pp.zh+' '+pp.n+' '+pp.rel+' '+pp.inf)}); });
-  ['艾希曼论战 Scholem 缺乏对犹太人民的爱 犹太委员会','艾希曼 无思官僚 狂热反犹者 Stangneth 阿根廷文件','海德格尔 爱 思想与纳粹 辩护','小石城 1959 Ellison 种族 融合','极权主义的起源 方法之争 Strauss Voegelin','女权主义批评与再发现 Bonnie Honig'].forEach(function(h,i){
-    INDEX.push({t:'论战 · '+['艾希曼论战','艾希曼：官僚还是狂热者','海德格尔之结','小石城 1959','《起源》方法之争','女权主义批评与再发现'][i], d:'争论焦点 / 批评方论据 / 阿伦特回应 / 今天学界的定论', v:'debates', hay:h}); });
+  var DEB_T = ['艾希曼论战','艾希曼：官僚还是狂热者','海德格尔之结','小石城 1959','《起源》方法之争','女权主义批评与再发现'];
+  var DEB_H = ['艾希曼论战 Scholem 缺乏对犹太人民的爱 犹太委员会','艾希曼 无思官僚 狂热反犹者 Stangneth 阿根廷文件','海德格尔 爱 思想与纳粹 辩护','小石城 1959 Ellison 种族 融合','极权主义的起源 方法之争 Strauss Voegelin','女权主义批评与再发现 Bonnie Honig'];
+  var DEB_D = '争论焦点 / 批评方论据 / 阿伦特回应 / 今天学界的定论';
+  if (window.__LANG === 'en') {
+    DEB_T = ['The Eichmann debate','Eichmann: bureaucrat or fanatic','The Heidegger knot','Little Rock 1959','The Origins — a dispute over method','Feminist criticism and rediscovery'];
+    DEB_H = ['Eichmann debate Scholem love of the Jewish people Jewish Councils ahavat Yisrael tone','Eichmann thoughtless bureaucrat or fanatical antisemite Stangneth Argentina papers banality of evil','Heidegger love thought and the Nazis defence judgement Marburg','Little Rock 1959 Ellison race school integration sacrifice social realm','Origins of Totalitarianism method dispute Strauss Voegelin history or political theory','feminist criticism rediscovery Bonnie Honig Adrienne Rich woman question'];
+    DEB_D = 'Focus of the dispute / the critics\u2019 case / Arendt\u2019s response / where scholarship stands today';
+  }
+  DEB_H.forEach(function(h,i){
+    INDEX.push({t:'论战 · '+DEB_T[i], d:DEB_D, v:'debates', hay:h}); });
   METAPHORS.forEach(function(m){ INDEX.push({t:'宗教隐喻 · '+m.t, d:m.change.slice(0,80)+'…', v:'metaphors', hay:(m.t+' '+m.orig+' '+m.borrow+' '+m.change)}); });
   NOURISH.forEach(function(n){ INDEX.push({t:'普通人养分 · '+n.t, d:n.c, v:'nourish', hay:(n.t+' '+n.c+' '+n.u)}); });
   COMPARE.forEach(function(r){ INDEX.push({t:'对照 · '+r[0], d:'继承：'+r[1]+' 不要：'+r[2], v:'compare', hay:(r[0]+' '+r[1]+' '+r[2])}); });
+  if (window.__LANG === 'en') { /* EN mode searches the English content only: strip CJK from the index hay */
+    INDEX.forEach(function(x){ x.hay = x.hay.replace(/[\u3400-\u9fff\uf900-\ufaff\u3000-\u303f\uff00-\uffef]/g, ' '); });
+  }
   var input = document.getElementById('site-search'), out = document.getElementById('search-results');
   function run(){
     var q = input.value.trim().toLowerCase();
     if(!q){ out.innerHTML=''; return; }
     var hits = INDEX.filter(function(x){ return x.hay.toLowerCase().indexOf(q) !== -1; });
-    if(!hits.length){ out.innerHTML = '<div class="notfound"><b>没找到。</b>本站没有与「'+input.value.trim()+'」相关的内容 —— 可能是这个概念还没建，也可能换个说法就行（试试英文词，如 plurality、natality）。没找到就是没找到，这里不会现编一条结果。</div>'; return; }
-    out.innerHTML = '<p class="src" style="margin:0">找到 '+hits.length+' 条（只来自本站已有内容）：</p>' + hits.slice(0,12).map(function(x){
+    if(!hits.length){ out.innerHTML = window.__LANG === 'en'
+      ? '<div class="notfound"><b>Not found.</b> This site holds nothing matching \u201c'+input.value.trim()+'\u201d — the concept may not be built yet, or another wording may work (try the English term, e.g. plurality, natality). Not found is not found: no result will be invented here.</div>'
+      : '<div class="notfound"><b>没找到。</b>本站没有与「'+input.value.trim()+'」相关的内容 —— 可能是这个概念还没建，也可能换个说法就行（试试英文词，如 plurality、natality）。没找到就是没找到，这里不会现编一条结果。</div>'; return; }
+    out.innerHTML = (window.__LANG === 'en'
+      ? '<p class="src" style="margin:0">Found '+hits.length+' result(s), from this site\u2019s existing content only:</p>'
+      : '<p class="src" style="margin:0">找到 '+hits.length+' 条（只来自本站已有内容）：</p>') + hits.slice(0,12).map(function(x){
       return '<button class="sres" data-goto="'+x.v+'"><b>'+x.t+'</b><span>'+x.d+'</span></button>';
     }).join('');
     out.querySelectorAll('[data-goto]').forEach(function(b){ b.addEventListener('click', function(){ showView(b.dataset.goto); }); });
@@ -1330,6 +1604,327 @@ var COMPARE = [
   input.addEventListener('input', function(){ if(input.value.trim().length>=2) run(); else if(!input.value.trim()) out.innerHTML=''; });
 })();
 </script>
-</body>
+<script>
+/* ==================== i18n: static UI translation + language toggle wiring ==================== */
+(function () {
+  var LANG = window.__LANG || 'zh';
+  var zb = document.getElementById('lang-zh'), eb = document.getElementById('lang-en');
+  if (zb && eb) {
+    zb.setAttribute('aria-pressed', LANG === 'zh' ? 'true' : 'false');
+    eb.setAttribute('aria-pressed', LANG === 'en' ? 'true' : 'false');
+    zb.addEventListener('click', function () { if (LANG !== 'zh') window.__setLang('zh'); });
+    eb.addEventListener('click', function () { if (LANG !== 'en') window.__setLang('en'); });
+  }
+  document.querySelectorAll('.suggest-btn').forEach(function (a) {
+    a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
+  });
+  if (LANG !== 'en') return;
+
+  document.title = 'Amor Mundi · Love of the World — Exploring Hannah Arendt';
+  function qs(s, r) { return (r || document).querySelector(s); }
+  function qsa(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function txt(el, t) { if (el) el.textContent = t; }
+  function firstText(el, t) { if (el && el.childNodes.length) el.childNodes[0].textContent = t; }
+
+  /* ---------- suggestion entry points ---------- */
+  qsa('.suggest-btn').forEach(function (a) { a.textContent = '✎ Suggest an improvement ↗'; });
+  qsa('.suggest-h').forEach(function (el) { el.textContent = 'Have a suggestion? Leave it where it will be kept'; });
+  qsa('.suggest-note').forEach(function (el) { el.textContent = 'This is a static site with no backend, so there is no pretend form here: the button opens a new GitHub Issue in the project repository, pre-filled with a title and a template (which page, what is wrong, what it should become). Suggestions are collected in the repo\u2019s Issues; the good ones will be recorded in the Record of Overturnings and turned into the next round of improvements.'; });
+
+  /* ---------- header & nav ---------- */
+  txt(qs('.brand .latin'), '· Love of the World');
+  txt(qs('.brand .sub'), 'Exploring the thought of Hannah Arendt · 1906–1975');
+  var NAV_EN = { home: 'Home', timeline: 'Timeline', system: 'System', people: 'People', debates: 'Debates', metaphors: 'Metaphors', love: 'Love', nourish: 'Nourishment', compare: 'Compare', excerpts: 'Excerpts', surprise: 'A Day', critique: 'Critique' };
+  qsa('nav.main button[data-view]').forEach(function (b) { firstText(b, NAV_EN[b.dataset.view] || b.dataset.view); var sp = b.querySelector('.en'); if (sp) sp.style.display = 'none'; });
+  qsa('.foot-nav button').forEach(function (b) { txt(b, { home: 'Back to Home', timeline: 'Timeline', system: 'System', excerpts: 'Excerpt Library', debates: 'Debates', metaphors: 'Metaphors', love: 'Love & Relations', nourish: 'Nourishment', compare: 'Comparison Table', critique: 'How Arendt Would Criticize This Site' }[b.dataset.nav] || b.textContent); });
+
+  /* ---------- visible project-translation note on every translated view ---------- */
+  var tb = qs('#theme-toggle'); if (tb) tb.setAttribute('aria-label', 'Toggle dark / light mode');
+  qsa('.view').forEach(function (v) {
+    if (v.id === 'view-home') return; /* home carries the note under the preface */
+    var n = document.createElement('p'); n.className = 'transnote';
+    n.textContent = '本项目翻译 · Project translation — the English on this page is this project\u2019s own translation of its Chinese text. Arendt\u2019s own words, wherever quoted, are given in her original English. A passage not yet translated with confidence is marked "English version in progress" and keeps its Chinese original.';
+    v.insertBefore(n, v.firstChild);
+  });
+
+  /* ---------- search box ---------- */
+  txt(qs('.searchbox .tag'), 'FULL-TEXT SEARCH');
+  txt(qs('.searchbox p.src'), 'Search concepts, works, excerpts, debates, people, metaphors and nourishment. Only what this site already holds is searched — if nothing is found, it says so plainly and never invents a result.');
+  var si = qs('#site-search'); if (si) { si.placeholder = 'Try: banality of evil / Eichmann / forgiveness / Jaspers / beginning…'; si.setAttribute('aria-label', 'Type keywords to search the whole site'); }
+  txt(qs('#search-go'), 'Search');
+
+  /* ---------- preface (project text; English is this project's own translation) ---------- */
+  txt(qs('.preface .kicker'), 'PROJECT PREFACE — Before everything else');
+  var PREF_EN = [
+    'I do not know her, and it is precisely because I do not know her that I want to explore.',
+    'She would not think what I have done so far is "enough" — but not as a reproach. For her, "enough" was the wrong question to begin with. Understanding, for her, is not a course you pass once and finish; it is an endless business. She herself was 49 when she wrote to Jaspers: "I have begun so late, really only in recent years, to truly love the world." A person of nearly fifty, still saying she has only just begun.',
+    'So the position I am in now — not knowing her, and wanting to explore precisely because I do not know her — is exactly the position she valued most. More dangerous than me is the person who believes they already understand. Not thinking, merely following procedure, is where she located the beginning of the banality of evil; admitting you do not know, stopping to think, is where thinking begins.',
+    'These 24 modules are enough for me to start building with; they are not enough for me to "have understood her" — and that is exactly right. A map is not the territory; however complete a prompt is, it cannot replace reading a book and thinking through a concept myself.',
+    'If she asked me anything, it would be one question only: after reading, will you dare to begin something new yourself?',
+    'However small. Start with one book, The Human Condition or Eichmann in Jerusalem — the one whose answers I most want to know right now. The other modules will wait there; they are not going anywhere.',
+    '— One more thing to say up front, because it is this project\u2019s greatest irony and its greatest metaphor: with 24 modules, a five-layer architecture, a timeline and a dashboard, I have built a system for someone who spent her life against systems and spoke of "thinking without a banister." I have made this project, and in the end I will overturn it. Overturning is not failure; it is thinking itself. When I understand her a little more, I will come back and overturn and rewrite this place. This project was, from the very beginning, not made to be finished, but to be begun.'
+  ];
+  qsa('.preface blockquote p').forEach(function (p, i) { if (PREF_EN[i]) p.textContent = PREF_EN[i]; });
+  var note = document.createElement('p'); note.className = 'src'; note.style.margin = '10px 0 0';
+  note.textContent = 'Translator\u2019s note: this preface (and the other project texts on this site) was written in Chinese; the English is this project\u2019s own translation. Arendt\u2019s own words, wherever quoted, are given in her original English.';
+  qs('.preface').appendChild(note);
+
+  /* ---------- home dashboard statics ---------- */
+  txt(qs('#view-home .card .tag.rust'), "TODAY'S READING");
+  txt(qs('#today-btn'), 'Read this concept entry →');
+  var progCard = qsa('#view-home .card')[1];
+  txt(qs('.tag.sage', progCard), 'MAP PROGRESS');
+  txt(qs('p.src', progCard), 'The honest progress of this site: what is built, what is still empty — no varnish.');
+  var PROG_EN = [['Preface + dashboard + full-text search', 'Built'], ['Timeline (lanes + mind map)', 'Built'], ['System map (three views)', '17 entries'], ['Debates, main text', '6 written out'], ['Religious metaphors chapter', '6 written out'], ['Love, relations & pursuits', 'Built'], ['Nourishment + comparison table', '8 items + 8 rows'], ['Fellow travellers', 'Skeleton built; letters to add'], ['Excerpt Library', '6 on the verified shelf; extraction continues']];
+  qsa('#progress-list .prow').forEach(function (r, i) { if (PROG_EN[i]) { txt(r.children[0], PROG_EN[i][0]); txt(r.children[2], PROG_EN[i][1]); } });
+  var blind = qs('.card.blind');
+  txt(qs('.tag', blind), 'BLIND SPOTS');
+  var BLIND_EN = ['<b>Debates completed (rounds 2–3).</b> Six debates written out as "focus / criticism / response / where scholarship stands today"; wherever we are unsure we write "to be verified" rather than putting words in anyone\u2019s mouth.',
+    '<b>Religious metaphors now a chapter (rounds 2–3).</b> Six metaphors read as "original meaning → what she borrowed → what she changed"; love, relations and pursuits, the eight nourishments, and the comparison table with other philosophers are also complete.',
+    '<b>The Excerpt Library is still a frame.</b> Six entries on the verified shelf, all with sources; two in the doubt shelf deliberately left blank — better fewer than fabricated.'];
+  qsa('li', blind).forEach(function (li, i) { if (BLIND_EN[i]) li.innerHTML = BLIND_EN[i]; });
+  txt(qs('button', blind), 'See the doubt shelf in the Excerpt Library →');
+  txt(qs('.qbox h3'), 'When did you last act "without thinking"?');
+  txt(qs('.qbox p'), 'There is no standard answer. This question only brings the concepts home to yourself — pick the closest one and see which concept it belongs to.');
+  var QOPT_EN = ['Reposted without checking first', 'Joined in denouncing someone', '"That\u2019s just the process"', 'Not today — I stopped and thought once'];
+  qsa('#qopts button').forEach(function (b, i) { if (QOPT_EN[i]) b.textContent = QOPT_EN[i]; });
+  var threeH = qsa('#view-home h2.sec')[0]; if (threeH) firstText(threeH, 'Where to begin');
+  txt(qsa('#view-home p.lede')[0], 'Three doors, three ways of reading: how she thought her way through a life (Timeline), how the concepts interlock (System Map), how an ordinary day looks lit by her concepts (the surprise page).');
+  var LC_EN = [['Works & Thought Timeline', 'Five lanes, 1906–1978. Every work separates begun / finished / published; four lines of thought can be highlighted.'],
+    ['The System Map', 'Network, mind map, or list. Click any concept for its entry: definition card + mind-map branches + where she remained unsure.'],
+    ['An Ordinary Day ✳ Surprise page', 'A page the blueprint never asked for: one ordinary day lived through her concepts, then a "thoughtlessness check" on yourself.']];
+  qsa('.linkcard').forEach(function (c, i) { if (LC_EN[i]) { txt(qs('h4', c), LC_EN[i][0]); txt(qs('p', c), LC_EN[i][1]); } });
+
+  /* ---------- timeline ---------- */
+  var tl = qs('#view-timeline');
+  firstText(qs('h2.sec', tl), 'Works & Thought Timeline');
+  txt(qs('p.lede', tl), 'Five lanes in one: life / works / concepts / debates / fellow travellers. Every work separates begun · finished · published — giving only the publication year reverses the order of thought. Click any node for details; use the thread buttons below to highlight one line of thought. On a phone, swipe sideways; the lanes will not crush together.');
+  txt(qs('#tl-mode-lanes'), 'Lanes'); txt(qs('#tl-mode-mind'), 'Mind map');
+  txt(qs('#view-timeline .seg + .src, #view-timeline span.src'), 'Same data, two ways of seeing.');
+  var TH_EN = { all: 'All threads', love: 'Thread of love', evil: 'Thread of evil', act: 'Thread of action', think: 'Thread of thinking' };
+  qsa('#threadbar button').forEach(function (b) { var t = TH_EN[b.dataset.thread]; if (!t) return;
+    for (var i = 0; i < b.childNodes.length; i++) { if (b.childNodes[i].nodeType === 3 && b.childNodes[i].nodeValue.trim()) { b.childNodes[i].nodeValue = t; return; } }
+    b.appendChild(document.createTextNode(t)); });
+  txt(qs('#tl-mind > p.src'), 'Mind-map view: gathered by five periods. Use lanes for sequence; use the mind map for "what she was wrestling with in this stretch."');
+
+  /* ---------- system ---------- */
+  var sy = qs('#view-system');
+  firstText(qsa('h2.sec', sy)[0], 'The System Map');
+  txt(qsa('p.lede', sy)[0], 'She was no system-builder, yet her concepts interlock. One map, three views: the network for relations, the mind map for hierarchy, the list for looking up entries. Click any concept to open its entry below — definition card + mind-map branches + "where she remained unsure."');
+  txt(qs('#sys-mode-net'), 'Network'); txt(qs('#sys-mode-mind'), 'Mind map'); txt(qs('#sys-mode-list'), 'List');
+  firstText(qsa('h2.sec', sy)[1], 'What to learn first');
+  txt(qsa('p.lede', sy)[1], 'The order of prerequisites is not decoration: plurality before action; natality before freedom; loneliness before totalitarianism.');
+  var orderCards = qsa('#view-system .card'); var orderCard = orderCards[orderCards.length - 1];
+  if (orderCard) orderCard.innerHTML = 'Plurality → Action → Power → Public realm<br/>Natality → Beginning → Freedom<br/>Loneliness → Worldlessness → Totalitarianism<div class="src" style="margin-top:8px">English terms are Arendt\u2019s own; see each concept entry for definitions and sources.</div>';
+
+  /* ---------- people ---------- */
+  var pp = qs('#view-people');
+  firstText(qs('h2.sec', pp), 'Fellow Travellers');
+  txt(qs('p.lede', pp), 'Her thought grew inside conversations, loves and ruptures with specific people. Two views: the network shows who connects to whom; the grouped view shows what happened inside each layer of relationship.');
+  txt(qs('#ppl-mode-net'), 'Network'); txt(qs('#ppl-mode-mind'), 'Grouped');
+  qsa('.ppl .ava').forEach(function (a, i) { if (PEOPLE[i]) a.textContent = PEOPLE[i].n.charAt(0); });
+  txt(qsa('#view-people p.src')[0], 'Sources for the relationships: the Arendt–Jaspers correspondence (1926–1969), the Arendt–Heidegger letters, the Arendt–McCarthy correspondence, and Young-Bruehl\u2019s biography. Letter excerpts will be added letter by letter in later rounds; this round gives only the skeleton of relationships and fabricates no quotations.');
+
+  /* ---------- excerpts ---------- */
+  var ex = qs('#view-excerpts');
+  firstText(qs('h2.sec', ex), 'Excerpt Library');
+  txt(qs('p.lede', ex), 'No quota — a library, built by slow extraction. Every entry must be traceable to a book + chapter (or a letter date); popular lines with no findable source go only to the doubt shelf, never mixed into the verified shelf. Source standard: Stanford Encyclopedia of Philosophy, Britannica, the Bard Hannah Arendt Center, the Goethe-Institut bibliography; anything unsure is marked "to be verified."');
+  var fc = qs('#f-concept'); if (fc) fc.options[0].textContent = 'All concepts';
+  var fw = qs('#f-work'); if (fw) fw.options[0].textContent = 'All works';
+  var fper = qs('#f-period'); if (fper) { fper.options[0].textContent = 'All periods'; fper.options[1].textContent = 'Early · 1929–1950'; fper.options[2].textContent = 'Mature · 1951–1963'; fper.options[3].textContent = 'Late · 1964–1978'; }
+  var fz = qs('#f-zone'); if (fz) { fz.options[0].textContent = 'Verified + doubt shelves'; fz.options[1].textContent = 'Verified shelf only'; fz.options[2].textContent = 'Doubt shelf only'; }
+
+  /* ---------- surprise / ordinary day ---------- */
+  var su = qs('#view-surprise');
+  firstText(qsa('h2.sec', su)[0], 'An Ordinary Day');
+  txt(qsa('p.lede', su)[0], 'This page is not among the 24 modules. It surfaced halfway through building: what she wrote is not far from ordinary people — what is far is that we never held it up against our own day. Below, a day is taken apart; each stretch borrows only concepts she actually used, and invents no new words for her.');
+  firstText(qsa('h2.sec', su)[1], 'A Thoughtlessness Check');
+  txt(qsa('p.lede', su)[1], 'Five questions, answered by instinct. It gives no score — she opposed turning thinking into a check-in most of all. At the end it only points out where your "thoughtlessness" today most likely hides.');
+  firstText(qsa('h2.sec', su)[2], 'If She Lived in 2026');
+  txt(qs('.disclaimer', su), '⚠ This section is this project\u2019s contemporary extrapolation (a third layer), not her words. She died in 1975 and could not have spoken about algorithms or social media. It does one thing only: take concepts she actually gave in The Human Condition, On Violence and The Life of the Mind, and use them as a lens on today. Every quotation used is one with a source in the Excerpt Library above.');
+  var SU_EN = [['Algorithmic feeds → the rise of the social', 'Her "social realm" is the zone where public and private swallow each other. Through her eyes, the feed is this: everyone "appearing," yet no common world left behind — appearance turned into labour, gone as soon as it is done.'],
+    ['The repost button → the everyday form of thoughtlessness', 'Eichmann\u2019s problem was not hatred; it was that he stopped conversing with himself. Stopping ten seconds before reposting and asking "what was I just thinking?" is the smallest unit of resistance she left to ordinary people.'],
+    ['AI answers → outsourced judgement', 'Machines can give answers; they cannot give judgement. Judgement is saying "this is right / this is wrong" when there is no standard. Outsourcing judgement is outsourcing freedom.'],
+    ['Subscriptions & writing → from labour to work', 'Chasing trends is labour, gone when done; writing a piece that still stands three months later is work — leaving something durable in the world. This project itself wants to be the latter.']];
+  qsa('#view-surprise .grid2 .card').forEach(function (c, i) { if (SU_EN[i]) { txt(qs('h4', c), SU_EN[i][0]); txt(qs('p', c), SU_EN[i][1]); } });
+
+  /* ---------- debates ---------- */
+  var de = qs('#view-debates');
+  firstText(qs('h2.sec', de), 'The Debates');
+  txt(qs('p.lede', de), 'Each debate is written in the same format: focus of the dispute / the critics\u2019 case / Arendt\u2019s response / where scholarship stands today. This site takes no side; it gives the chain of evidence. Where material is insufficient or scholarship is still divided, it says "to be verified." Her own words are used only where the Excerpt Library has a sourced sentence; everything else is paraphrase.');
+  var DEB_EN = [
+    { tag: '1963 · Unfinished to this day', title: 'I. The Eichmann Debate: Did She "Not Love the Jewish People"?', blocks: [
+      ['Focus of the dispute', 'After Eichmann in Jerusalem (1963) appeared, the argument centred on three points: whether the book\u2019s tone was mocking; whether her criticism of the role of the Jewish Councils (Judenräte) in the Holocaust went too far; and the charge in Gershom Scholem\u2019s open letter — that she lacked ahavat Yisrael, "love of the Jewish people."'],
+      ['The critics\u2019 case', 'Scholem held that her portrayal of the victims lacked sympathy and her blame of the Jewish leadership was close to cruel; some Jewish organisations mounted organised criticism, arguing that discussing the Councils\u2019 cooperation in a trial report shifted responsibility onto the victims. Several old friends broke with her over it (see Hans Jonas on the People page).'],
+      ['Arendt\u2019s response', 'In her exchange with Scholem she replied (in substance, paraphrased): she never "loves" any collective — nation or class; she loves only specific individuals, her friends; the right relation to the Jewish people is not "love" but sharing responsibility for it in world politics. Her criticism of the Councils was aimed at "the choices of a leadership in an extreme situation," not at ordinary victims, and she insisted a report must state all the facts, including the ugly ones.'],
+      ['Where scholarship stands today', 'Most researchers hold: her factual judgement on the Jewish Councils was over-generalised and underestimated local differences — that criticism partly stands; but charges of "anti-Semitism" or "exonerating the Nazis" do not. The letters are in the Arendt–Scholem correspondence (1963); exact pages remain to be verified.']] },
+    { tag: '1963 → New evidence in 2011', title: 'II. Eichmann Himself: Thoughtless Bureaucrat, or Fanatical Antisemite?', blocks: [
+      ['Focus of the dispute', 'Did "the banality of evil" let Eichmann off too lightly: was he a mere obedient paperwork machine, or an actor with firm convictions?'],
+      ['The critics\u2019 case', 'Bettina Stangneth\u2019s Eichmann Before Jerusalem (2011), using recordings and writings from his Argentine exile (the "Argentina papers"), showed that in exile he openly took pride in his role and read and annotated antisemitic literature — nothing like a man without beliefs; the "little clerk" of the trial was at least partly a performance. Biographical research such as David Cesarani\u2019s reaches similar conclusions.'],
+      ['Arendt\u2019s response', 'She died in 1975 and cannot answer material from 2011. Following her own framework (an inference by this site, not her words): what she described was the phenomenon of "thoughtlessness" — the refusal to think from another\u2019s standpoint — not a claim that Eichmann "had no motives"; her book also records his boasting, obedience and self-interest.'],
+      ['Where scholarship stands today', 'The steadier consensus: Eichmann was more ideological and more active than her portrait, and "banal" is no longer accurate if it means "ordinary, without ideas"; but "thoughtlessness" as a diagnosis of a specific failure of thinking is still used by many researchers. Exactly which archival lines divide the two positions remains to be verified.']] },
+    { tag: '1924–1975 · The knot of a lifetime', title: 'III. Heidegger: Love, Thought, and the Nazis', blocks: [
+      ['Focus of the dispute', 'In 1924 at Marburg she fell in love with her teacher Heidegger; in 1933 he became rector of Freiburg University and joined the Nazi party. After the war she resumed correspondence with him, promoted English translations of his work, and defended him in public. Was this a failure of judgement?'],
+      ['The critics\u2019 case', 'Critics point out a double standard: severe on Eichmann\u2019s "thoughtlessness," lenient on Heidegger\u2019s entanglement with Nazism; her 1969 text for his eightieth birthday skirted the key questions. The charge rests mainly on the published Arendt–Heidegger letters.'],
+      ['Arendt\u2019s response', 'In private letters and interviews she distinguished "a person\u2019s thought" from "his political judgement" (in substance, paraphrased), treating his 1933 error as the typical naivety of a philosopher trying to intervene in reality — while never denying the pain of the rupture. Her exact words are scattered through the letters; this site does not quote them sentence by sentence (to be verified).'],
+      ['Where scholarship stands today', 'Biographical research (Young-Bruehl and others) generally recognises this as the deepest tension of her life: the rebellion of natality against being-toward-death grew out of her struggle with his thought; and her leniency toward him still has no accepted excuse. This page closes the case for neither side.']] },
+    { tag: '1959 · The American context', title: 'IV. Little Rock 1959: What Exactly Was She Against?', blocks: [
+      ['Focus of the dispute', 'In 1957 in Little Rock, Arkansas, nine Black students entering a white high school triggered a crisis. Arendt\u2019s "Reflections on Little Rock" (1959) opposed using federal coercion to advance school integration and placed education in the "social realm" rather than the political one — and drew fierce criticism at once.'],
+      ['The critics\u2019 case', 'Ralph Ellison and others answered that she did not understand the ethic of "sacrifice" of Black families who let their children walk in front: what the children bore was exactly the ideal their parents taught them; critics held that she misread a racial question as an abstract distinction between "social discrimination vs. political equality."'],
+      ['Arendt\u2019s response', 'In her reply to Ellison she conceded (in substance, paraphrased) that she had not understood the ideal of "sacrifice" — that was her omission; but she kept her principled doubts about "pushing children onto the political front line" and about state coercion entering the private/social realm. The exact date and text of the reply remain to be verified.'],
+      ['Where scholarship stands today', 'This is recognised as one of her errors of judgement: an insufficient grasp of American racial reality, and Ellison\u2019s criticism is widely held to stand; at the same time, her theoretical question about the public / private / social triad is still discussed in political theory. The error and the question must be recorded separately.']] },
+    { tag: 'From 1951 · A dispute over method', title: 'V. The Origins of Totalitarianism: History, or Political Theory?', blocks: [
+      ['Focus of the dispute', 'After the book appeared in 1951, Leo Strauss, Eric Voegelin and others questioned her method: does juxtaposing Nazism and Stalinism hold up; and is assembling material by "crystallisation of elements" rigorous historical writing?'],
+      ['The critics\u2019 case', 'In his review Voegelin praised her insight but criticised her for replacing solid analysis of institutions and the genesis of ideology with philosophical concepts; historians long held the book\u2019s selection of material subjective and some facts wrong. Strauss-line criticism concentrated on her overly general "diagnosis of modernity" (specific texts to be verified).'],
+      ['Arendt\u2019s response', 'In essays such as "Understanding and Politics" she answered (in substance, paraphrased): she was not writing traditional historiography but "understanding" — facing the unprecedented without forcing it into ready categories; "storytelling" and conceptual discrimination in her method are a deliberate choice to leave room to think about new phenomena.'],
+      ['Where scholarship stands today', 'The book\u2019s standing as strict historiography is still disputed, but its standing as a classic of political theory is secure; "totalitarianism" as an analytic concept was questioned after the Cold War and has been taken up again in recent years. Her dispute over method has never received a final verdict.']] },
+    { tag: '1970s–90s · Criticism and rediscovery', title: 'VI. Feminist Criticism and Rediscovery', blocks: [
+      ['Focus of the dispute', 'She herself refused the frame of "the woman question" (in the 1964 Gaus interview she called herself an "exception"), and her public/private distinction places care and reproduction outside politics — is she a resource for feminist thought, or an obstacle?'],
+      ['The critics\u2019 case', 'Early feminist critics (Adrienne Rich among them) charged her concepts with an elite and masculine air, above all the hierarchy of labour / work / action, which devalues body and care. Rich described her books as showing a kind of "tragedy of the female mind" (exact wording to be verified).'],
+      ['Arendt\u2019s response', 'She never answered feminism systematically in her lifetime (she died in 1975, before this discussion peaked); the only answer she can give is her method itself: reread her through plurality and appearance rather than answering on her behalf. This cell is therefore left empty — an empty cell is more honest than a ventriloquised answer.'],
+      ['Where scholarship stands today', 'From the 1990s, scholars such as Bonnie Honig edited volumes and rediscovered her: action, plurality, and the disclosure of "who you are" were read as a political theory that presupposes no essence — a major resource for feminist and democratic theory. The double track of "criticism — rediscovery" remains the mainstream reading today.']] }
+  ];
+  qsa('#view-debates .debate').forEach(function (card, i) {
+    var d = DEB_EN[i]; if (!d) return;
+    txt(qs('.tag', card), d.tag); txt(qs('h3', card), d.title);
+    qsa('.dgrid > div', card).forEach(function (cell, j) { if (d.blocks[j]) cell.innerHTML = '<b>' + d.blocks[j][0] + '</b>' + d.blocks[j][1]; });
+  });
+
+  /* ---------- metaphors ---------- */
+  var me = qs('#view-metaphors');
+  firstText(qs('h2.sec', me), 'Religious Metaphors');
+  txt(qs('p.lede', me), 'She was no theologian, but almost all her best concepts are borrowed from religious language and then remade by her own hand. Each metaphor is read along one line: religious origin → what she borrowed → what she changed. Borrowing is homage; changing is rebellion.');
+
+  /* ---------- love & relations ---------- */
+  var lo = qs('#view-love');
+  firstText(qsa('h2.sec', lo)[0], 'Love, Relations, and What She Was After');
+  txt(qsa('p.lede', lo)[0], 'The most counter-intuitive point first: she held that love "destroys the in-between between us" and is anti-political, while friendship is the opposite — the most political of relationships. Her answer is a third kind of love: love of the world.');
+  firstText(qsa('h2.sec', lo)[1], 'Three Kinds of Love');
+  var LOVE3_EN = [['1 · Craving', 'cupiditas · Possessive love', 'Augustine\u2019s "greedy love": loving an object in order to possess it and fill one\u2019s own lack. Her 1929 dissertation starts exactly here — such love aims at the desire behind the object, and the object is replaceable.'],
+    ['2 · Worldless love', 'Love as anti-political', 'When two people\u2019s love merges them into one, it burns away the "world" between them — distance, speech, others. Hence her claim that love is not only unpolitical but anti-political. This is not a demotion of love but a boundary: love cannot run public life, and public life must not take love as its standard (see Debate I, the Scholem dispute).'],
+    ['3 · Love of the world', 'amor mundi', 'Love of the world: willing it to go on existing, taking responsibility for it, beginning new things within it. The 1955 letter to Jaspers (original and source on the verified shelf) is the naming moment of this concept — also the original title of The Human Condition, and the name of this site.']];
+  qsa('#view-love .grid3 .card').forEach(function (c, i) { if (LOVE3_EN[i]) { txt(qs('.tag', c), LOVE3_EN[i][0]); txt(qs('h4', c), LOVE3_EN[i][1]); txt(qs('p', c), LOVE3_EN[i][2]); } });
+  firstText(qsa('h2.sec', lo)[2], 'Five Ways of Being with Others');
+  var SPEC_EN = [['Love', 'Two merge into one; the world leaves the stage. Intimate, yet anti-political.'], ['Friendship', 'Keeps distance and tells the truth in a common world. The most political relationship.'], ['Loneliness', 'Having lost even oneself. People around you cannot cure it — the breeding ground of totalitarianism.'], ['Isolation', 'Cut off from acting together with others. A common tool of tyranny.'], ['Solitude', 'The "two-in-one" dialogue with oneself. The precondition of thinking, not an illness.']];
+  qsa('#view-love .spec div').forEach(function (d, i) { if (SPEC_EN[i]) { txt(qs('b', d), SPEC_EN[i][0]); txt(qs('p', d), SPEC_EN[i][1]); } });
+  txt(qs('#view-love .card .src'), 'Basis of the spectrum: the final chapter of The Origins of Totalitarianism (loneliness / isolation), The Human Condition (friendship and love), The Life of the Mind (solitude and thinking). The full discriminations are scattered through the books; this is this site\u2019s summary chart, not her own table.');
+  firstText(qsa('h2.sec', lo)[3], 'Her Life in Relations');
+  firstText(qsa('h2.sec', lo)[4], 'Four Things She Pursued All Her Life');
+  var PUR_EN = [['Understanding', 'Not explaining something away, but facing reality in a reconciling way: understanding the unprecedented without forcing it into old categories. She called this the motive of all her writing.'],
+    ['Beginning', 'Natality landed in action: freedom is not "choosing" but being able to open something that did not exist before. Revolutions, forgiveness and promises are all forms of beginning.'],
+    ['Judging', 'Still distinguishing right from wrong when there is no standard — her last question in old age, and the volume she never finished. To pursue it is to outsource judgement to no one.'],
+    ['Home', 'What "home" means to someone stateless for eighteen years: having a place in the world where you can speak and be heard. Home is not a house; it is a seat for you at the table of the world.']];
+  qsa('#view-love .grid2')[1] && qsa('.card', qsa('#view-love .grid2')[1]).forEach(function (c, i) { if (PUR_EN[i]) { txt(qs('h4', c), PUR_EN[i][0]); txt(qs('p', c), PUR_EN[i][1]); } });
+  firstText(qsa('h2.sec', lo)[5], 'A Question for Today');
+  var lastLove = qsa('#view-love .card').pop();
+  if (lastLove) txt(qs('p', lastLove), 'Through her frame (this site\u2019s extrapolation, not her words): love today is hard because of three displacements — treating love as labour to be managed (check-in devotion, gone when done); treating relationships as appearance to be performed (for an audience, not for the other); and letting algorithmic "matching" abolish beginning (choosing only the compatible, never meeting the unlike other). Her remedy is still the division of the three loves: keep craving in check, keep intimate love for two people, and do not lose the love of the world — the willingness to take responsibility and to begin.');
+
+  /* ---------- nourishment ---------- */
+  var no = qs('#view-nourish');
+  firstText(qs('h2.sec', no), 'Nourishment for Ordinary People');
+  txt(qs('p.lede', no), 'Not scholarship — eight things that can be used directly. Each is written as: the concept in one sentence → how to use it today → a counter-example, ending with a 5-minute "today\u2019s practice." The practice rotates by date, one a day; do not be greedy.');
+  txt(qs('#view-nourish .tag.sage'), "TODAY'S 5 MINUTES");
+
+  /* ---------- compare ---------- */
+  var co = qs('#view-compare');
+  firstText(qs('h2.sec', co), 'Arendt Among the Philosophers');
+  var cmpPull = qs('#view-compare blockquote.pull');
+  if (cmpPull) { txt(qs('p', cmpPull), 'The master line: other philosophers ask "what is man?"; she asks "what happens when human beings are together?"'); txt(qs('p.src', cmpPull), 'In the 1964 Gaus interview she said (in substance, paraphrased) that she does not belong to the circle of "philosophers" and that her profession is political theory. Philosophy concerns Man in the singular; she concerns men in the plural. Sources: the Excerpt Library and the "plurality" entry in the System Map; the interview sentence is marked to be verified and is not quoted verbatim.'); }
+
+  /* ---------- critique & overturn ---------- */
+  var cr = qs('#view-critique');
+  firstText(qsa('h2.sec', cr)[0], 'How Arendt Would Criticize This Site');
+  txt(qsa('p.lede', cr)[0], 'This page is not allowed to round itself off at the end. After reading it, you should not feel "this project is complete," but "this project knows where it is incomplete."');
+  firstText(qsa('h2.sec', cr)[1], 'Record of Overturnings');
+  txt(qsa('p.lede', cr)[1], 'The preface said it: in the end this project will overturn itself. Every overturning is recorded with its date, what was overturned, why, and what replaced it.');
+  var ths = qsa('table.ot th'); ['Date', 'What was overturned', 'Why', 'What replaced it'].forEach(function (t, i) { txt(ths[i], t); });
+  var OT_EN = [
+    [null, 'The first overturning — has not happened yet', 'Wait until she is understood a little more. Left empty — not forgotten, but kept for a future self.', '——'],
+    ['2026-11-08 · Round 1', 'The original plan of spreading 24 modules flat across 24 pages', 'Flat means a list, not a system. She speaks of concepts interlocking; pages that do not connect betray the content in their very form.', 'Merged into 7 views: the dashboard as the single entrance, with concepts, works, people and debates all growing from the same body of data.'],
+    ['2026-11-08 · Round 1', '"A module counts as finished only when filled up"', 'Filling all 24 modules turns "beginning" into "production" — exactly the logic of labour she criticised.', 'Only a working skeleton was built (preface / timeline / system map / excerpt frame / critique page); the rest is honestly marked as blind spots, not dressed up as finished.'],
+    ['2026-11-08 · Round 1', 'A single way of drawing the system map', 'Giving only one network graph permits only one way of seeing — plurality dies first in the form.', 'The system map gets three views (network / mind map / list), the timeline two (lanes / mind map): the same content, at least two presentations.']];
+  qsa('table.ot tbody tr').forEach(function (tr, i) { if (OT_EN[i]) qsa('td', tr).forEach(function (td, j) { if (OT_EN[i][j]) td.textContent = OT_EN[i][j]; }); });
+  firstText(qsa('h2.sec', cr)[2], 'Where This Build Disobeyed the Blueprint');
+  var disCard = qsa('#view-critique .card').pop();
+  var DIS_EN = ['<b>One: a page the blueprint never asked for was added</b> — "An Ordinary Day" plus the "thoughtlessness check." Of the 24 modules, the closest to ordinary people is item 20, "nourishment," but it remains a list. Putting the concepts into the schedule of a day — waking to the phone, meetings, reposting, solitude before sleep — gives them body temperature for the first time. This follows her own method: she never starts from definitions; she starts from phenomena.',
+    '<b>Two: the 24 modules were not filled up.</b> The main texts of the debates, the metaphors chapter, reading paths, and the map of her afterlife were left as places and blind-spot notices. Not laziness: better empty with "to be added" written on it than padding cells with pretty empty talk — not fabricating is this project\u2019s one rule that may never be overturned.',
+    '<b>Three: the Record of Overturnings was used ahead of schedule.</b> The plan was to leave the date of the first overturning empty until later. But three real overturnings already happened while building (see the table above); hiding them would be the fake. So the empty row stays — for "the overturning after finishing the first book" — and the building-time overturnings are recorded honestly below it.',
+    '<b>Four: the dashboard has no wall of numbers.</b> The blueprint said the dashboard should not be a wall of static numbers; this build went further: the progress bars show "how far this site is built," not "how much you have read" — because the latter could not be counted at all in round 1, and writing it would be fabrication.'];
+  if (disCard) qsa('p', disCard).forEach(function (p, i) { if (DIS_EN[i]) p.innerHTML = DIS_EN[i]; });
+
+  /* ---------- footer ---------- */
+  var foot = qs('footer');
+  txt(foot.children[0], 'Source standard: Stanford Encyclopedia of Philosophy (Arendt entry) · Encyclopaedia Britannica · Bard College Hannah Arendt Center · Goethe-Institut Arendt bibliography · Young-Bruehl, Hannah Arendt: For Love of the World. Quotations marked "to be verified" have not yet been traced to a page and are not conclusions. This page was last verified on 2026-11-08.');
+  var fps = qsa('footer p'); txt(fps[fps.length - 1], 'Amor Mundi · Love of the World — the name The Human Condition was first meant to carry. This project was, from the very beginning, not made to be finished, but to be begun.');
+
+  /* ---------- short-label dictionary for dynamically rendered content ---------- */
+  var REPL = [
+    ['全文搜索 · SEARCH EVERYTHING', 'FULL-TEXT SEARCH'],
+    ['今日一练 · TODAY\u2019S 5 MINUTES', "TODAY'S 5 MINUTES"], ['今日一练', "Today's practice"],
+    ['体系地图进度 · MAP PROGRESS', 'MAP PROGRESS'], ['盲区提醒 · BLIND SPOTS', 'BLIND SPOTS'],
+    ['概念一句话：', 'The concept in one sentence: '], ['今天能怎么用：', 'How to use it today: '],
+    ['它在回答：', 'The question it answers: '], ['新造 / 新讲：', 'Newly coined / newly argued: '],
+    ['修正了上一部：', 'What it revised in the previous work: '], ['给下一部留下：', 'What it left for the next work: '],
+    ['留下的问题：', 'Open question: '], ['读它之前', 'Read first'], ['主要出处', 'Main source'],
+    ['脑图分支 · 它连着谁', 'Mind-map branches · What it connects to'], ['她没想明白的地方', 'Where she remained unsure'],
+    ['思想往来：', 'Intellectual exchange: '], ['出处：', 'Source: '],
+    ['正库 · 出处明确', 'Verified shelf · Source identified'], ['正库 · VERIFIED SHELF', 'VERIFIED SHELF'], ['存疑区 · DOUBT', 'DOUBT SHELF'],
+    ['正库 · 书信日期明确', 'Verified shelf · Letter date identified'], ['存疑区 · 待核实', 'Doubt shelf · Unverified'],
+    ['养分 ', 'Nourishment '], ['继承了什么', 'What she inherited'], ['不要什么', 'What she refused'],
+    ['宗教原义', 'Religious origin'], ['她借用了什么', 'What she borrowed'], ['她改造了什么', 'What she changed'],
+    ['争论焦点', 'Focus of the dispute'], ['批评方论据', 'The critics\u2019 case'], ['阿伦特回应', 'Arendt\u2019s response'], ['今天学界的定论', 'Where scholarship stands today'],
+    ['待核实', 'to be verified'], ['动笔', 'Begun'], ['写完', 'Finished'], ['出版', 'Published'],
+    ['照一照镜子：', 'Look in the mirror: '], ['这不是诊断，是提醒。明天再答一次，答案会变——变，本身就是思考开始了。', 'This is not a diagnosis, only a reminder. Answer again tomorrow and the answer will change — and changing is itself thinking beginning.'],
+    ['今天你五次都停了一下。', 'Today you stopped five times.'], ['她不会给你打满分——她只会说：那就去开始一件新的事吧。哪怕很小。', 'She would not give you full marks — she would only say: then go and begin something new. However small.'],
+    ['这个组合下暂时没有摘录——库还在长，先换个筛法，或者去存疑区看看什么叫「宁可空着」。', 'No excerpts under this combination yet — the library is still growing. Try another filter, or visit the doubt shelf to see what "better empty" means.'],
+    ['找到 ', 'Found '], [' 条（只来自本站已有内容）：', ' result(s), from this site\u2019s existing content only:'],
+    ['概念 · ', 'Concept · '], ['作品 · ', 'Work · '], ['摘录 · ', 'Excerpt · '], ['摘录（存疑）· ', 'Excerpt (doubt shelf) · '], ['人物 · ', 'Person · '], ['论战 · ', 'Debate · '], ['宗教隐喻 · ', 'Religious metaphor · '], ['普通人养分 · ', 'Nourishment · '], ['对照 · ', 'Comparison · '],
+    ['出自 · ', 'From · '], ['相关 · ', 'Related · '],
+    ['极权主义的起源', 'The Origins of Totalitarianism'], ['艾希曼在耶路撒冷', 'Eichmann in Jerusalem'],
+    ['过去与未来之间', 'Between Past and Future'], ['共和国的危机', 'Crises of the Republic'],
+    ['黑暗时代的人们', 'Men in Dark Times'], ['奥古斯丁之爱', 'Love and Saint Augustine'],
+    ['拉赫尔·法恩哈根', 'Rahel Varnhagen'], ['人的境况', 'The Human Condition'], ['心灵生活', 'The Life of the Mind'],
+    ['论革命', 'On Revolution'], ['论暴力', 'On Violence'],
+    ['切到浅色', 'Light mode'], ['切到深色', 'Dark mode'], ['切换深浅', 'Theme'],
+    ['第 ', 'Question '], [' 问。', '. '],
+    ['世界 / 爱世界之「世界」', 'World'],
+    ['汉娜·', 'Hannah '], ['阿伦特', 'Arendt'],
+    ['雅斯贝尔斯', 'Jaspers'], ['海德格尔', 'Heidegger'], ['布吕歇尔', 'Blücher'], ['麦卡锡', 'McCarthy'],
+    ['本雅明', 'Benjamin'], ['奥登', 'Auden'], ['约纳斯', 'Jonas'], ['肖勒姆', 'Scholem'], ['科恩', 'Kohn'], ['本哈比布', 'Benhabib'],
+    ['平庸之恶', 'The banality of evil'], ['复数性', 'Plurality'], ['出生性', 'Natality'], ['爱世界', 'Amor mundi'],
+    ['劳动', 'Labour'], ['工作', 'Work'], ['行动', 'Action'], ['思考', 'Thinking'], ['意志', 'Willing'], ['判断', 'Judging'],
+    ['权力', 'Power'], ['暴力', 'Violence'], ['孤独', 'Loneliness'], ['宽恕', 'Forgiveness'], ['承诺', 'Promise'], ['显现', 'Appearance'],
+    ['1930 年代', 'the 1930s'], ['1938 前后', 'c. 1938'], ['1957 英文版', '1957 · English edition'],
+    ['1961 旁听', '1961 · attended in person'], ['1975（未完）', '1975 · unfinished'],
+    ['1954 起', 'from 1954'], ['1955 起', 'from 1955'], ['1969 起', 'from 1969'],
+    ['5 分钟', '5 minutes'], ['书信', 'Letters'], ['论文', 'Essay'],
+    ['· 每日一问', ''], ['1978 遗作', '1978 · posthumous']
+  ];
+  function applyLabels(root) {
+    if (!root || root.nodeType !== 1) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function (node) {
+      var v = node.nodeValue; if (!v || !v.trim()) return;
+      var out = v;
+      REPL.forEach(function (pair) { if (out.indexOf(pair[0]) !== -1) out = out.split(pair[0]).join(pair[1]); });
+      if (out !== v) node.nodeValue = out;
+    });
+  }
+  applyLabels(document.body);
+  var busy = false;
+  var mo = new MutationObserver(function (muts) {
+    if (busy) return; busy = true;
+    muts.forEach(function (m) {
+      m.addedNodes.forEach(function (nd) { if (nd.nodeType === 1) applyLabels(nd); });
+      if (m.type === 'characterData' && m.target && m.target.parentElement) applyLabels(m.target.parentElement);
+    });
+    busy = false;
+  });
+  mo.observe(document.body, { childList: true, subtree: true, characterData: true });
+})();
+
+</script>
 </body>
 </html>
