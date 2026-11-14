@@ -71,6 +71,9 @@ p.lede{color:var(--ink2);margin:0 0 14px;font-size:15px}
 .tag.sage{background:var(--sage-soft);color:var(--sage);border-color:transparent}
 .tag.slate{background:var(--slate-soft);color:var(--slate);border-color:transparent}
 .tag.plum{background:var(--plum-soft);color:var(--plum);border-color:transparent}
+.tag.gray{background:transparent;color:var(--ink2);border:1px dashed var(--ink2)}
+.ex .note{margin:8px 0 0;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink2);font-family:"Noto Sans SC",sans-serif}
+.rec-edge{font-size:12.5px;font-family:"Noto Sans SC",sans-serif}
 .chiprow{display:flex;gap:6px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
   border-radius:999px;padding:9px 16px;font-size:14px;font-family:"Noto Sans SC",sans-serif;min-height:44px}
@@ -348,6 +351,8 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
     <button role="tab" data-view="excerpts" aria-selected="false">摘录库<span class="en">Excerpts</span></button>
     <button role="tab" data-view="surprise" aria-selected="false">普通人的一天<span class="en">A Day</span></button>
     <button role="tab" data-view="critique" aria-selected="false">批评与推翻<span class="en">Critique</span></button>
+    <button role="tab" data-view="diary" aria-selected="false">思想日记<span class="en">Thought Diary</span></button>
+    <button role="tab" data-view="reception" aria-selected="false">身后影响<span class="en">Afterlife</span></button>
     <span class="navtools">
       <span class="seg langseg" role="group" aria-label="语言切换 / Language">
         <button id="lang-zh" aria-pressed="true">中文</button>
@@ -416,7 +421,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
         <ul style="margin:10px 0 4px;padding-left:20px;font-size:14.5px">
           <li><b>论战正文已补（第 2–3 轮）。</b>6 场论战按「焦点 / 批评 / 回应 / 今天的定论」展开；拿不准处一律标「待核实」，不替任何一方补原话。</li>
           <li><b>宗教隐喻已成章（第 2–3 轮）。</b>6 个隐喻按「原义 → 借用 → 改造」讲；爱、关系与追求、普通人养分 8 条、与其他哲学家对照表也已补齐。</li>
-          <li><b>摘录库只是架子。</b>正库 6 条都带出处，存疑区 2 条故意留白 —— 宁可少，不可编。</li>
+          <li><b>摘录库还在长。</b>正库 8 条都带出处（2026-11-14 研究批次把 ex-004 与两条 1971 年讲稿语录核实后移入正库），存疑区 2 条仍故意留白 —— 宁可少，不可编。</li>
         </ul>
         <button class="btn ghost" data-nav="excerpts">去摘录库看存疑区 →</button>
       </div>
@@ -441,7 +446,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
   <div class="linkcards">
     <button class="linkcard" data-nav="timeline">
       <span class="icob" style="background:var(--ochre-soft);color:var(--ochre)"><svg class="ic"><use href="#i-story"/></svg></span>
-      <h4>作品—思想脉络时间轴</h4><p>五条泳道，1906–1978。每部作品分清动笔 / 写完 / 出版，四条思想主线可高亮。</p>
+      <h4>作品—思想脉络时间轴</h4><p>六条泳道（含讲课线），1906–1978。每部作品分清动笔 / 写完 / 出版，四条思想主线可高亮。</p>
     </button>
     <button class="linkcard" data-nav="system">
       <span class="icob" style="background:var(--sage-soft);color:var(--sage)"><svg class="ic"><use href="#i-world"/></svg></span>
@@ -457,7 +462,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
 <!-- ================= TIMELINE ================= -->
 <section class="view" id="view-timeline">
   <h2 class="sec" style="margin-top:22px">作品—思想脉络时间轴<span class="en">Works &amp; Thought, 1906–1978</span></h2>
-  <p class="lede">五条泳道合一：生平 / 作品 / 概念 / 论战 / 同路人。每部作品分清<b>动笔 · 写完 · 出版</b>三个日期 —— 只写出版年，会把思想顺序搞反。点任意节点看详情；点下方主线按钮，高亮一条思想线。手机上可横向滑动，泳道不会挤在一起。</p>
+  <p class="lede">六条泳道合一：生平 / 作品 / 讲课 / 概念 / 论战 / 同路人。讲课单独成线（2026-11-14 补），与著作分开标 —— 她的许多思想先在课堂上讲出来，才成为书。每部作品分清<b>动笔 · 写完 · 出版</b>三个日期 —— 只写出版年，会把思想顺序搞反。点任意节点看详情；点下方主线按钮，高亮一条思想线。手机上可横向滑动，泳道不会挤在一起。</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:4px">
     <div class="seg" role="group" aria-label="时间轴呈现方式">
       <button id="tl-mode-lanes" aria-pressed="true">泳道图</button>
@@ -481,6 +486,14 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
   <div id="tl-mind" style="display:none">
     <div class="card" id="tl-mind-body"></div>
     <p class="src" style="margin-top:10px">脑图看法：按五个时期收拢。看顺序用泳道图，看「这一段她在跟什么较劲」用脑图。</p>
+  </div>
+
+  <div class="card" id="tl-lecture-note" style="margin-top:14px">
+    <span class="tag slate">讲课线 · 新学院</span>
+    <h3 style="margin:8px 0 6px">讲课不是著作的附庸 —— 它是《心灵生活》的车间</h3>
+    <p style="margin:0 0 8px;font-size:14.5px"><b>任职框架：</b>1967–1975 年，她任新学院研究生院（Graduate Faculty）University Professor in Philosophy（哲学大学教授），直到去世。她 1965 年已在新学院开课，但当时并非这一头衔 —— 不要把 1967 年的头衔往前安。</p>
+    <p style="margin:0 0 8px;font-size:14.5px"><b>课程（据国会图书馆阿伦特文稿查找指南的课程目录，档案目录级）：</b>1965《Some Questions of Moral Philosophy》（道德哲学的若干问题，讲稿后收入《责任与判断》）；1968《Political Experience(s) in the Twentieth Century》（二十世纪的政治经验）；1968《Plato's Theaetetus》（柏拉图《泰阿泰德》）；1969《Philosophy and Politics》（哲学与政治）；1970 年秋康德讲座；1971《The History of the Will》（意志史）；1974《Thinking》（思考）；1975《The Life of the Mind》（心灵生活，她的最后一课）。泳道图里用单独一条「讲课」线标出，与著作分开。</p>
+    <p style="margin:0;font-size:14.5px"><b>康德讲稿注：</b>《康德的政治哲学》讲稿原是 1970 年秋在新学院讲授用的课堂打字稿（附手写批注），她本人从未打算出版；1982 年由 Ronald Beiner 整理出版。它不是《心灵生活》第三卷本身 —— 把康德讲稿读作未写成的《判断》卷的替代，这一读法有争议。原定 1976 年春再讲康德，因她 1975 年 12 月去世，未能开课。</p>
   </div>
 </section>
 
@@ -706,6 +719,25 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
 </section>
 
 
+<!-- ================= THOUGHT DIARY ================= -->
+<section class="view" id="view-diary">
+  <h2 class="sec" style="margin-top:22px">《思想日记》总览<span class="en">Denktagebuch — the workshop notebooks</span></h2>
+  <p class="lede">她留下的不只有著作，还有 28 册手写笔记本 —— 思想的车间。这一页只写 2026-11-14 研究档案里核实过的事实；分卷表、再版之说等没查清的，照例标「待核实」，不用漂亮话填。</p>
+  <div id="diary-list"></div>
+</section>
+
+<!-- ================= RECEPTION / AFTERLIFE ================= -->
+<section class="view" id="view-reception">
+  <h2 class="sec" style="margin-top:22px">身后影响地图<span class="en">The Afterlife — who took what, who pushed back</span></h2>
+  <p class="lede">她 1975 年去世之后，概念没有停下：有人接走，有人改造，有人当面批评。这一页一页看清四条线 —— 每条连线都标核实状态：<b>部分核实</b>＝依据是二手转述、出版社介绍页或摘要，原著未通读；<b>待核实</b>＝依据未找到，连线标灰，不作定论。Habermas 1976 年原文未读、Benhabib 专著未读全文，本页据此标「部分核实」。</p>
+  <div class="scrollx"><div class="syswrap">
+    <svg id="rec-svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-label="阿伦特身后影响地图"></svg>
+  </div></div>
+  <div id="rec-list" style="margin-top:14px"></div>
+  <div class="card" id="rec-disagree" style="margin-top:14px"></div>
+  <p class="src" id="rec-legend" style="margin-top:10px"></p>
+</section>
+
 <!-- ================= CRITIQUE & OVERTURN ================= -->
 <section class="view" id="view-critique">
   <h2 class="sec" style="margin-top:22px">她会怎么批评这个网站<span class="en">How Arendt Would Criticize This Site</span></h2>
@@ -728,6 +760,9 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
         <tr><td>2026-11-08<br/><span class="src">第 1 轮建站时</span></td><td>「24 个模块平铺成 24 个页面」的原计划</td><td>平铺就是清单，不是体系。她讲的是概念之间咬合，页面之间却互不相连 —— 形式背叛了内容。</td><td>合并成 7 个视图：看板是唯一入口，概念、作品、人物、论战都从同一批数据里长出来。</td></tr>
         <tr><td>2026-11-08<br/><span class="src">第 1 轮建站时</span></td><td>「每个模块都要填满才算完成」</td><td>凑满 24 个模块，是把「开始」做成「生产」，正是她批评的劳动逻辑。</td><td>只做跑通的骨架（前言 / 时间轴 / 体系图 / 摘录架子 / 批评页），其余明确标成盲区，不假装完成。</td></tr>
         <tr><td>2026-11-08<br/><span class="src">第 1 轮建站时</span></td><td>体系图的唯一画法</td><td>只给一张网络图，等于只许一种看法 —— 复数性先死在形式上。</td><td>体系图给网络 / 脑图 / 列表三种看法，时间轴给泳道 / 脑图两种，同一个内容至少两种呈现。</td></tr>
+        <tr><td>2026-11-14<br/><span class="src">第 1 批研究档案</span></td><td>ex-004「思考与充分地活着，是一回事」的出处：《人的境况》(1958)</td><td>建站时标注有误。三处独立来源（读书摘要、会议论文、期刊脚注）一致指向《心灵生活》卷一《思考》，没有任何实质来源支持《人的境况》。</td><td>出处改为《心灵生活》卷一《思考》“The answer of Socrates”一节，pp. 177–178，并注「待亲见原书定单页」；该条已移入摘录库正库。</td></tr>
+        <tr><td>2026-11-14<br/><span class="src">第 1 批研究档案</span></td><td>两条流行语录「出处未找到」，只能留在存疑区</td><td>1971 年讲稿《Thinking and Moral Considerations》全文已在 JSTOR 扫描件中亲见：两句都在，(A) 在 p. 438，(B) 在 p. 435。流行版是缩写 / 节选，不是伪造。</td><td>两条移入正库，入库用讲稿逐字版并注明 Social Research 38(3) 出处；流行缩写版只进备注并标明「缩写」。</td></tr>
+        <tr><td>2026-11-14<br/><span class="src">第 1 批研究档案</span></td><td>《Thinking Without a Banister》被误认作《思想日记》的英文选译</td><td>核对出版社书目：该书是 Schocken 2018 年的讲演、文章、访谈合集（Jerome Kohn 编），篇目不是日记条目；《思想日记》截至 2017 年无英文全译本。</td><td>《思想日记》总览页设「无英译本」辟谣卡，写明两本常被误认的书各是什么。</td></tr>
       </tbody>
     </table>
   </div>
@@ -735,14 +770,14 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
   <h2 class="sec">这次我没按体系走的地方<span class="en">Where this build disobeyed the blueprint — and why</span></h2>
   <div class="card" style="font-size:15px">
     <p style="margin-top:0"><b>一、加了一页提示词里没有的东西：</b>《普通人的一天》+「无思自检」。24 个模块里，离普通人最近的是第 20 项「养分」，但它仍是清单。把概念放进一天的作息里 —— 起床刷手机、开会、转发、睡前独处 —— 概念第一次有了体温。这是顺着她的方法走的：她从不从定义出发，她从现象出发。</p>
-    <p><b>二、没有凑满 24 个模块。</b>论战正文、宗教隐喻专章、阅读路径、后世影响，都只留了位置和盲区提醒。不是偷懒：宁可空着写「待补」，也不用漂亮的空话填格子 —— 不编造，是这个项目唯一不许推翻的铁律。</p>
+    <p><b>二、没有凑满 24 个模块。</b>阅读路径仍只留了位置和盲区提醒；后世影响到 2026-11-14 才补上第一版骨架（身后影响页），未核实处全部标灰、标「待核实」。不是偷懒：宁可空着写「待补」，也不用漂亮的空话填格子 —— 不编造，是这个项目唯一不许推翻的铁律。</p>
     <p><b>三、把《推翻记录》提前用了。</b>原计划第一次推翻日期留空，等将来。但建的过程里已经发生了三次真实的推翻（见上表），藏着不写，才是假的。所以：留空的那一行保留给「读完第一本书之后的推翻」，建站中的推翻如实记在下面。</p>
     <p style="margin-bottom:0"><b>四、看板没有数字墙。</b>提示词说看板不做静态数字墙，我更进一步：进度条显示的是「这个网站建到哪了」，不是「你读了多少」—— 因为后者在第一轮根本无从统计，写出来就是编造。</p>
   </div>
 </section>
 
 <footer>
-  <div>出处口径：Stanford Encyclopedia of Philosophy（Arendt 条目）· Encyclopaedia Britannica · Bard College Hannah Arendt Center · Goethe-Institut 阿伦特书目 · Young-Bruehl《Hannah Arendt: For Love of the World》。引文凡标「待核实」者，均为尚未追溯到页码，不作定论。本页最后核实于 2026-11-08（第 1 轮打样）。</div>
+  <div>出处口径：Stanford Encyclopedia of Philosophy（Arendt 条目）· Encyclopaedia Britannica · Bard College Hannah Arendt Center · Goethe-Institut 阿伦特书目 · Young-Bruehl《Hannah Arendt: For Love of the World》。引文凡标「待核实」者，均为尚未追溯到页码，不作定论。本页最后核实于 2026-11-14（第 1 批研究档案更新：摘录库三条移入正库、新增《思想日记》总览与身后影响地图两页、时间轴补讲课线）。</div>
   <div class="foot-suggest">
     <b class="suggest-h">有建议？留给这个项目</b>
     <p class="suggest-note">建议会收进本项目 GitHub 仓库的 Issues 里；好的建议会被记进《推翻记录》，变成下一轮优化。按钮会打开预填好模板的 Issues 新建页——请写清针对哪一页、哪里不对、建议改成什么。</p>
@@ -752,6 +787,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:v
     <button data-nav="home">回看板</button><button data-nav="timeline">时间轴</button>
     <button data-nav="system">体系总图</button><button data-nav="excerpts">摘录库</button>
     <button data-nav="debates">论战</button><button data-nav="metaphors">宗教的隐喻</button><button data-nav="love">爱与关系</button><button data-nav="nourish">普通人养分</button><button data-nav="compare">对照表</button><button data-nav="critique">她会怎么批评这个网站</button>
+    <button data-nav="diary">思想日记</button><button data-nav="reception">身后影响</button>
   </div>
   <p style="margin:12px 0 0">Amor Mundi · 爱世界 —— 《人的境况》原想用的名字。这个项目从一开始，就不是为了完成，是为了开始。</p>
 </footer>
@@ -787,7 +823,7 @@ var CONCEPTS = {
     struggle:'哲学家们两千年都没把意志讲圆，她在第二卷里一路吵过去。这一卷写完不久她就去世了，判断卷只留下一个标题页。'},
   judging:{name:'判断',en:'judging',de:'Urteilen',icon:'judging',color:'slate',layer:'vita contemplativa · 沉思生活',
     def:'没有现成标准时，仍能说出「这是对的 / 这是不对的」的能力。她从康德的审美判断借来方法：判断不靠套公式，靠「设身处地替所有人想一遍」的扩展心智。',
-    from:'《康德政治哲学讲稿》(1982 遗作)；《心灵生活》未完成的第三卷',rel:['thinking','evil','plurality'],pre:'思考 thinking',
+    from:'《康德政治哲学讲稿》(1982 遗作)；《心灵生活》未完成的第三卷。注：康德讲稿是 1970 年秋新学院的课堂讲稿，她本人从未打算出版；它不是《心灵生活》第三卷本身 —— 把它读作《判断》卷的替代，此读法有争议',rel:['thinking','evil','plurality'],pre:'思考 thinking',
     struggle:'这是她留给世界的未答题：《心灵生活》写到判断就停了。没有标准还要判断——她开了头，答案要后来者自己续。包括你。'},
   plurality:{name:'复数性',en:'plurality',de:'Pluralität',icon:'plurality',color:'sage',layer:'核心支柱',
     def:'人不是单数的「人」，而是复数的「人们」：每个人都独特，又彼此平等。她说，行动和言说的全部条件就是复数性——没有「他人在场」，政治根本不存在。Men, not Man, live on the earth.',
@@ -885,6 +921,15 @@ var LANES = [
    {y:1951,t:'入籍美国',thread:''},{y:1961,t:'旁听艾希曼审判',thread:'evil'},
    {y:1975,t:'纽约去世',thread:'think'}]},
  {id:'works',name:'作品',color:'c-ochre-bg',nodes:[]},
+ {id:'lectures',name:'讲课',color:'',nodes:[
+   {y:1965,t:'道德哲学',thread:'think'},
+   {y:1967.35,yd:1968,t:'政治经验',thread:'think',dy:52},
+   {y:1968.65,yd:1968,t:'泰阿泰德',thread:'think'},
+   {y:1969.6,yd:1969,t:'哲学与政治',thread:'think',dy:52},
+   {y:1970.55,yd:1970,t:'康德讲座',thread:'think'},
+   {y:1971.5,yd:1971,t:'意志史',thread:'think',dy:52},
+   {y:1974,yd:1974,t:'思考课',thread:'think'},
+   {y:1975.35,yd:1975,t:'心灵生活 · 末课',thread:'think',dy:52}]},
  {id:'concepts',name:'概念',color:'',nodes:[
    {y:1929,t:'奥古斯丁之爱',thread:'love'},{y:1951,t:'极端之恶',thread:'evil'},
    {y:1958,t:'复数性 · 出生性 · 爱世界',thread:'act'},{y:1963,t:'平庸之恶 · 无思',thread:'evil'},
@@ -918,12 +963,30 @@ var EXCERPTS = [
  {zone:'main',orig:'I have begun so late, really only in recent years, to truly love the world… out of gratitude, I want to call my book on political theory “Amor Mundi”.',
   zh:'我开始得这么晚，真的只是在最近几年，才开始真正爱这个世界……出于感激，我想把我的政治理论之书叫作《爱世界》。',concept:'love',work:'书信',period:'mid',
   src:'致 Karl Jaspers 信 (1955)，见《阿伦特—雅斯贝尔斯通信集 1926–1969》',conf:'正库 · 书信日期明确'},
- {zone:'main',orig:'The sad truth is that most evil is done by people who never make up their minds to be good or evil.',
-  zh:'可悲的真相是：大多数恶，是由那些从未下定决心为善或作恶的人做出来的。',concept:'evil',work:'心灵生活',period:'late',
-  src:'《心灵生活》The Life of the Mind (1978)，卷一《思考》',conf:'正库 · 出处明确'},
+ {zone:'main',orig:'The sad truth of the matter is that most evil is done by people who never made up their mind to be either bad or good.',
+  zh:'可悲的真相是，大多数恶都是由那些从未拿定主意要做好人还是坏人的人做出来的。（本项目自译）',concept:'evil',work:'思考与道德考量',period:'late',
+  src:'《思考与道德考量》"Thinking and Moral Considerations: A Lecture"，Social Research 38(3), 1971, p. 438；转载于《责任与判断》(2003) p. 180；遗作改写版见《心灵生活》卷一《思考》p. 180',
+  conf:'正库 · 讲稿全文已核实',
+  note:'备注：网上流行的 "The sad truth is that most evil is done by people who never make up their minds to be good or evil." 是缩写版 —— 删去了 "of the matter"，并改了时态与措辞，不是任一原版的逐字原文。本站旧版正库曾误收此缩写版并标作《心灵生活》，2026-11-14 更正。《心灵生活》/《责任与判断》页码小注待纸本复核。',
+  noteEn:'Note: the widely circulated "The sad truth is that most evil is done by people who never make up their minds to be good or evil." is an abridged version — it drops "of the matter" and changes tense and wording; it is not the verbatim text of any original. This site\u2019s verified shelf formerly carried that abridgement, attributed to The Life of the Mind; corrected on 2026-11-14. The Life of the Mind / Responsibility and Judgment page notes remain to be checked against the printed books.',
+  confEn:'Verified shelf · 1971 lecture text verified in full'},
  {zone:'main',orig:'No one has the right to obey.',
   zh:'没有人有权利服从。（她借康德之口反着说：在极权面前，「服从」不能成为免责的借口。）',concept:'thinking',work:'论文',period:'late',
   src:'《个人责任与独裁》Personal Responsibility Under Dictatorship (1964)',conf:'正库 · 出处明确'},
+ {zone:'main',orig:'To think and to be fully alive are the same.',
+  zh:'思考与充分地活着，是一回事。（本项目自译）',concept:'thinking',work:'心灵生活',period:'late',
+  src:'《心灵生活》The Life of the Mind 卷一《思考》，"What Makes Us Think?" — "The answer of Socrates" 一节，pp. 177–178',
+  conf:'正库 · 出处已更正',
+  note:'本站编号 ex-004。原标注《人的境况》有误（建站时标错），2026-11-14 据研究档案更正为《心灵生活》。页码两版差一页：1978 年两卷本作 p. 178，1981 年一卷本作 p. 177 —— 待亲见原书定单页。页码小注待纸本复核；中文为本项目自译，中译本译文待核实。',
+  noteEn:'Site no. ex-004. Formerly misattributed to The Human Condition (an error made when the site was built); corrected to The Life of the Mind on 2026-11-14 following the research archive. The page differs by edition: p. 178 in the 1978 two-volume edition, p. 177 in the 1981 one-volume edition — the single page remains to be fixed by inspecting the printed book. Page notes remain to be checked against print; the Chinese is this project\u2019s own translation, and the published Chinese translation remains unverified.',
+  confEn:'Verified shelf · Source corrected (single page pending)'},
+ {zone:'main',orig:'There are no dangerous thoughts; thinking itself is dangerous, but nihilism is not its product.',
+  zh:'没有危险的思想；思考本身就是危险的，但虚无主义并不是思考的产物。（本项目自译）',concept:'thinking',work:'思考与道德考量',period:'late',
+  src:'《思考与道德考量》"Thinking and Moral Considerations: A Lecture"，Social Research 38(3), 1971, p. 435；转载于《责任与判断》(2003) p. 177；亦见《心灵生活》卷一《思考》p. 176',
+  conf:'正库 · 讲稿全文已核实',
+  note:'备注：流行版只取前半句 "There are no dangerous thoughts; thinking itself is dangerous." —— 那是节选；本站入库的是补全后的全句。另注意：1973 年 Roger Errera 访谈中另有一句相近表述，是另一出处，不可混引。《心灵生活》/《责任与判断》页码小注待纸本复核。',
+  noteEn:'Note: the popular version takes only the first half — "There are no dangerous thoughts; thinking itself is dangerous." — which is an excerpt; this entry carries the completed full sentence. Note too that a similar sentence in the 1973 Roger Errera interview is a different utterance from a different source and must not be conflated with this one. The Life of the Mind / Responsibility and Judgment page notes remain to be checked against the printed books.',
+  confEn:'Verified shelf · 1971 lecture text verified in full'},
  {zone:'doubt',orig:'“The most radical revolutionary will become a conservative the day after the revolution.”',
   zh:'「最激进的革命者，会在革命的第二天变成保守派。」——网络流传甚广，但尚未追溯到原著页码。',concept:'action',work:'待核实',period:'mid',
   src:'出处待核实 — 只作线索，不作定论',conf:'存疑区 · 待核实'},
@@ -941,7 +1004,7 @@ var PEOPLE = [
  {n:'W. H. Auden',zh:'奥登',c:'#4d6472',role:'密友',rel:'纽约的诗人朋友。她去世后，奥登是少数在悼念中真正懂她的人之一。',inf:'诗人与思想家之间：叙事与纪念。'},
  {n:'Hans Jonas',zh:'约纳斯',c:'#5c7350',role:'同窗 · 论友',rel:'马堡同窗，一生的朋友兼论敌；艾希曼论战中他站在批评她的一边，友谊仍未断。',inf:'能互相说「你这句不对」，友谊还在——这正是她的标准。'},
  {n:'Gershom Scholem',zh:'肖勒姆',c:'#8a3b26',role:'论敌',rel:'1963 年公开信指责她缺乏「对犹太人民的爱」，论战的引爆点。两人的通信是理解整场论战的第一手材料。',inf:'她的回应：我从不「爱」任何集体，我只爱我的朋友。'},
- {n:'Jerome Kohn',zh:'科恩',c:'#8a6d3b',role:'后继者',rel:'她的学生与遗稿整理者，今天阿伦特研究的中枢人物之一。',inf:'把未完成的讲稿，一本本送回世界。'},
+ {n:'Jerome Kohn',zh:'科恩',c:'#8a6d3b',role:'后继者',yrs:'1931–2024',rel:'她的学生与遗稿整理者，今天阿伦特研究的中枢人物之一。生卒年 1931–2024（2026-11-14 核实：Bard 阿伦特中心追悼文等多处一致，只写年份，精确日期待核实）。',inf:'把未完成的讲稿，一本本送回世界。'},
  {n:'Seyla Benhabib',zh:'本哈比布',c:'#8a6d3b',role:'后继者',rel:'以批判性继承著称：接过她的公共领域与叙事概念，也指出她的盲点。',inf:'继承不是复读：续写判断卷的一种方式。'}
 ];
 
@@ -977,7 +1040,7 @@ var QUIZ = [
  {q:'没有现成答案、没人可抄时，你会？',a:'等一个权威说法',b:'自己判断，错了自己认',key:'judging'}
 ];
 var QUIZANS = {
- evil:'你的「无思」最可能藏在<b>从众</b>里。她的话放在这里最合适：「大多数恶，是由那些从未下定决心为善或作恶的人做出来的。」（《心灵生活》）—— 不是让你自责，是让你下次停十秒。',
+ evil:'你的「无思」最可能藏在<b>从众</b>里。她的话放在这里最合适：「可悲的真相是，大多数恶都是由那些从未拿定主意要做好人还是坏人的人做出来的。」（1971 年讲稿《思考与道德考量》，摘录库正库有逐字版与出处）—— 不是让你自责，是让你下次停十秒。',
  thinking:'你的「无思」最可能藏在<b>转发键</b>上。思考对她就是「我与我自己的无声对话」；对话没开始，手指头已经动了。',
  labor:'你的日子可能被<b>劳动</b>占满了：做完即逝，明日重来。试着每天留一小块给「工作」——一件三个月后还留得下的东西。',
  loneliness:'你的夜晚可能混淆了<b>独处与孤独</b>。独处是和自己说话，孤独是连自己都丢了。今晚试一次：放下手机十分钟，只和自己待着。',
@@ -1014,7 +1077,7 @@ if (window.__LANG === 'en') {
       from: 'The Life of the Mind (1978), vol. II, Willing', pre: 'Thinking',
       struggle: 'Philosophers argued about the will for two thousand years without settling it, and she argues with them through the whole second volume. She died shortly after finishing it; the Judging volume survives only as a title page.' },
     judging:{ def: 'The ability to say "this is right / this is wrong" when no ready-made standard exists. Borrowing from Kant\u2019s aesthetic judgement, she held that judgement works not by applying formulas but by an "enlarged mentality" — thinking from the standpoint of everyone else.',
-      from: 'Lectures on Kant\u2019s Political Philosophy (posth., 1982); the unwritten third volume of The Life of the Mind', pre: 'Thinking',
+      from: 'Lectures on Kant\u2019s Political Philosophy (posth., 1982); the unwritten third volume of The Life of the Mind. Note: the Kant lectures are classroom typescripts from the New School, fall 1970, never intended by her for publication; they are not themselves the third volume of The Life of the Mind — reading them as a substitute for the Judging volume is contested', pre: 'Thinking',
       struggle: 'This is the question she left unanswered: The Life of the Mind stops at judgement. Judging without standards — she opened the problem; the answer is for those who come after to continue. Including you.' },
     plurality:{ def: 'Humans are not "Man" in the singular but "men" in the plural: each person unique, yet all equal. Plurality, she says, is the condition of all action and speech — without others present, politics does not exist at all. Men, not Man, live on the earth.',
       from: 'The Human Condition (1958), chs. I and V', pre: 'None — this is the starting point of the whole map',
@@ -1074,11 +1137,12 @@ if (window.__LANG === 'en') {
   ];
   WORKS.forEach(function (w, i) { if (W_EN[i]) { w.q = W_EN[i].q; w.intro = W_EN[i].intro; w.rev = W_EN[i].rev; w.leave = W_EN[i].leave; } });
 
-  var LANE_EN = { life: 'Life', works: 'Works', concepts: 'Concepts', debates: 'Debates', people: 'People' };
+  var LANE_EN = { life: 'Life', works: 'Works', lectures: 'Lectures', concepts: 'Concepts', debates: 'Debates', people: 'People' };
   var NODE_EN = { '汉诺威出生': 'Born in Hanover', '马堡遇海德格尔': 'Meets Heidegger at Marburg', '被拘押后流亡巴黎': 'Detained, then exile in Paris', '抵达纽约': 'Arrives in New York', '入籍美国': 'Becomes a US citizen', '旁听艾希曼审判': 'Attends the Eichmann trial', '纽约去世': 'Dies in New York',
     '奥古斯丁之爱': 'Augustine on love', '极端之恶': 'Radical evil', '复数性 · 出生性 · 爱世界': 'Plurality · Natality · Amor mundi', '平庸之恶 · 无思': 'Banality of evil · Thoughtlessness', '权力 vs 暴力': 'Power vs. violence', '思考 · 意志 · 判断?': 'Thinking · Willing · Judging?',
     '小石城事件争议': 'The Little Rock controversy', '艾希曼论战 (Scholem)': 'The Eichmann debate (Scholem)', 'Gaus 访谈：我不是哲学家': 'Gaus interview: "I am not a philosopher"',
-    '海德格尔 · Jaspers': 'Heidegger · Jaspers', '与 Blücher 结婚': 'Marries Blücher', '与 McCarthy 友谊': 'Friendship with McCarthy', 'Blücher 去世': 'Blücher dies', 'McCarthy 编辑遗作': 'McCarthy edits the posthumous work' };
+    '海德格尔 · Jaspers': 'Heidegger · Jaspers', '与 Blücher 结婚': 'Marries Blücher', '与 McCarthy 友谊': 'Friendship with McCarthy', 'Blücher 去世': 'Blücher dies', 'McCarthy 编辑遗作': 'McCarthy edits the posthumous work',
+    '道德哲学': 'Moral philosophy', '政治经验': 'Political experience(s)', '泰阿泰德': 'Theaetetus', '哲学与政治': 'Philosophy & politics', '康德讲座': 'Kant lectures', '意志史': 'History of the will', '思考课': '"Thinking"', '心灵生活 · 末课': 'Life of the Mind · last' };
   LANES.forEach(function (l) { if (LANE_EN[l.id]) l.name = LANE_EN[l.id]; l.nodes.forEach(function (n) { if (NODE_EN[n.t]) n.t = NODE_EN[n.t]; }); });
 
   var P_EN = [
@@ -1092,10 +1156,13 @@ if (window.__LANG === 'en') {
 
   /* ---- excerpts: originals are already English; the Chinese line becomes a note ---- */
   var ESRC_EN = ['The Human Condition (1958), ch. V, "Action"', 'On Violence (1970)', 'The Human Condition (1958), ch. I',
-    'Letter to Karl Jaspers (1955), in the Arendt–Jaspers Correspondence, 1926–1969', 'The Life of the Mind (1978), vol. I, Thinking',
-    'Personal Responsibility Under Dictatorship (1964)'];
+    'Letter to Karl Jaspers (1955), in the Arendt–Jaspers Correspondence, 1926–1969',
+    '"Thinking and Moral Considerations: A Lecture," Social Research 38(3), 1971, p. 438; reprinted in Responsibility and Judgment (2003), p. 180; revised version in The Life of the Mind, vol. I: Thinking, p. 180',
+    'Personal Responsibility Under Dictatorship (1964)',
+    'The Life of the Mind, vol. I: Thinking, "What Makes Us Think?" — "The answer of Socrates," pp. 177–178',
+    '"Thinking and Moral Considerations: A Lecture," Social Research 38(3), 1971, p. 435; reprinted in Responsibility and Judgment (2003), p. 177; also in The Life of the Mind, vol. I: Thinking, p. 176'];
   EXCERPTS.forEach(function (e, i) {
-    if (e.zone === 'main') { e.zh = '(Original English text above — Arendt wrote and published in English; no translation needed.)'; e.conf = 'Verified shelf · Source identified'; if (ESRC_EN[i]) e.src = ESRC_EN[i]; }
+    if (e.zone === 'main') { e.zh = '(Original English text above — Arendt wrote and published in English; no translation needed.)'; e.conf = 'Verified shelf · Source identified'; if (ESRC_EN[i]) e.src = ESRC_EN[i]; if (e.noteEn) e.note = e.noteEn; if (e.confEn) e.conf = e.confEn; }
     else if (e.orig.indexOf('radical revolutionary') !== -1) { e.zh = '"The most radical revolutionary will become a conservative the day after the revolution." — Widely circulated online, but not yet traced to a page in her works.'; e.src = 'Source unverified — a lead only, not a conclusion'; e.conf = 'Doubt shelf · Unverified'; e.work = 'Unverified'; }
     else { e.zh = 'English version in progress — the line above is kept in its Chinese original on purpose: these are short lines circulating in Chinese-language "Arendt quote" collections, and rendering them into polished English would manufacture quotes she may never have written. Anything that cannot be pinned to a book and chapter stays here first. Better empty than "probably hers."'; e.src = 'Source unverified — web collections, not primary literature'; e.conf = 'Doubt shelf · Unverified'; e.work = 'Unverified'; }
   });
@@ -1110,7 +1177,7 @@ if (window.__LANG === 'en') {
     { rel: 'A poet friend in New York. After her death, Auden was one of the few mourners who truly understood her.', inf: 'Between poet and thinker: narrative and remembrance.' },
     { rel: 'A fellow student at Marburg, a lifelong friend and sparring partner; in the Eichmann controversy he stood among her critics, and the friendship survived.', inf: 'Being able to say "that line of yours is wrong" to each other, with the friendship intact — exactly her standard.' },
     { rel: 'His 1963 open letter accused her of lacking "love of the Jewish people" — the detonator of the controversy. Their correspondence is the primary source for the whole debate.', inf: 'Her reply: I never "love" any collective; I love only my friends.' },
-    { rel: 'Her student and the editor of her literary remains; a central figure in Arendt scholarship today.', inf: 'Sending the unfinished manuscripts back into the world, one volume at a time.' },
+    { rel: 'Her student and the editor of her literary remains; a central figure in Arendt scholarship today. His years, 1931–2024, were verified on 2026-11-14 (the Bard Hannah Arendt Center memorial and several other sources agree; years only — exact dates remain unverified).', inf: 'Sending the unfinished manuscripts back into the world, one volume at a time.' },
     { rel: 'Known for critical inheritance: she took over Arendt\u2019s concepts of the public realm and narrative, and pointed out her blind spots.', inf: 'Inheritance is not repetition: one way of continuing the Judging volume.' }
   ];
   PEOPLE.forEach(function (p, i) { if (PP_EN[i]) { p.rel = PP_EN[i].rel; p.inf = PP_EN[i].inf; p.role = { '导师': 'Mentor', '导师 · 旧爱': 'Mentor · Former love', '丈夫': 'Husband', '密友': 'Close friend', '密友 · 引介': 'Close friend · Introducer', '同窗 · 论友': 'Fellow student · Sparring partner', '论敌': 'Debate opponent', '后继者': 'Successor' }[p.role] || p.role; } });
@@ -1152,7 +1219,7 @@ if (window.__LANG === 'en') {
     { q: 'When there is no ready answer and nobody to copy, you…', a: 'Wait for an authority to speak', b: 'Judge for yourself, and own being wrong' }
   ];
   QUIZ.forEach(function (item, i) { if (Q_EN[i]) { item.q = Q_EN[i].q; item.a = Q_EN[i].a; item.b = Q_EN[i].b; } });
-  QUIZANS.evil = 'Your thoughtlessness most likely hides in <b>following the crowd</b>. Her words fit here best: "Most evil is done by people who never make up their minds to be good or evil." (The Life of the Mind) — not self-blame, but a reason to stop for ten seconds next time.';
+  QUIZANS.evil = 'Your thoughtlessness most likely hides in <b>following the crowd</b>. Her words fit here best: "The sad truth of the matter is that most evil is done by people who never made up their mind to be either bad or good." ("Thinking and Moral Considerations," 1971 — verbatim text and source on the verified shelf) — not self-blame, but a reason to stop for ten seconds next time.';
   QUIZANS.thinking = 'Your thoughtlessness most likely hides on the <b>repost button</b>. For her, thinking is "the soundless dialogue between me and myself"; the fingers move before the dialogue has begun.';
   QUIZANS.labor = 'Your days may be filled with <b>labour</b>: done and gone, repeated tomorrow. Try leaving a small piece each day for "work" — one thing that will still be there in three months.';
   QUIZANS.loneliness = 'Your nights may confuse <b>solitude with loneliness</b>. Solitude is talking to yourself; loneliness is having lost even yourself. Tonight, try ten minutes without a phone, just being with yourself.';
@@ -1187,7 +1254,7 @@ function icon(name,cls){return '<svg class="ic '+(cls||'')+'"><use href="#'+ICON
   document.getElementById('today-btn').addEventListener('click',function(){showView('system');openConcept(t.id)});
 
   var prog = [['前言 + 看板 + 全文搜索',100,'已建'],['时间轴（泳道+脑图）',100,'已建'],['体系总图（三视图）',90,'词条 17 个'],
-    ['论战正文',100,'6 场已展开'],['宗教隐喻专章',100,'6 个已展开'],['爱、关系与追求',100,'已建'],['普通人养分 + 对照表',100,'8 条 + 8 行'],['同路人',60,'骨架已建，书信待补'],['摘录库',35,'正库 6 条，持续提取']];
+    ['论战正文',100,'6 场已展开'],['宗教隐喻专章',100,'6 个已展开'],['爱、关系与追求',100,'已建'],['普通人养分 + 对照表',100,'8 条 + 8 行'],['同路人',60,'骨架已建，书信待补'],['摘录库',45,'正库 8 条，持续提取'],['思想日记总览',100,'已建 · 2026-11 更新'],['身后影响地图',60,'第一版骨架，部分核实']];
   document.getElementById('progress-list').innerHTML = prog.map(function(p){
     var cls = p[1]>=90?'':(p[1]>=35?'mid':'low');
     return '<div class="prow"><span>'+p[0]+'</span><span class="bar"><i class="'+cls+'" style="width:'+p[1]+'%"></i></span><span class="src">'+p[2]+'</span></div>';
@@ -1219,15 +1286,16 @@ function pct(y){ return ((y-1906)/(1978-1906)*100).toFixed(2) }
   LANES.forEach(function(lane){
     var nodes = lane.nodes.slice();
     if(lane.id==='works'){ nodes = WORKS.map(function(w,i){ return {y:parseInt(w.pub)||1957,t:w.title,thread:w.thread,wi:i}; }); }
-    html += '<div class="lane"><div class="lname">'+lane.name+'</div><div class="track">' +
+    html += '<div class="lane"><div class="lname">'+lane.name+'</div><div class="track"'+(lane.id==='lectures'?' style="min-height:104px"':'')+'>' +
       nodes.map(function(n){
         var col = n.thread==='love'?'var(--rust)':n.thread==='evil'?'var(--evil-dot)':n.thread==='act'?'var(--sage)':n.thread==='think'?'var(--slate)':'var(--ochre)';
         if(lane.id==='works') col='var(--ochre)';
         if(lane.id==='life') col='var(--gold)'; if(lane.id==='debates') col='var(--plum)'; if(lane.id==='people') col='#8a6d3b';
+        if(lane.id==='lectures') col='var(--slate)';
         if(lane.id==='concepts'&&!n.thread) col='var(--ochre)';
         var wi = (n.wi!==undefined)?' data-wi="'+n.wi+'"':'';
-        return '<button class="node" data-thread="'+(n.thread||'')+'"'+wi+' style="left:'+pct(n.y)+'%">'+
-          '<span class="pt" style="background:'+col+'"></span><span class="nl">'+n.t+'</span><span class="ny">'+n.y+'</span></button>';
+        return '<button class="node" data-thread="'+(n.thread||'')+'"'+wi+' style="left:'+pct(n.y)+'%'+(n.dy?';top:'+n.dy+'px':'')+'">'+
+          '<span class="pt" style="background:'+col+'"></span><span class="nl">'+n.t+'</span><span class="ny">'+(n.yd!==undefined?n.yd:n.y)+'</span></button>';
       }).join('') + '</div></div>';
   });
   board.innerHTML = html;
@@ -1366,7 +1434,7 @@ function openConcept(k){
   });
   svg.innerHTML = s;
   document.getElementById('ppl-grid').innerHTML = PEOPLE.map(function(p){
-    return '<div class="ppl"><span class="ava" style="background:'+p.c+'">'+p.zh.charAt(0)+'</span><div><b>'+p.zh+'</b> <span class="en" style="color:var(--ink2)">'+p.n+'</span> <span class="tag">'+p.role+'</span><p>'+p.rel+'</p><p><b style="color:var(--ink)">思想往来：</b>'+p.inf+'</p></div></div>';
+    return '<div class="ppl"><span class="ava" style="background:'+p.c+'">'+p.zh.charAt(0)+'</span><div><b>'+p.zh+'</b> <span class="en" style="color:var(--ink2)">'+p.n+'</span> <span class="tag">'+p.role+'</span>'+(p.yrs?' <span class="tag slate">'+p.yrs+'</span>':'')+'<p>'+p.rel+'</p><p><b style="color:var(--ink)">思想往来：</b>'+p.inf+'</p></div></div>';
   }).join('');
   function setMode(mind){
     document.getElementById('ppl-net').style.display = mind?'none':'block';
@@ -1398,7 +1466,8 @@ function openConcept(k){
         (doubt?'<span class="tag ochre">存疑区 · DOUBT</span> ':'<span class="tag sage">正库 · VERIFIED SHELF</span> ')+
         '<span class="tag">'+(CONCEPTS[e.concept]?CONCEPTS[e.concept].name:e.concept)+'</span> <span class="tag slate">'+e.work+'</span>'+
         '<p class="orig" style="margin-top:10px">'+e.orig+'</p><p class="zh">'+e.zh+'</p>'+
-        '<div class="meta"><span class="src">出处：'+e.src+'</span><span class="tag '+(doubt?'ochre':'sage')+'">'+e.conf+'</span></div></div>';
+        '<div class="meta"><span class="src">出处：'+e.src+'</span><span class="tag '+(doubt?'ochre':'sage')+'">'+e.conf+'</span></div>'+
+        (e.note?'<p class="note">'+e.note+'</p>':'')+'</div>';
     }).join('');
   }
   [fc,fw,document.getElementById('f-period'),document.getElementById('f-zone')].forEach(function(s){s.addEventListener('change',render)});
@@ -1474,6 +1543,48 @@ var COMPARE = [
  ['存在主义','个体的抉择、责任与「被抛」处境——她与这一思潮同时代并互相阅读。','不要向内转的本真性：她的「你是谁」只能在他人面前、在世界中显现，不能独白完成。'],
  ['自由主义 / 保守主义','自由主义的权利语言、保守主义对传统的珍惜，她都部分使用。','两边都不要全盘：她批评权利在无国籍者身上的失效，也批评传统断裂后保守的无力——她的位置不在左右光谱上。']
 ];
+/* ==================== ROUND 6 (2026-11-14 research batch 1): thought diary + afterlife ==================== */
+var DIARY = [
+ {tag:'总览 · OVERVIEW',t:'28 册手写笔记本',body:[
+  '《思想日记》Denktagebuch 是阿伦特自 1950 年起记的私人思考笔记本：不是记事日记，不是自传，而是概念的草稿本 —— 思想实验、阅读札记、抄录的诗与引文、剪贴拼贴。条目常一月一条，页底留白，另起新思。',
+  '28 册笔记本以罗马数字编号，原稿现藏德国马尔巴赫德国文学档案馆（Deutsches Literaturarchiv Marbach）；由她的助手 Lotte Kohler 打字整理，2002 年刊出。写作以德语为主体，引文有希腊语、拉丁语、英语、法语等多种语言。']},
+ {tag:'版本 · EDITION',t:'Piper 2002 · 两卷本',body:[
+  '全题名：Denktagebuch: 1950 bis 1973。编者：Ursula Ludz 与 Ingeborg Nordmann 合编（与德累斯顿汉娜·阿伦特研究所合作）。慕尼黑 Piper 出版社，2002 年。',
+  '两卷本，全套约 1230 页（ISBN 9783492044295），含参考文献与索引。两卷如何分册，本次未查到可靠分卷表，<span class="verify">待核实</span>；个别书目作 1232 页，与 1230 页差 2 页，口径未明，故只写「约 1230 页」。']},
+ {tag:'起止 · THREE LAYERS',t:'三个年份，要分开写',body:[
+  '<b>书名年份：</b>1950–1973 —— 题名如此。',
+  '<b>实质记述：</b>1950 年 6 月第一条目，至 1971 年。丈夫 Heinrich Blücher 去世后停记；最后一册首条写道「没有海因里希。自由 —— 像风中的一片叶子。」（转引自研究者札记，未据德文原书核对）',
+  '<b>末尾 1972–1973 年：</b>仅为后来补记的旅行行程，不是思考条目。三层并陈，不可只写一句「1950–1973 年的日记」。']},
+ {tag:'内容 · CONTENTS',t:'著作的草稿本',body:[
+  '1952 年 4 月的条目里，劳动 / 制作 / 行动的三分已经有了雏形；1954 年 5 月一条目勾勒了一部「三篇论文」的书 —— 据编者 Ludz 的研究，这一勾勒预示了《人的境况》与《过去与未来之间》。',
+  '日记约 1971 年停记前后，她开始写《心灵生活》：日记是「思考」这一主题长达二十年的实验场。第一条目（1950 年 6 月）论做过的不义、宽恕与复仇；第二册（1950 年 12 月）里有那个问题：「有没有一种不专制的思考？」']},
+ {tag:'辟谣 · NOT A TRANSLATION',t:'「无英译本」辟谣卡',body:[
+  '截至 2017 年的学术出版物（书评）所述，《思想日记》尚未被翻译成英文；2017 年之后有无新译本，<span class="verify">待核实</span>。',
+  '《Thinking Without a Banister》（Schocken，2018，Jerome Kohn 编）<b>不是</b>日记选译：它是约 40 篇讲演、文章、访谈、书评的合集；书名借用她「没有扶手的思考」之喻，与日记只有隐喻同源，篇目不是日记条目。',
+  '《The Modern Challenge to Tradition》（Wallstein，2018，全集校勘本第 6 卷）<b>也不是</b>日记选译：它是 1951/52–1954 年间与日记同期的平行手稿 —— 同一时期，她一边写日记，一边起草这部未完成的书。',
+  '英语读者目前的入口是研究论文集《Artifacts of Thinking》（Fordham University Press，2017）：是导读，不是译本。']}
+];
+var REC = { people:[
+ {n:'Jürgen Habermas',short:'Habermas',zh:'哈贝马斯',yrs:'1929–',status:'part',
+  take:'拿走「权力 ＝ 沟通中形成的共同意志」：接受她把权力与暴力分开、与韦伯式目的理性决裂，并把沟通权力发展为 沟通权力 → 法律 → 行政权力 的制度链条（《Between Facts and Norms》）；她的「协同行动」被他改写为「协同商谈」。',
+  crit:'批评她把希腊 polis 的形象实体化为政治的本质、陷入僵硬的规范主义与怀旧；又批评她把一切策略 / 工具因素逐出权力定义，使理论讲不清现代国家、社会与支配。',
+  src:'据 Forti 2006 对其 1976 年论文《Hannah Arendt: On the Concept of Power》的摘要、Verovšek 2019 摘要等二手转述；1976 年原文未读。'},
+ {n:'Seyla Benhabib',short:'Benhabib',zh:'本哈比布',yrs:'1950–',status:'part',
+  take:'拿走公共领域、行动与成员资格：把她的公共领域与哈贝马斯的沟通伦理结合，并把她从「怀旧的 polis 迷恋者」重读为「不情愿的现代主义者」—— 主张「与阿伦特一起、反对阿伦特」。本站同路人页已有她的条目。',
+  crit:'批评她的公 / 私、社会 / 政治之分过于 rigid：「社会」概念把经济等同于再生产，看不见经济权力与剥削的不对称结构，也解释不了领域边界的重划；对女性被排除出公共领域关注太少（此条的具体出处页码待核实）。',
+  src:'据《The Reluctant Modernism of Hannah Arendt》出版社介绍页与 SEP 转述；专著未读全文。'},
+ {n:'Giorgio Agamben',short:'Agamben',zh:'阿甘本',yrs:'1942–',status:'mix',
+  take:'拿走「人权之困惑」与难民形象、zoē / bios 之分，改写为赤裸生命与 homo sacer：被主权以「包容性排除」生产出来的生命；「集中营是现代之 nomos」。',
+  crit:'他把她的历史—政治诊断改造为生命政治 ＋ 例外状态的理论。另有二手概述称他认为她「没有把极权主义与集中营接进她的社会理论」—— 此说权威性低，须以《Homo Sacer》原文复核，此批评连线待核实、标灰。',
+  src:'赤裸生命 / 集中营为 nomos 部分据 IEP 阿甘本词条（已读该节）；与阿伦特的接线据 Rancière 2004 等二手转述。'},
+ {n:'Bonnie Honig',short:'Honig',zh:'霍尼格',yrs:'1959–',status:'mix',
+  take:'拿走行动的 agonistic 一面 —— 竞争、显现、开端；为 agonism 辩护，反对把政治修剪成共识与商谈；也接过她「人造物稳定世界」的看法，写公共物。',
+  crit:'她批评的主要对象不是阿伦特本人，而是「把 agonism 从阿伦特思想中切除」的读法与把冲突移置出政治的共识理论。她对阿伦特作女性主义重读的具体文本依据，本次未找到 —— 此项待核实。',
+  src:'据出版社介绍页与 SEP 女性主义政治哲学词条转述；1993 年专著未读全文。'}
+ ],
+ disagree:'<b>Benhabib ↔ Honig（虚线 · 分歧）：</b>同一位阿伦特，两种读法 —— 商谈 / 联合 vs 竞争 / agonistic。据 SEP 女性主义政治哲学词条转述，Honig 批评 Benhabib「试图通过把 agonism 从她的思想中切除，来为女性主义挽救阿伦特」。这条虚线是分歧，不是影响。',
+ legend:'读图例：实线 ＝ 有二手来源支撑的接线（多为部分核实）；虚线 ＝ 分歧，不是影响；灰色虚线与灰字 ＝ 待核实，不作定论。本页依据 2026-11-14 研究档案第 6 项《身后影响地图骨架》；四位原著均未通读，连线升级为「已核实」要等读到原文之后。候选第二环（Rancière、Butler、Lefort 等）本次未核实其具体接线，不列为节点。'};
+
 /* ==================== i18n: round 2-5 data swap (runs before those sections render) ==================== */
 if (window.__LANG === 'en') {
   var M_EN = [
@@ -1518,6 +1629,46 @@ if (window.__LANG === 'en') {
     ['Liberalism / conservatism', 'The liberal language of rights and the conservative cherishing of tradition — she uses both in part.', 'Neither wholesale: she criticises how rights fail the stateless, and how conservatism is powerless after tradition breaks — her position is not on the left–right spectrum.']
   ];
   COMPARE.forEach(function (r, i) { if (CMP_EN[i]) { r[0] = CMP_EN[i][0]; r[1] = CMP_EN[i][1]; r[2] = CMP_EN[i][2]; } });
+
+  var DIARY_EN = [
+    { tag: 'OVERVIEW', t: '28 handwritten notebooks', body: [
+      'The Denktagebuch ("thought diary") is the private notebook of thinking Arendt kept from 1950: not a diary of events, not an autobiography, but the draft-book of her concepts — thought experiments, reading notes, copied poems and quotations, pasted collages. Entries often come once a month, with blank space left at the foot of the page before a new thought begins.',
+      'The 28 notebooks are numbered in Roman numerals; the manuscripts are held by the German Literary Archive at Marbach (Deutsches Literaturarchiv Marbach). They were typed up by her assistant Lotte Kohler and published in 2002. The writing is mainly German, with quotations in Greek, Latin, English, French and other languages.'] },
+    { tag: 'EDITION', t: 'Piper 2002 · Two volumes', body: [
+      'Full title: Denktagebuch: 1950 bis 1973. Editors: Ursula Ludz and Ingeborg Nordmann (in collaboration with the Hannah Arendt Institute, Dresden). Munich: Piper, 2002.',
+      'Two volumes, about 1,230 pages in total (ISBN 9783492044295), with bibliography and index. How the two volumes divide the notebooks could not be established from a reliable source this round — <span class="verify">to be verified</span>; one catalogue gives 1,232 pages, two more than 1,230, with the counting convention unclear, hence "about 1,230 pages."'] },
+    { tag: 'THREE LAYERS', t: 'Three dates — keep them apart', body: [
+      '<b>The title\u2019s dates:</b> 1950–1973 — that is what the book is called.',
+      '<b>The substantive record:</b> the first entry is June 1950; the notebooks stop in 1971, after her husband Heinrich Blücher\u2019s death. The last notebook opens: "Without Heinrich. Free — like a leaf in the wind." (Quoted from a researcher\u2019s archive note; not checked against the German original.)',
+      '<b>The tail, 1972–1973:</b> only travel itineraries added later — not entries of thinking. State all three layers; do not compress them into "the diary of 1950–1973."'] },
+    { tag: 'CONTENTS', t: 'The draft-book of the works', body: [
+      'In an entry of April 1952 the labour / making / action triad is already visible in embryo; an entry of May 1954 sketches a book of "three essays" — which, according to the editor Ludz\u2019s research, foreshadows both The Human Condition and Between Past and Future.',
+      'Around the time the notebooks stop (1971), she began The Life of the Mind: the diary was the twenty-year laboratory of the theme "thinking." The first entry (June 1950) treats wrongs done, forgiveness and revenge; the second notebook (December 1950) holds the question: "Is there a way of thinking which is not tyrannical?"'] },
+    { tag: 'NOT A TRANSLATION', t: 'The "no English translation" card', body: [
+      'As stated in the scholarly literature available up to 2017 (a book review), the Denktagebuch had not been translated into English; whether a translation has appeared since 2017 is <span class="verify">to be verified</span>.',
+      'Thinking Without a Banister (Schocken, 2018, ed. Jerome Kohn) is <b>not</b> a selection from the diary in translation: it collects some 40 lectures, essays, interviews and reviews. Its title borrows her metaphor of "thinking without a banister," which it shares with the diary only as a metaphor; its pieces are not diary entries.',
+      'The Modern Challenge to Tradition (Wallstein, 2018, vol. 6 of the Critical Edition) is <b>also not</b> a selection from the diary: it is a parallel manuscript from the same years, 1951/52–1954 — in that period she was writing the diary and drafting this unfinished book side by side.',
+      'The current door for English readers is the research collection Artifacts of Thinking (Fordham University Press, 2017): a guide, not a translation.'] }
+  ];
+  DIARY.forEach(function (d, i) { if (DIARY_EN[i]) { d.tag = DIARY_EN[i].tag; d.t = DIARY_EN[i].t; d.body = DIARY_EN[i].body; } });
+
+  var REC_EN = [
+    { take: 'Took "power = a common will formed in communication": accepting her separation of power from violence and her break with Weber\u2019s purposive-rational account, he developed communicative power into an institutional chain — communicative power → law → administrative power (Between Facts and Norms). Her "action in concert" is rewritten by him as "deliberation in concert."',
+      crit: 'Criticised her for reifying the image of the Greek polis as the essence of politics, for a rigid normativism and nostalgia; and for expelling every strategic / instrumental factor from the definition of power, leaving the theory unable to account for the modern state, society and domination.',
+      src: 'From Forti\u2019s 2006 summary of his 1976 essay "Hannah Arendt: On the Concept of Power," Verovšek (2019) and other second-hand accounts; the 1976 original was not read.' },
+    { take: 'Took the public realm, action and membership: she joined Arendt\u2019s public realm to Habermas\u2019s communicative ethics, and reread Arendt — against the image of a nostalgic lover of the polis — as a "reluctant modernist," urging us to think "with Arendt, contra Arendt." Her entry also appears on this site\u2019s People page.',
+      crit: 'Criticised her public / private and social / political distinctions as too rigid: the concept of "the social" equates the economy with reproduction and cannot see the asymmetric structures of economic power and exploitation, nor explain how the boundaries between realms are redrawn. She also paid too little attention to women\u2019s exclusion from the public realm (the exact source and page for this point remain to be verified).',
+      src: 'From the publisher\u2019s presentation of The Reluctant Modernism of Hannah Arendt and SEP\u2019s accounts; the monograph was not read in full.' },
+    { take: 'Took "the perplexities of the rights of man" and the figure of the refugee, and the zoē / bios distinction, rewriting them as bare life and homo sacer: life produced by sovereign power through "inclusive exclusion"; "the camp as the nomos of the modern."',
+      crit: 'He recast her historical-political diagnosis into a theory of biopolitics + the state of exception. A low-authority second-hand summary also attributes to him the claim that she "did not connect totalitarianism and the camps to her social theory" — this must be checked against Homo Sacer itself; that critical line is unverified and shown grey.',
+      src: 'The bare life / camp-as-nomos material follows the IEP entry on Agamben (that section read); the connection to Arendt follows Rancière (2004) and other second-hand accounts.' },
+    { take: 'Took the agonistic side of action — contest, appearance, beginning; defended agonism against readings that trim politics down to consensus and deliberation; she also took up Arendt\u2019s account of fabricated things stabilising a world, in her work on public things.',
+      crit: 'Her criticism is aimed mainly not at Arendt herself but at readings that "excise agonism from Arendt\u2019s thought" and at consensus theories that displace conflict from politics. The specific textual basis for her feminist rereading of Arendt was not found in this round — that item remains unverified.',
+      src: 'From the publisher\u2019s presentation and SEP\u2019s Feminist Political Philosophy entry; her 1993 monograph was not read in full.' }
+  ];
+  REC.people.forEach(function (p, i) { if (REC_EN[i]) { p.take = REC_EN[i].take; p.crit = REC_EN[i].crit; p.src = REC_EN[i].src; } });
+  REC.disagree = '<b>Benhabib ↔ Honig (dashed · a disagreement):</b> one Arendt, two readings — deliberative / associational vs. agonistic. As SEP\u2019s Feminist Political Philosophy entry reports it, Honig criticises Benhabib for "attempting to rescue Arendt for feminism by excising agonism from her thought." This dashed line is a disagreement, not an influence.';
+  REC.legend = 'How to read this map: solid lines = connections supported by second-hand sources (mostly partially verified); dashed = a disagreement, not an influence; grey dashed lines and grey text = unverified, no conclusion drawn. This page follows item 6 of the 2026-11-14 research archive, "Skeleton of an afterlife map"; none of the four authors\u2019 works was read cover to cover, and a line is upgraded to "verified" only after the original has been read. Candidates for a second ring (Rancière, Butler, Lefort, …) were not verified this round and are not shown as nodes.';
 }
 
 (function(){
@@ -1543,6 +1694,46 @@ if (window.__LANG === 'en') {
   if(cl) cl.innerHTML = COMPARE.map(function(r){
     return '<div class="cmp-row"><h4>'+r[0]+'</h4><div class="cmp-cols"><div><b>继承了什么</b>'+r[1]+'</div><div><b>不要什么</b>'+r[2]+'</div></div></div>';
   }).join('');
+
+  var dl = document.getElementById('diary-list');
+  if(dl) dl.innerHTML = DIARY.map(function(d){
+    return '<div class="card debate"><span class="tag slate">'+d.tag+'</span><h3>'+d.t+'</h3>'+
+      d.body.map(function(p){ return '<p style="margin:8px 0 0;font-size:15px">'+p+'</p>'; }).join('')+'</div>';
+  }).join('');
+
+  var rsvg = document.getElementById('rec-svg');
+  if(rsvg){
+    var EN = window.__LANG === 'en';
+    var RPOS = [[150,80],[610,80],[150,350],[610,350]];
+    var rs = '';
+    REC.people.forEach(function(p,i){
+      rs += '<line x1="380" y1="215" x2="'+RPOS[i][0]+'" y2="'+RPOS[i][1]+'" stroke="var(--line)" stroke-width="1.8"/>';
+    });
+    /* Benhabib <-> Honig: disagreement, dashed */
+    rs += '<path d="M 644 74 Q 708 215 644 356" stroke="var(--plum)" stroke-width="1.8" stroke-dasharray="6 5" fill="none"/>';
+    rs += '<text x="700" y="219" text-anchor="middle" font-size="12" fill="var(--plum)" class="rec-edge">分歧</text>';
+    /* Arendt -> Agamben criticism line: unverified, grey dashed */
+    rs += '<path d="M 352 246 L 196 322" stroke="#9a917f" stroke-width="1.6" stroke-dasharray="4 5" fill="none"/>';
+    rs += '<text x="212" y="300" font-size="11.5" fill="#9a917f" class="rec-edge">批评 · 待核实</text>';
+    rs += '<circle cx="380" cy="215" r="42" fill="var(--ink)"/><text x="380" y="210" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--paper)">汉娜·</text><text x="380" y="228" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--paper)">阿伦特</text><text x="380" y="272" text-anchor="middle" font-size="10.5" fill="var(--ink2)">1906–1975</text>';
+    REC.people.forEach(function(p,i){
+      var col = ['#4d6472','#5c7350','#6d4a63','#8a6d3b'][i];
+      rs += '<g><circle cx="'+RPOS[i][0]+'" cy="'+RPOS[i][1]+'" r="30" fill="'+col+'"/>'+
+        '<text x="'+RPOS[i][0]+'" y="'+(RPOS[i][1]+4)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">'+(EN?p.short:p.zh)+'</text>'+
+        '<text x="'+RPOS[i][0]+'" y="'+(RPOS[i][1]+47)+'" text-anchor="middle" font-size="10.5" fill="var(--ink2)">'+p.yrs+' · '+(p.status==='part'?'部分核实':'部分核实 + 待核实')+'</text></g>';
+    });
+    rsvg.innerHTML = rs;
+  }
+  var rl = document.getElementById('rec-list');
+  if(rl) rl.innerHTML = '<div class="grid2">' + REC.people.map(function(p){
+    return '<div class="card"><h4 style="margin:0 0 6px">'+(window.__LANG==='en'?p.n:p.zh+' <span class="en" style="color:var(--ink2)">'+p.n+'</span>')+' <span class="tag slate">'+p.yrs+'</span> '+
+      (p.status==='part'?'<span class="tag ochre">部分核实</span>':'<span class="tag ochre">部分核实</span> <span class="tag gray">含待核实连线</span>')+'</h4>'+
+      '<p style="margin:0 0 6px;font-size:14.5px"><b>拿走了什么：</b>'+p.take+'</p>'+
+      '<p style="margin:0 0 6px;font-size:14.5px"><b>批评了什么：</b>'+p.crit+'</p>'+
+      '<p class="src" style="margin:0">依据：'+p.src+'</p></div>';
+  }).join('') + '</div>';
+  var rd = document.getElementById('rec-disagree'); if(rd) rd.innerHTML = '<p style="margin:0;font-size:14.5px">'+REC.disagree+'</p>';
+  var rg = document.getElementById('rec-legend'); if(rg) rg.textContent = REC.legend;
 })();
 
 /* ---------- theme toggle (in-memory only, follows system by default) ---------- */
@@ -1581,6 +1772,15 @@ if (window.__LANG === 'en') {
   METAPHORS.forEach(function(m){ INDEX.push({t:'宗教隐喻 · '+m.t, d:m.change.slice(0,80)+'…', v:'metaphors', hay:(m.t+' '+m.orig+' '+m.borrow+' '+m.change)}); });
   NOURISH.forEach(function(n){ INDEX.push({t:'普通人养分 · '+n.t, d:n.c, v:'nourish', hay:(n.t+' '+n.c+' '+n.u)}); });
   COMPARE.forEach(function(r){ INDEX.push({t:'对照 · '+r[0], d:'继承：'+r[1]+' 不要：'+r[2], v:'compare', hay:(r[0]+' '+r[1]+' '+r[2])}); });
+  DIARY.forEach(function(d){ INDEX.push({t:'思想日记 · '+d.t, d:d.body[0].replace(/<[^>]+>/g,'').slice(0,80)+'…', v:'diary', hay:('Denktagebuch 思想日记 '+d.t+' '+d.body.join(' ').replace(/<[^>]+>/g,''))}); });
+  REC.people.forEach(function(p){ INDEX.push({t:'身后影响 · '+p.zh+' '+p.n, d:p.take.slice(0,80)+'…', v:'reception', hay:(p.zh+' '+p.n+' '+p.take+' '+p.crit)}); });
+  if (window.__LANG === 'en') {
+    var __di = 0, __ri = 0;
+    INDEX.forEach(function(x){
+      if (x.v === 'diary') { x.t = 'Thought Diary · ' + (DIARY[__di] ? DIARY[__di].t : ''); __di++; }
+      if (x.v === 'reception') { x.t = 'Afterlife · ' + (REC.people[__ri] ? REC.people[__ri].n : ''); __ri++; }
+    });
+  }
   if (window.__LANG === 'en') { /* EN mode searches the English content only: strip CJK from the index hay */
     INDEX.forEach(function(x){ x.hay = x.hay.replace(/[\u3400-\u9fff\uf900-\ufaff\u3000-\u303f\uff00-\uffef]/g, ' '); });
   }
@@ -1634,9 +1834,9 @@ if (window.__LANG === 'en') {
   /* ---------- header & nav ---------- */
   txt(qs('.brand .latin'), '· Love of the World');
   txt(qs('.brand .sub'), 'Exploring the thought of Hannah Arendt · 1906–1975');
-  var NAV_EN = { home: 'Home', timeline: 'Timeline', system: 'System', people: 'People', debates: 'Debates', metaphors: 'Metaphors', love: 'Love', nourish: 'Nourishment', compare: 'Compare', excerpts: 'Excerpts', surprise: 'A Day', critique: 'Critique' };
+  var NAV_EN = { home: 'Home', timeline: 'Timeline', system: 'System', people: 'People', debates: 'Debates', metaphors: 'Metaphors', love: 'Love', nourish: 'Nourishment', compare: 'Compare', excerpts: 'Excerpts', surprise: 'A Day', critique: 'Critique', diary: 'Thought Diary', reception: 'Afterlife' };
   qsa('nav.main button[data-view]').forEach(function (b) { firstText(b, NAV_EN[b.dataset.view] || b.dataset.view); var sp = b.querySelector('.en'); if (sp) sp.style.display = 'none'; });
-  qsa('.foot-nav button').forEach(function (b) { txt(b, { home: 'Back to Home', timeline: 'Timeline', system: 'System', excerpts: 'Excerpt Library', debates: 'Debates', metaphors: 'Metaphors', love: 'Love & Relations', nourish: 'Nourishment', compare: 'Comparison Table', critique: 'How Arendt Would Criticize This Site' }[b.dataset.nav] || b.textContent); });
+  qsa('.foot-nav button').forEach(function (b) { txt(b, { home: 'Back to Home', timeline: 'Timeline', system: 'System', excerpts: 'Excerpt Library', debates: 'Debates', metaphors: 'Metaphors', love: 'Love & Relations', nourish: 'Nourishment', compare: 'Comparison Table', critique: 'How Arendt Would Criticize This Site', diary: 'Thought Diary', reception: 'Afterlife Map' }[b.dataset.nav] || b.textContent); });
 
   /* ---------- visible project-translation note on every translated view ---------- */
   var tb = qs('#theme-toggle'); if (tb) tb.setAttribute('aria-label', 'Toggle dark / light mode');
@@ -1675,13 +1875,13 @@ if (window.__LANG === 'en') {
   var progCard = qsa('#view-home .card')[1];
   txt(qs('.tag.sage', progCard), 'MAP PROGRESS');
   txt(qs('p.src', progCard), 'The honest progress of this site: what is built, what is still empty — no varnish.');
-  var PROG_EN = [['Preface + dashboard + full-text search', 'Built'], ['Timeline (lanes + mind map)', 'Built'], ['System map (three views)', '17 entries'], ['Debates, main text', '6 written out'], ['Religious metaphors chapter', '6 written out'], ['Love, relations & pursuits', 'Built'], ['Nourishment + comparison table', '8 items + 8 rows'], ['Fellow travellers', 'Skeleton built; letters to add'], ['Excerpt Library', '6 on the verified shelf; extraction continues']];
+  var PROG_EN = [['Preface + dashboard + full-text search', 'Built'], ['Timeline (lanes + mind map)', 'Built'], ['System map (three views)', '17 entries'], ['Debates, main text', '6 written out'], ['Religious metaphors chapter', '6 written out'], ['Love, relations & pursuits', 'Built'], ['Nourishment + comparison table', '8 items + 8 rows'], ['Fellow travellers', 'Skeleton built; letters to add'], ['Excerpt Library', '8 on the verified shelf; extraction continues'], ['Thought Diary overview', 'Built · Nov 2026 update'], ['Afterlife map', 'First skeleton; partially verified']];
   qsa('#progress-list .prow').forEach(function (r, i) { if (PROG_EN[i]) { txt(r.children[0], PROG_EN[i][0]); txt(r.children[2], PROG_EN[i][1]); } });
   var blind = qs('.card.blind');
   txt(qs('.tag', blind), 'BLIND SPOTS');
   var BLIND_EN = ['<b>Debates completed (rounds 2–3).</b> Six debates written out as "focus / criticism / response / where scholarship stands today"; wherever we are unsure we write "to be verified" rather than putting words in anyone\u2019s mouth.',
     '<b>Religious metaphors now a chapter (rounds 2–3).</b> Six metaphors read as "original meaning → what she borrowed → what she changed"; love, relations and pursuits, the eight nourishments, and the comparison table with other philosophers are also complete.',
-    '<b>The Excerpt Library is still a frame.</b> Six entries on the verified shelf, all with sources; two in the doubt shelf deliberately left blank — better fewer than fabricated.'];
+    '<b>The Excerpt Library is still growing.</b> Eight entries on the verified shelf, all with sources (the 2026-11-14 research batch verified and moved in ex-004 and the two 1971 lecture quotes); two in the doubt shelf still deliberately left blank — better fewer than fabricated.'];
   qsa('li', blind).forEach(function (li, i) { if (BLIND_EN[i]) li.innerHTML = BLIND_EN[i]; });
   txt(qs('button', blind), 'See the doubt shelf in the Excerpt Library →');
   txt(qs('.qbox h3'), 'When did you last act "without thinking"?');
@@ -1690,7 +1890,7 @@ if (window.__LANG === 'en') {
   qsa('#qopts button').forEach(function (b, i) { if (QOPT_EN[i]) b.textContent = QOPT_EN[i]; });
   var threeH = qsa('#view-home h2.sec')[0]; if (threeH) firstText(threeH, 'Where to begin');
   txt(qsa('#view-home p.lede')[0], 'Three doors, three ways of reading: how she thought her way through a life (Timeline), how the concepts interlock (System Map), how an ordinary day looks lit by her concepts (the surprise page).');
-  var LC_EN = [['Works & Thought Timeline', 'Five lanes, 1906–1978. Every work separates begun / finished / published; four lines of thought can be highlighted.'],
+  var LC_EN = [['Works & Thought Timeline', 'Six lanes (lectures included), 1906–1978. Every work separates begun / finished / published; four lines of thought can be highlighted.'],
     ['The System Map', 'Network, mind map, or list. Click any concept for its entry: definition card + mind-map branches + where she remained unsure.'],
     ['An Ordinary Day ✳ Surprise page', 'A page the blueprint never asked for: one ordinary day lived through her concepts, then a "thoughtlessness check" on yourself.']];
   qsa('.linkcard').forEach(function (c, i) { if (LC_EN[i]) { txt(qs('h4', c), LC_EN[i][0]); txt(qs('p', c), LC_EN[i][1]); } });
@@ -1698,7 +1898,7 @@ if (window.__LANG === 'en') {
   /* ---------- timeline ---------- */
   var tl = qs('#view-timeline');
   firstText(qs('h2.sec', tl), 'Works & Thought Timeline');
-  txt(qs('p.lede', tl), 'Five lanes in one: life / works / concepts / debates / fellow travellers. Every work separates begun · finished · published — giving only the publication year reverses the order of thought. Click any node for details; use the thread buttons below to highlight one line of thought. On a phone, swipe sideways; the lanes will not crush together.');
+  txt(qs('p.lede', tl), 'Six lanes in one: life / works / lectures / concepts / debates / fellow travellers. The lectures form a lane of their own (added 2026-11-14), marked separately from the works — much of her thought was spoken in a classroom before it became a book. Every work separates begun · finished · published — giving only the publication year reverses the order of thought. Click any node for details; use the thread buttons below to highlight one line of thought. On a phone, swipe sideways; the lanes will not crush together.');
   txt(qs('#tl-mode-lanes'), 'Lanes'); txt(qs('#tl-mode-mind'), 'Mind map');
   txt(qs('#view-timeline .seg + .src, #view-timeline span.src'), 'Same data, two ways of seeing.');
   var TH_EN = { all: 'All threads', love: 'Thread of love', evil: 'Thread of evil', act: 'Thread of action', think: 'Thread of thinking' };
@@ -1842,23 +2042,51 @@ if (window.__LANG === 'en') {
     [null, 'The first overturning — has not happened yet', 'Wait until she is understood a little more. Left empty — not forgotten, but kept for a future self.', '——'],
     ['2026-11-08 · Round 1', 'The original plan of spreading 24 modules flat across 24 pages', 'Flat means a list, not a system. She speaks of concepts interlocking; pages that do not connect betray the content in their very form.', 'Merged into 7 views: the dashboard as the single entrance, with concepts, works, people and debates all growing from the same body of data.'],
     ['2026-11-08 · Round 1', '"A module counts as finished only when filled up"', 'Filling all 24 modules turns "beginning" into "production" — exactly the logic of labour she criticised.', 'Only a working skeleton was built (preface / timeline / system map / excerpt frame / critique page); the rest is honestly marked as blind spots, not dressed up as finished.'],
-    ['2026-11-08 · Round 1', 'A single way of drawing the system map', 'Giving only one network graph permits only one way of seeing — plurality dies first in the form.', 'The system map gets three views (network / mind map / list), the timeline two (lanes / mind map): the same content, at least two presentations.']];
+    ['2026-11-08 · Round 1', 'A single way of drawing the system map', 'Giving only one network graph permits only one way of seeing — plurality dies first in the form.', 'The system map gets three views (network / mind map / list), the timeline two (lanes / mind map): the same content, at least two presentations.'],
+    ['2026-11-14 · Research batch 1', 'The source of ex-004, "To think and to be fully alive are the same": The Human Condition (1958)', 'The attribution made when the site was built was wrong. Three independent sources (a reader\u2019s summary with page numbers, a conference paper, journal footnotes) all point to The Life of the Mind, vol. I: Thinking; no substantive source supports The Human Condition.', 'The source is corrected to The Life of the Mind, vol. I: Thinking, the section "The answer of Socrates," pp. 177–178, with the note "single page to be fixed by inspecting the printed book"; the entry has moved to the verified shelf of the Excerpt Library.'],
+    ['2026-11-14 · Research batch 1', 'Two popular quotes marked "source not found," fit only for the doubt shelf', 'The full text of the 1971 lecture "Thinking and Moral Considerations" has now been seen in the JSTOR scan: both sentences are there — (A) on p. 438, (B) on p. 435. The popular versions are abridgements / excerpts, not fabrications.', 'Both entries have moved to the verified shelf, entered in the lecture\u2019s verbatim wording with the Social Research 38(3) source stated; the popular abridged versions appear only in the notes, marked "abridged."'],
+    ['2026-11-14 · Research batch 1', 'Thinking Without a Banister mistaken for an English selection from the Thought Diary', 'Checked against the publisher\u2019s catalogue: the book is Schocken\u2019s 2018 collection of lectures, essays and interviews (ed. Jerome Kohn); its pieces are not diary entries. As of 2017 the Denktagebuch had no complete English translation.', 'The Thought Diary overview page carries a "no English translation" correction card, stating what the two commonly mistaken books actually are.']];
   qsa('table.ot tbody tr').forEach(function (tr, i) { if (OT_EN[i]) qsa('td', tr).forEach(function (td, j) { if (OT_EN[i][j]) td.textContent = OT_EN[i][j]; }); });
   firstText(qsa('h2.sec', cr)[2], 'Where This Build Disobeyed the Blueprint');
   var disCard = qsa('#view-critique .card').pop();
   var DIS_EN = ['<b>One: a page the blueprint never asked for was added</b> — "An Ordinary Day" plus the "thoughtlessness check." Of the 24 modules, the closest to ordinary people is item 20, "nourishment," but it remains a list. Putting the concepts into the schedule of a day — waking to the phone, meetings, reposting, solitude before sleep — gives them body temperature for the first time. This follows her own method: she never starts from definitions; she starts from phenomena.',
-    '<b>Two: the 24 modules were not filled up.</b> The main texts of the debates, the metaphors chapter, reading paths, and the map of her afterlife were left as places and blind-spot notices. Not laziness: better empty with "to be added" written on it than padding cells with pretty empty talk — not fabricating is this project\u2019s one rule that may never be overturned.',
+    '<b>Two: the 24 modules were not filled up.</b> Reading paths are still only places and blind-spot notices; the map of her afterlife received only a first skeleton on 2026-11-14 (the Afterlife page), with everything unverified marked grey and "to be verified." Not laziness: better empty with "to be added" written on it than padding cells with pretty empty talk — not fabricating is this project\u2019s one rule that may never be overturned.',
     '<b>Three: the Record of Overturnings was used ahead of schedule.</b> The plan was to leave the date of the first overturning empty until later. But three real overturnings already happened while building (see the table above); hiding them would be the fake. So the empty row stays — for "the overturning after finishing the first book" — and the building-time overturnings are recorded honestly below it.',
     '<b>Four: the dashboard has no wall of numbers.</b> The blueprint said the dashboard should not be a wall of static numbers; this build went further: the progress bars show "how far this site is built," not "how much you have read" — because the latter could not be counted at all in round 1, and writing it would be fabrication.'];
   if (disCard) qsa('p', disCard).forEach(function (p, i) { if (DIS_EN[i]) p.innerHTML = DIS_EN[i]; });
 
+  /* ---------- timeline lecture note ---------- */
+  var ln = qs('#tl-lecture-note');
+  if (ln) {
+    txt(qs('.tag', ln), 'THE LECTURES LANE · THE NEW SCHOOL');
+    txt(qs('h3', ln), 'Lecturing is not an appendix to the works — it is the workshop of The Life of the Mind');
+    var LN_EN = [
+      '<b>The appointment:</b> from 1967 to 1975 she was University Professor in Philosophy in the Graduate Faculty of the New School, until her death. She was already teaching at the New School in 1965, but not yet under that title — do not project the 1967 title backwards.',
+      '<b>The courses</b> (from the course listings in the Library of Congress finding aid to the Arendt Papers — catalogue level): 1965 "Some Questions of Moral Philosophy" (the lectures were later published in Responsibility and Judgment); 1968 "Political Experience(s) in the Twentieth Century"; 1968 "Plato\u2019s Theaetetus"; 1969 "Philosophy and Politics"; the Kant lectures in the fall of 1970; 1971 "The History of the Will"; 1974 "Thinking"; 1975 "The Life of the Mind" — her last course. On the lanes chart they are drawn as a separate "Lectures" lane, apart from the works.',
+      '<b>A note on the Kant lectures:</b> the Lectures on Kant\u2019s Political Philosophy began as classroom typescripts (with handwritten annotations) delivered at the New School in the fall of 1970; she never intended them for publication. Ronald Beiner edited them for publication in 1982. They are not themselves the third volume of The Life of the Mind — reading them as a substitute for the unwritten Judging volume is contested. A further Kant course planned for spring 1976 never took place: she died in December 1975.'];
+    qsa('p', ln).forEach(function (p, i) { if (LN_EN[i]) p.innerHTML = LN_EN[i]; });
+  }
+
+  /* ---------- thought diary ---------- */
+  var dy = qs('#view-diary');
+  firstText(qs('h2.sec', dy), 'The Thought Diary: An Overview');
+  txt(qs('p.lede', dy), 'Alongside the works she left 28 handwritten notebooks — the workshop of her thinking. This page states only what the 2026-11-14 research archive verified; what could not be established (how the volumes divide, the reprint story) is marked "to be verified," as always, rather than filled in with fine words.');
+
+  /* ---------- reception / afterlife ---------- */
+  var rc = qs('#view-reception');
+  firstText(qs('h2.sec', rc), 'Map of Her Afterlife');
+  txt(qs('p.lede', rc), 'After her death in 1975 the concepts did not stop: some were taken over, some remade, some criticised to her face, as it were. This page lays out four lines — every connection carries its verification status: "partially verified" = based on second-hand accounts, publishers\u2019 presentations or abstracts, the originals not read through; "to be verified" = basis not found, the line shown grey, no conclusion drawn. Habermas\u2019s 1976 original was not read and Benhabib\u2019s monograph was not read in full; this page is marked "partially verified" accordingly.');
+
   /* ---------- footer ---------- */
   var foot = qs('footer');
-  txt(foot.children[0], 'Source standard: Stanford Encyclopedia of Philosophy (Arendt entry) · Encyclopaedia Britannica · Bard College Hannah Arendt Center · Goethe-Institut Arendt bibliography · Young-Bruehl, Hannah Arendt: For Love of the World. Quotations marked "to be verified" have not yet been traced to a page and are not conclusions. This page was last verified on 2026-11-08.');
+  txt(foot.children[0], 'Source standard: Stanford Encyclopedia of Philosophy (Arendt entry) · Encyclopaedia Britannica · Bard College Hannah Arendt Center · Goethe-Institut Arendt bibliography · Young-Bruehl, Hannah Arendt: For Love of the World. Quotations marked "to be verified" have not yet been traced to a page and are not conclusions. This page was last verified on 2026-11-14 (research batch 1 update: three excerpts moved to the verified shelf, new Thought Diary overview and Afterlife Map pages, a lectures lane added to the timeline).');
   var fps = qsa('footer p'); txt(fps[fps.length - 1], 'Amor Mundi · Love of the World — the name The Human Condition was first meant to carry. This project was, from the very beginning, not made to be finished, but to be begun.');
 
   /* ---------- short-label dictionary for dynamically rendered content ---------- */
   var REPL = [
+    ['批评 · 待核实', 'Criticism · unverified'], ['部分核实 + 待核实', 'Partially verified + unverified'],
+    ['部分核实', 'Partially verified'], ['含待核实连线', 'includes an unverified line'], ['分歧', 'Disagreement'],
+    ['思考与道德考量', '"Thinking and Moral Considerations"'], ['拿走了什么：', 'What was taken: '], ['批评了什么：', 'What was criticised: '], ['依据：', 'Basis: '],
     ['全文搜索 · SEARCH EVERYTHING', 'FULL-TEXT SEARCH'],
     ['今日一练 · TODAY\u2019S 5 MINUTES', "TODAY'S 5 MINUTES"], ['今日一练', "Today's practice"],
     ['体系地图进度 · MAP PROGRESS', 'MAP PROGRESS'], ['盲区提醒 · BLIND SPOTS', 'BLIND SPOTS'],
@@ -1926,5 +2154,6 @@ if (window.__LANG === 'en') {
 })();
 
 </script>
+<script data-goatcounter="https://amor-mundi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
