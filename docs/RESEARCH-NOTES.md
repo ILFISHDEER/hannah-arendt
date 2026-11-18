@@ -16,6 +16,7 @@
 - 《思想日记》*Denktagebuch: 1950 bis 1973*，Ursula Ludz 与 Ingeborg Nordmann 合编，Piper 2002 年，两卷本，约 1230 页；28 册手写笔记本，原稿藏马尔巴赫德国文学档案馆；实质记述 1950–1971，末尾 1972–1973 年仅为后补旅行行程；无英文全译本（截至 2017 年说法）
 - 新学院任职 1967–1975 年研究生院 University Professor in Philosophy；课程表已核实到档案目录级（1965《Some Questions of Moral Philosophy》、1970 秋康德讲座等，见 docs/research/2026-11-14-new-school-lectures.md）
 - 身后影响地图骨架：Habermas / Benhabib / Agamben / Honig 各拿走哪一块已梳理（见 docs/research/2026-11-14-reception-map.md）；其中只有 Agamben 的 2 条为「已核实」，其余为部分核实
+- 〈文化危机〉5 句引文（2026-11-18 研究档案，见 docs/research/2026-11-18-crisis-in-culture-verification.md）：伯里克利句 "We love beauty within the limits of political judgment…"（2006 Penguin 版 p. 210）；人文主义者句 "the humanist, because he is not a specialist, exerts a faculty of judgment and taste…"（p. 222）；品味句两句分开引，(a) "The activity of taste decides how this world…"（p. 219），(b) "it is as though taste decides not only how the world is to look, but also who belongs together in it."（p. 220，注意开头的 "it is as though" 是比拟不是断言）；全文末句 "one who knows how to choose his company among men, among things, among thoughts, in the present as well as in the past."（p. 222）；西塞罗句 "Errare mehercule malo cum Platone... quam cum istis (sc. Pythagoraeis) vera sentire"（p. 221，脚注 18；原典 *Tusculanae Disputationes* 1.17.39）。5 句均已逐字核对 2006 Penguin 版〈文化危机〉全文；Viking 1961/1968 版页码为 +3 推算（待亲见纸本复核）。其中 (b) 句与末句已作 ex-009、ex-010 入摘录库正库，友谊主题新增伯里克利—西塞罗论证线（2026-11-18 已上线）
 
 ## 存疑（未进正库，见 data/excerpts.json doubtful）
 
@@ -34,4 +35,5 @@
 - 2017 年后《思想日记》有无新英译本、中文版；Piper 官网分卷表、1230 / 1232 页之差
 - “Philosophy of the Mind”（1974）是否与《Thinking》同一门课；"Greek Political Thought" 年份；「十三讲」之数；课程编号
 - Habermas 1976 年原文、Benhabib 第 6 章、Agamben《Homo Sacer》第 1–3 章、Honig 1993 年涉阿伦特章节（影响地图升级全靠这四处）
-- 研究档案：docs/research/（2026-11-14 第一批 7 份）
+- 〈文化危机〉Viking 1961/1968 版各页 +3 换算（除 ONCURATING 一处佐证外）未逐页亲见纸本；中文版《过去与未来之间》的译文与页码未查
+- 研究档案：docs/research/（2026-11-14 第一批 7 份；2026-11-17 Berkowitz〈友谊与真理〉存档 1 份；2026-11-18〈文化危机〉引文核实 1 份）
